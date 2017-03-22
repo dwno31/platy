@@ -1,0 +1,36 @@
+<div style="display:block; height:55px; width:100%; text-align:center;">
+<form action='/destroy' method=post onsubmit="return confirm('전부 다 삭제?????');"><input type=submit value="DB날리기"></form>
+<a href=/db_input>데이터베이스 입력하러가기</a>
+</div>
+<table class="table table-bordered">
+	
+	<thead>	
+		<tr>
+			<th>title</th>
+			<th>rating</th>
+			<th>thumbnail</th>
+			<th>category</th>
+			<th>explain</th>
+			<th>hashtag</th>
+			<th>url</th>
+			<th>delete</th>
+		</tr>
+	</thead>
+
+	</tbody>	
+	<% @merchants.each do |record| %>
+		<tr>
+			<td><%=record.title%></td>
+			<td><%=record.rating%></td>
+			<td><!--썸네일?--></td>
+			<td><%=record.category%></td>
+			<td><%=record.explain%></td>
+			<td><%=record.hashtag%></td>
+			<td><a href='<%=record.url%>'>link</a></td>
+			<td><form action='/delete/<%=record.id%>' method=post onsubmit="return confirm('삭제?');"><input type=submit value="삭제"></form></td>
+		</tr>
+	<% end %> 
+	</tbody>
+
+
+</table>

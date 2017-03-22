@@ -1,0 +1,115 @@
+// Place all the styles related to the front controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//front index page
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+*{
+border:solid 1px black;
+}
+html, body{
+height:100%;
+
+}
+
+// top nav bar
+
+.top-bar{
+
+display:table;
+width:100%;
+height:7%;
+text-align:center;
+
+
+}
+		
+	.service-title{
+
+	vertical-align:middle;
+	display:table-cell;
+	font-size:1.5em;
+
+	}
+
+// tag-browser
+
+.tag-browser{
+
+height:15%;
+width:100%;
+
+}
+
+	.tag-button{
+
+	display:table;
+	height:50%;
+	width:25%;
+	float:left;
+	border-radius:15px;
+	border:solid 1px black;
+
+	}
+
+	.tag-text{
+
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+	font-size:1em;
+
+	}
+
+
+// browse_contents
+
+.browser-contents{
+
+height:78%;
+width:100%;
+overflow-y: auto;
+-webkit-overflow-scrolling: touch;
+
+}
+
+	.content-block{
+
+	height:20%;
+	width:100%;
+
+	}
+
+	.content-ranking{
+	height:100%;
+	width:15%;
+	display:table;
+	text-align:center;
+	float:left;
+
+	}
+		.ranking-number{
+		display:table-cell;
+		vertical-align:middle;
+		font-size:1.5em;
+		}
+	.content-thumbnail{
+	float:left;
+	height:100%;
+	width:17%;
+	border-radius:15px;
+
+	}
+	.content-title{
+	float:left;
+
+	}
+	.content-explain{
+	float:left;
+
+	}
+	.content-hashtag{
+
+	}
