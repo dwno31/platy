@@ -4,6 +4,7 @@ Rails.application.routes.draw do
  get "pcindex", to: "front#pcindex"
  get "db_admin", to: "front#db_admin"
  get "db_input", to: "front#db_input"
+ get "move/(:id)", to: "front#bridge"
 
 
  #poset forward backend

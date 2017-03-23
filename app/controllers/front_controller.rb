@@ -18,6 +18,15 @@ require 'browser'
 
 	end
 
+	def bridge
+
+		input = params[:id]
+		@record = Merchant.find(input.to_i)
+		#@record.counter = @record.counter +1;
+		#@record.save
+
+	end
+
 
 #for admin below
 
