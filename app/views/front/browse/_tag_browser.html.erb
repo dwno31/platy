@@ -2,8 +2,8 @@
 <div class=tag-browser>
 
 	<% @head_tag.each do |tag| %>
-	<div class=tag-button>
-		<span class=tag-text id="<%=tag%>" onclick="tag_sort();"><%= '#'+tag%></span>
+	<div class=tag-button id="<%=tag%>"  onclick="tag_sort();tag_toggle(this);">
+		<span class=tag-text ><%= '#'+tag%></span>
 
 	</div>
 
@@ -23,7 +23,11 @@
 
 
   }
-  function tag_toggle
+  function tag_toggle(a){
+    $(a).toggleClass("tag-button-clicked");
+
+
+  }
 
 
 </script>
