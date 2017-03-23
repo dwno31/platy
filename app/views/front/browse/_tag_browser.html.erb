@@ -3,10 +3,27 @@
 
 	<% @head_tag.each do |tag| %>
 	<div class=tag-button>
-		<span class=tag-text><%= '#'+tag%></span>	
+		<span class=tag-text id="<%=tag%>" onclick="tag_sort();"><%= '#'+tag%></span>
 
 	</div>
 
 	<% end %>
 
 </div>
+
+<script>
+
+  //태그를 입력받는다 제이쿼리로 보낸다
+  //제이슨으로 받아서 틀 하나 만들어두고 반복문으로 dom재생성한다
+  //아니면 아래 부분만 새로운 데이터로 리로드한다
+  function tag_sort(tag){
+      var tag = tag;
+
+
+
+
+  }
+  function tag_toggle
+
+
+</script>

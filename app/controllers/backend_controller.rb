@@ -32,7 +32,8 @@ class BackendController < ApplicationController
 						if att.include?("http://")
 							record.thumbnail = att
 						else
-							record.thumbnail = "http://" +att
+							#record.thumbnail = "http://" +att
+							record.thumbnail= att
 						end
 					when 6 
 						if att.include?("http://")
