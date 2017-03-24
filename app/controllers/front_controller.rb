@@ -6,7 +6,7 @@ require 'browser'
 
 	def index
 		@head_tag = ["모던한","북유럽","폴란드","핸드메이드","일본식","귀여운","클래식","한식"]
-    @merchant= Merchant.all
+    @merchant= Merchant.all.order('ranknumber ASC')
 	end
 
 	def table
