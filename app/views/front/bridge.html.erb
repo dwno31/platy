@@ -3,7 +3,8 @@
 
 <script>
   $(document).ready(function(){
-  $(location).delay(1500).attr('href', '<%=@record.url%>')
+      setTimeout(function(){ $(location).attr('href', '<%=@record.url%>') }, 2000);
+
   })
 
 </script>
