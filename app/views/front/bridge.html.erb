@@ -1,11 +1,9 @@
 
-hello, lets go to the <%=@record.title%>
+<div class="bridge"></div>
 
 <script>
-  $(function(){
-      alert('이동합니다');
-
-
+  $(document).ready(function(){
+  $(location).delay(1500).attr('href', '<%=@record.url%>')
   })
 
 </script>

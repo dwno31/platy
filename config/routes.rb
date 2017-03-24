@@ -5,6 +5,7 @@ Rails.application.routes.draw do
  get "db_admin", to: "front#db_admin"
  get "db_input", to: "front#db_input"
  get "move/(:id)", to: "front#bridge"
+ get "contents/(:id)", to:"front#contents_reload"
 
 
  #poset forward backend

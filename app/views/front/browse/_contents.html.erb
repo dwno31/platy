@@ -13,7 +13,7 @@
 			<span class=ranking-number><%=i%></span>
 		</div>
 		<div class=content-thumbnail>
-      <div class="thumbnail-img" style="background-color: <%= record.thumbnail%>;"></div>
+      <div class="thumbnail-img" style="background-image: url(<%= record.thumbnail%>);"></div>
 		</div>
 		<div class=content-title>
       <span class="title-text"><%= record.title%></span>
@@ -23,7 +23,7 @@
 		</div>
 		<div class=content-hashtag>
       <%
-        hashtag_array = record.hashtag.gsub(' ','').split(',')
+        hashtag_array = record.category.gsub(' ','').split(',')
         hashtag_text = ""
 
         hashtag_array.each do |one|
