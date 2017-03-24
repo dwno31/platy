@@ -6,8 +6,7 @@ require 'browser'
 
 	def index
 		@head_tag = ["모던한","북유럽","폴란드","핸드메이드","일본식","귀여운","클래식","한식"]
-		@merchant= Merchant.all
-
+    @merchant= Merchant.all
 	end
 
 	def table
@@ -16,6 +15,22 @@ require 'browser'
 
 	def pcindex
 
+	end
+
+	def contents_reload
+		if params[:id].nil?
+			@merchant = Merchant.all
+		else
+      input_tags = params[:id].split(',')
+      input_tags.shift #destroy first one
+      logger.info input_tags
+      @merchant = []
+      input_tags.each do |tag|
+        @merchant = @merchant + Merchant.where("category like ?","%#{tag}%")
+      end
+      @merchant = @merchant.uniq
+		end
+      render layout: false
 	end
 
 	def bridge

@@ -11,6 +11,8 @@ class BackendController < ApplicationController
 				
 				case i
 					when 0
+						record = Merchant.new(ranknumber:att.to_i)
+					when 1
 						logger.info att
 						if att == 'ㅇ'
 							att = 1
@@ -20,22 +22,22 @@ class BackendController < ApplicationController
 							att = 0
 						end
 						record.rating = att
-					when 1
-						record.title = att
 					when 2
-						record.hashtag = att
-					when 3 
-						record.hashtag = record.hashtag + ','  + att
+						record.title = att
+					when 3
+						record.category = att
 					when 4
-						record.explain = att
+						record.hashtag = att
 					when 5
+						record.explain = att
+					when 6
 						if att.include?("http://")
 							record.thumbnail = att
 						else
 							#record.thumbnail = "http://" +att
 							record.thumbnail= att
 						end
-					when 6 
+					when 7
 						if att.include?("http://")
 							record.url = att
 						else
