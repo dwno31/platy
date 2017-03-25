@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/browse/_contents.html.erb" afterPath="$PROJECT_DIR$/app/views/front/browse/_contents.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/browse/_tag_browser.html.erb" afterPath="$PROJECT_DIR$/app/views/front/browse/_tag_browser.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/browse/_top_bar.html.erb" afterPath="$PROJECT_DIR$/app/views/front/browse/_top_bar.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/contents_reload.html.erb" afterPath="$PROJECT_DIR$/app/views/front/contents_reload.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/index.html.erb" afterPath="$PROJECT_DIR$/app/views/front/index.html.erb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -649,12 +644,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1490201856510</updated>
-      <workItem from="1490201857960" duration="26927000" />
+      <workItem from="1490201857960" duration="27063000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26927000" />
+    <option name="totallyTimeSpent" value="27063000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
