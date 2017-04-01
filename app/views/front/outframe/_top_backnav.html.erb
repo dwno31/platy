@@ -6,8 +6,9 @@
 </div>
 
 <script>
+  var origin_length = window.history.length;
   function back_platy(){
-  var back_length = 1 - window.history.length;
+  var back_length = origin_length - window.history.length - 1;
   window.history.go(back_length);
 
   }
