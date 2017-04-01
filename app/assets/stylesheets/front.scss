@@ -173,6 +173,49 @@ overflow-y: auto;
       height:1px;
     }
 
+
+//outlink
+
+.top-backnav{
+  height:7%;
+  width:100%;
+  font-size:1.3em;
+  border-bottom:1px solid #95989a;
+}
+
+  .backbutton{
+    float:left;
+    height:100%;
+    width:15%;
+    display:table;
+    text-align:center;
+  }
+    .backbutton>span{
+      display:table-cell;
+      vertical-align: middle;
+
+    }
+  .outlink-shopname{
+    float:left;
+    height:100%;
+    display:table;
+  }
+    .outlink-shopname>span{
+      display:table-cell;
+      vertical-align: middle;
+    }
+
+.outlink-frame{
+  height:93%;
+  width:100%;
+}
+  .outlink-iframe{
+    border:none;
+    height:100%;
+    width:100%;
+  }
+
+
 //bridge
 
 .bridge{

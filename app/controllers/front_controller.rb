@@ -42,6 +42,14 @@ require 'browser'
 
 	end
 
+	def outlink
+
+		input = params[:id]
+		@record = Merchant.find(input.to_i)
+		@device_check = browser.platform.ios?
+
+	end
+
 
 #for admin below
 

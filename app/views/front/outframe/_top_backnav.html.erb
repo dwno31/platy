@@ -1,0 +1,15 @@
+<div class="backbutton">
+  <span onclick="back_platy();" class="glyphicon glyphicon-menu-left"></span>
+</div>
+<div class="outlink-shopname">
+  <span><%=@record.title%></span>
+</div>
+
+<script>
+  function back_platy(){
+  var back_length = 1 - window.history.length;
+  window.history.go(back_length);
+
+  }
+
+</script>
