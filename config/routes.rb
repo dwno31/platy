@@ -6,7 +6,7 @@ Rails.application.routes.draw do
  get "db_input", to: "front#db_input"
  get "move/(:id)", to: "front#bridge"
  get "contents/(:id)", to:"front#contents_reload"
-
+ get "outlink/(:id)", to:"front#outlink"
 
  #poset forward backend
  post "delete/(:id)", to:"backend#db_delete"
