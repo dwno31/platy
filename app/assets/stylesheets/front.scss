@@ -205,9 +205,12 @@ overflow-y: auto;
       vertical-align: middle;
     }
 
+
 .outlink-frame{
   height:93%;
   width:100%;
+  -webkit-overflow-scrolling: touch !important;
+  overflow:auto;
 }
   .outlink-iframe{
     border:none;
