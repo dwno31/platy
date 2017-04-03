@@ -39,4 +39,10 @@
 
   }
 
+  $(document).ready(function () {
+      tag_toggle($("#<%=@head_tag[0]%>"));
+      setTimeout(function(){ $("#<%=@head_tag[0]%>").click();},10)
+
+  })
+
 </script>
