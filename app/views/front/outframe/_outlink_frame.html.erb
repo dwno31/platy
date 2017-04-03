@@ -1,11 +1,11 @@
 <div class="bridge"></div>
-<iframe style="display:none;" class="outlink-iframe">
+<iframe style="display:none;" src="<%=@record.url%>" class="outlink-iframe">
 </iframe>
 
 
 <script>
   $(document).ready(function(){
-      setTimeout(function(){ $(".bridge").hide(); $(".outlink-iframe").show().attr('src',"<%=@record.url%>"); }, 100)
+      setTimeout(function(){ $(".bridge").hide(); $(".outlink-iframe").show();}, 100)
 
   })
 
