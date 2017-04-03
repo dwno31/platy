@@ -50,9 +50,10 @@ width:100%;
 	.tag-button{
 
 	display:table;
-	height:43%;
+	height:48%;
 	width:23%;
     margin:1%;
+    position:relative;
 	float:left;
 	border-radius:15px;
 	border:solid 1px #a5c5ac;
@@ -210,7 +211,8 @@ overflow-y: auto;
   height:93%;
   width:100%;
   -webkit-overflow-scrolling: touch !important;
-  overflow:auto;
+  overflow-y:scroll;
+
 }
   .outlink-iframe{
     border:none;
