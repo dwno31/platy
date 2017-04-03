@@ -212,15 +212,17 @@ overflow-y: auto;
 .outlink-frame{
   height:93%;
   width:100%;
-  max-width:100%;
-  overflow-x:auto;
+  position:relative;
 
 }
   .outlink-iframe{
     border:none;
     height:100%;
     width:100%;
-    max-width:100%;
+    min-width:100%;
+    position:absolute;
+    top:0;
+    left:0;
   }
 
 
