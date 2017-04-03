@@ -38,8 +38,8 @@
           <file leaf-file-name="front.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="247">
-                  <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+                <state relative-caret-position="255">
+                  <caret line="215" column="16" lean-forward="false" selection-start-line="215" selection-start-column="16" selection-end-line="215" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -102,8 +102,8 @@
           <file leaf-file-name="_outlink_frame.html.erb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/front/outframe/_outlink_frame.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+                <state relative-caret-position="90">
+                  <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
                   <folding>
                     <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
                   </folding>
@@ -161,8 +161,8 @@
         <option value="$PROJECT_DIR$/app/views/front/outframe/_top_backnav.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/outlink.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/front/outframe/_outlink_frame.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/browse/_tag_browser.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/front/outframe/_outlink_frame.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
       </list>
     </option>
@@ -589,12 +589,12 @@
       <workItem from="1490201857960" duration="31032000" />
       <workItem from="1490814028835" duration="1945000" />
       <workItem from="1490940835323" duration="8913000" />
-      <workItem from="1491032056026" duration="10783000" />
+      <workItem from="1491032056026" duration="12383000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52673000" />
+    <option name="totallyTimeSpent" value="54273000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -794,16 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/front/outframe/_outlink_frame.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/front/browse/_tag_browser.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
@@ -836,10 +826,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/front/outframe/_outlink_frame.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="24" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="215" column="16" lean-forward="false" selection-start-line="215" selection-start-column="16" selection-end-line="215" selection-end-column="16" />
           <folding />
         </state>
       </provider>
