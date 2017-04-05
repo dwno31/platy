@@ -36,7 +36,7 @@ require 'browser'
 	def shop_product
 		@product = []
 		if !params[:id].nil?
-			@product = Merchant.find(params[:id].to_i)
+			@merchant = Merchant.find(params[:id].to_i)
 		end
 		render partial:"front/modal/shop_product",layout:false
 	end
