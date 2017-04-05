@@ -5,7 +5,7 @@
 
   %>
 
-  <a href="/outlink/<%=record.id%>">
+  <a onclick="shop_product_popup(<%=record.id%>);">
   <div class=content-block>
 	
 		<div class=content-ranking>
@@ -45,5 +45,16 @@
 
 	<% end %>
 
+  <script>
+    function shop_product_popup(id){
+        var id = id;
+        $(".shop-product-popup").load("/shop_product/"+id,function(id){
+            $(".modal").modal('show');
+        });
+
+    }
+
+
+  </script>
 
 

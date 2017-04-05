@@ -5,7 +5,7 @@ require 'browser'
 #before_action :mobile_check, only:[:index]
 
 	def index
-		@head_tag = ["모던한","북유럽","폴란드","핸드메이드","일본식","귀여운","클래식","한식"]
+		@head_tag = ["모던한","북유럽","브랜드","핸드메이드","일본식","귀여운","클래식","한식"]
     @merchant= Merchant.all.order('ranknumber ASC')
 	end
 
@@ -30,7 +30,15 @@ require 'browser'
       end
       @merchant = @merchant.uniq
 		end
-      render layout: false
+      render partial: "front/browse/contents", layout: false
+	end
+
+	def shop_product
+		@product = []
+		if !params[:id].nil?
+			@product = Merchant.find(params[:id].to_i)
+		end
+		render partial:"front/modal/shop_product",layout:false
 	end
 
 	def bridge
