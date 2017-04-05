@@ -19,6 +19,8 @@ class BackendController < ApplicationController
                 att = 1
               elsif att == 'ㅇㅇ'
                 att = 2
+              elsif att == 'ㅇㅇㅇ'
+                att = 3
               else
                 att = 0
               end
