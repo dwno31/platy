@@ -185,10 +185,77 @@ overflow-y: auto;
 }
 
 .modal-content{
+  padding:0;
   height:100%;
   border-radius:0;
   border:0;
 }
+  .modal-header{
+    padding:0;
+    height:10%;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+    .modal-header .shrink{
+      min-height:10%;
+//나중에 기능 추가해보자 이거 하려면 탑바랑 컨텐츠가 같은 div 상에 존재해야 편할듯
+    }
+    .modal-header-section{
+      float:left;
+      width:33%;
+      height:100%;
+    }
+      .backbutton{
+        float:left;
+        height:100%;
+        width:100%;
+        display:table;
+        text-align:left;
+        padding:10%;
+      }
+        .backbutton>span{
+          display:table-cell;
+          vertical-align:middle;
+          font-size:1.5em;
+
+        }
+      .modal-shoptitle{
+        text-align:center;
+        height:100%;
+        width:100%;
+        display:table;
+      }
+        .modal-shoptitle > span{
+          display:table-cell;
+          vertical-align:middle;
+          font-size:1.5em;
+        }
+
+
+  .modal-body{
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    height:70%;
+    width:100%;
+
+
+  }
+  .modal-footer{
+    position:fixed;
+    bottom:0;
+    width:100%;
+    height:10%;
+    display:table;
+    text-align:center;
+  }
+    .modal-footer > span{
+      display: table-cell;
+      vertical-align: middle;
+      color:black;
+      text-decoration: none;
+      font-size:1.2em;
+    }
+
 
   //outlink
 
@@ -198,20 +265,7 @@ overflow-y: auto;
   font-size:1.3em;
   border-bottom:1px solid #95989a;
 }
-
-  .backbutton{
-    float:left;
-    height:100%;
-    width:15%;
-    display:table;
-    text-align:center;
-  }
-    .backbutton>span{
-      display:table-cell;
-      vertical-align: middle;
-
-    }
-  .outlink-shopname{
+ .outlink-shopname{
     float:left;
     height:100%;
     display:table;

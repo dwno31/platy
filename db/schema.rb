@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170324074345) do
+ActiveRecord::Schema.define(version: 20170405060651) do
 
   create_table "merchants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at",               null: false
@@ -26,4 +26,17 @@ ActiveRecord::Schema.define(version: 20170324074345) do
     t.integer  "ranknumber"
   end
 
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "merchant_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "title"
+    t.integer  "price"
+    t.text     "hashtag",     limit: 65535
+    t.string   "category"
+    t.string   "status"
+    t.index ["merchant_id"], name: "index_products_on_merchant_id", using: :btree
+  end
+
+  add_foreign_key "products", "merchants"
 end
