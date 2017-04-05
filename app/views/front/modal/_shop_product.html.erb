@@ -19,34 +19,33 @@
     <!--</div>-->
     </div>
     <div class="modal-body">
-      <div class
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+      <div class="body-divide">
+        <% @product1.each do |record| %>
+        <a href="<%=record.url%>" target="_blank">
+          <div class="modal-product-item">
+            <img class="modal-product-img" src="<%=record.img_url%>"/>
+            <div class="modal-product-detail">
+              <span><%=record.title%></span><br>
+              <span><%=record.price%>원</span>
+              <span></span>
+            </div>
+          </div>
+        </a>
+        <% end %>
+      </div>
+      <div class="body-divide">
+        <% @product2.each do |record| %>
+        <a href="<%=record.url%>" target="_blank">
+          <div class="modal-product-item">
+            <img class="modal-product-img" src="<%=record.img_url%>"/>
+            <div class="modal-product-detail">
+              <span><%=record.title%></span><br>
+              <span><%=record.price%>원</span>
+            </div>
+          </div>
+        </a>
+        <% end %>
+      </div>
     </div>
     <a href="<%=@merchant.url%>" target="_blank">
       <div class="modal-footer">

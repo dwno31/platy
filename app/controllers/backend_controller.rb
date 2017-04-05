@@ -5,51 +5,77 @@ class BackendController < ApplicationController
 		
 		table = input.split("\r\n")
 		table.each do |line|
-			record = Merchant.new		
 			i = 0
-			line.split("\t").each do |att| 
-				
-				case i
-					when 0
-						record = Merchant.new(ranknumber:att.to_i)
-					when 1
-						logger.info att
-						if att == 'ㅇ'
-							att = 1
-						elsif att == 'ㅇㅇ'
-							att = 2
-						else
-							att = 0
-						end
-						record.rating = att
-					when 2
-						record.title = att
-					when 3
-						record.category = att
-					when 4
-						record.hashtag = att
-					when 5
-						record.explain = att
-					when 6
-						if att.include?("http://")
-							record.thumbnail = att
-						else
-							#record.thumbnail = "http://" +att
-							record.thumbnail= att
-						end
-					when 7
-						if att.include?("http://")
+			if params[:table]=="merchant"
+        record = Merchant.new
+        line.split("\t").each do |att|
+
+          case i
+            when 0
+              record.ranknumber = att.to_i
+            when 1
+              logger.info att
+              if att == 'ㅇ'
+                att = 1
+              elsif att == 'ㅇㅇ'
+                att = 2
+              else
+                att = 0
+              end
+              record.rating = att
+            when 2
+              record.title = att
+            when 3
+              record.category = att
+            when 4
+              record.hashtag = att
+            when 5
+              record.explain = att
+            when 6
+              if att.include?("http://")
+                record.thumbnail = att
+              else
+                #record.thumbnail = "http://" +att
+                record.thumbnail= att
+              end
+            when 7
+              if att.include?("http://")
+                record.url = att
+              else
+                record.url = "http://" +att
+              end
+          end
+
+          i = i+1;
+
+        end
+
+        record.save
+
+			else
+				record = Product.new
+				line.split("\t").each do |att|
+					case i
+            when 0
+              logger.info att
+							record.merchant_id = Merchant.find_by(:title=>att).id
+						when 1
+							record.title = att
+						when 2
+							record.price = att.to_i
+						when 3
+							record.img_url = att
+						when 4
 							record.url = att
-						else
-							record.url = "http://" +att
-						end
+					end
+
+					i = i+1;
+
 				end
 
-				i = i+1;
-			
-			end
+				record.save
 
-			record.save
+			end
 		end
 		
 		redirect_to "/db_admin"

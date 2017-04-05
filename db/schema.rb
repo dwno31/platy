@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405060651) do
+ActiveRecord::Schema.define(version: 20170405163319) do
 
   create_table "merchants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at",               null: false
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20170405060651) do
     t.text     "hashtag",     limit: 65535
     t.string   "category"
     t.string   "status"
+    t.text     "url",         limit: 65535
+    t.text     "img_url",     limit: 65535
     t.index ["merchant_id"], name: "index_products_on_merchant_id", using: :btree
   end
 
