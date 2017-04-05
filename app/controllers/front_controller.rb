@@ -34,9 +34,20 @@ require 'browser'
 	end
 
 	def shop_product
-		@product = []
+		@product1 = []
+		@product2 = []
+		tog = false
 		if !params[:id].nil?
 			@merchant = Merchant.find(params[:id].to_i)
+		end
+		@merchant.products.each do |record|
+			case tog
+				when false
+					@product1.push(record)
+				when true
+					@product2.push(record)
+			end
+			tog = !tog
 		end
 		render partial:"front/modal/shop_product",layout:false
 	end

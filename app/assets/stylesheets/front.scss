@@ -11,10 +11,21 @@
 }
 html, body{
 height:100%;
-
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-
+a{
+  text-decoration: none !important;
+  color:black;
+}
+a:visited {color:black;}  /* visited link */
+a:hover {color:black;}  /* mouse over link */
+a:active {color:black;}
 // top nav bar
 
 .top-bar{
@@ -243,9 +254,30 @@ overflow-y: auto;
     -webkit-overflow-scrolling:touch;
     height:80%;
     width:100%;
-
-
+    background:#e8e8e8;
   }
+    .body-divide{
+      height:100%;
+      width:50%;
+      float:left;
+
+    }
+      .modal-product-item{
+        background: white;
+        box-shadow:1px 1px 3px grey;
+        width:96%;
+        margin:5% 1% 5% 1%;
+        border-radius:3px;
+        min-height:30%;
+
+      }
+
+        .modal-product-img{
+          width:100%;
+        }
+        .modal-product-detail{
+          text-align:center;
+        }
   .modal-footer{
     position:fixed;
     bottom:0;
