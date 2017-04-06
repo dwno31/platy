@@ -13,5 +13,6 @@ Rails.application.routes.draw do
  post "delete/(:id)", to:"backend#db_delete"
  post "destroy", to:"backend#db_destroy"
  post "db_input", to: "backend#db_input"
+ post "img_reproduce", to:"backend#img_reproduce"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

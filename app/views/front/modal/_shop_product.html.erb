@@ -21,9 +21,9 @@
     <div class="modal-body">
       <div class="body-divide">
         <% @product1.each do |record| %>
-        <a href="<%=record.url%>" target="_blank">
+        <a href="<%=record.url%>">
           <div class="modal-product-item">
-            <img class="modal-product-img" src="<%=record.img_url%>"/>
+            <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
             <div class="modal-product-detail">
               <span><%=record.title%></span><br>
               <span><%=record.price%>원</span>
@@ -35,9 +35,9 @@
       </div>
       <div class="body-divide">
         <% @product2.each do |record| %>
-        <a href="<%=record.url%>" target="_blank">
+        <a href="<%=record.url%>">
           <div class="modal-product-item">
-            <img class="modal-product-img" src="<%=record.img_url%>"/>
+            <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
             <div class="modal-product-detail">
               <span><%=record.title%></span><br>
               <span><%=record.price%>원</span>

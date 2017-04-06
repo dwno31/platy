@@ -12,7 +12,9 @@
 			<span class=ranking-number><%=i%></span>
 		</div>
 		<div class=content-thumbnail>
-      <div class="thumbnail-img" style="background-image: url(<%= record.thumbnail%>);"></div>
+      <div class="thumbnail-img" style="background-image:url('<%= record.thumbnail%>');">
+        <!--<img src="" class="content-thumbnail-img">-->
+      </div>
 		</div>
 		<div class=content-title>
       <span class="title-text"><%= record.title%></span>
@@ -53,15 +55,15 @@
         });
 
     }
-    $(".modal").on("shown.bs.modal", function()  { // any time a modal is shown
-        var urlReplace = "#" + $(this).attr('id'); // make the hash the id of the modal shown
-        history.pushState(null, null, urlReplace); // push state that hash into the url
-    });
-
-    // If a pushstate has previously happened and the back button is clicked, hide any modals.
-    $(window).on('popstate', function() {
-        $(".modal").modal('hide');
-    });
+//    $(".modal").on("shown.bs.modal", function()  { // any time a modal is shown
+//        var urlReplace = "#" + $(this).attr('id'); // make the hash the id of the modal shown
+//        history.pushState(null, null, urlReplace); // push state that hash into the url
+//    });
+//
+//    // If a pushstate has previously happened and the back button is clicked, hide any modals.
+//    $(window).on('popstate', function() {
+//        $(".modal").modal('hide');
+//    });
 
 
   </script>
