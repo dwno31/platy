@@ -1,4 +1,5 @@
 class BackendController < ApplicationController
+  require 'open-uri'
 
 	def db_input
 		input = params[:input_textarea]
@@ -96,4 +97,26 @@ class BackendController < ApplicationController
 
 	end
 
+  def img_reproduce
+    input_type = params[:type]
+    input_id = params[:id].to_i
+
+    case input_type
+      when "merchant"
+        record = Merchant.find(input_id).thumbnail
+      when "product"
+        record = Product.find(input_id).img_url
+    end
+
+    if record == ""
+      encode_text = 'nothumbnail'
+    elsif record.nil?
+      encode_text = 'nothumbnail'
+    else
+      encode_text = Base64.encode64(open(record).read).gsub(/\n/,'')
+      record = "data:image/png;base64,"+encode_text
+    end
+
+    render :json => {:url=>record}
+  end
 end

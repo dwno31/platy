@@ -139,6 +139,9 @@ overflow-y: auto;
         background-repeat: no-repeat;
         background-position: center;
       }
+      .content-thumbnail-img{
+        width:100%;
+      }
 	.content-title{
 	float:left;
     height:50%;
@@ -154,7 +157,7 @@ overflow-y: auto;
       }
 	.content-explain{
 	float:right;
-    width:30%;
+    width:20%;
     height:50%;
     display: table;
 
