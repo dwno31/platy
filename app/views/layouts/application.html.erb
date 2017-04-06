@@ -13,7 +13,6 @@
     <script>
       function imgError(image,type,id) {
           image.onerror = "";
-          console.log(image);
           $.ajax({
             url:"/img_reproduce",
             data:{type:type, id:id},
@@ -22,7 +21,6 @@
                 image.src=data.url;
             }
           });
-
           return true;
       };
 
