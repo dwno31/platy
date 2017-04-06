@@ -24,7 +24,8 @@
 
       });
 
-      $(".browser-contents").fadeOut(300).load("/contents/"+parameter, function(){}).fadeIn(300);
+      $(".browser-contents").fadeOut(0).load("/contents/"+parameter, function(){}).fadeIn(300).scrollTop(1);
+
 
       // 반복문 만들어서 string으로 붙인 다음에 파라미터로 넘긴다
       // index창에서는 파라미터 값에 따라 표시되는 record를 바꾸고
@@ -41,7 +42,7 @@
 
   $(document).ready(function () {
       tag_toggle($("#<%=@head_tag[0]%>"));
-      setTimeout(function(){ $("#<%=@head_tag[0]%>").click();},10)
+      setTimeout(function(){ $("#<%=@head_tag[0]%>").click();},1)
 
   })
 
