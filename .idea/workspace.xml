@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/browse/_tag_browser.html.erb" afterPath="$PROJECT_DIR$/app/views/front/browse/_tag_browser.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/items/_tag_browser.html.erb" afterPath="$PROJECT_DIR$/app/views/front/items/_tag_browser.html.erb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -69,8 +67,8 @@
           <file leaf-file-name="_tag_browser.html.erb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/front/browse/_tag_browser.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="23" column="6" lean-forward="false" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+                <state relative-caret-position="540">
+                  <caret line="36" column="42" lean-forward="false" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
                   <folding />
                 </state>
               </provider>
@@ -673,12 +671,12 @@
       <workItem from="1490201857960" duration="31032000" />
       <workItem from="1490814028835" duration="1945000" />
       <workItem from="1490940835323" duration="8913000" />
-      <workItem from="1491032056026" duration="104385000" />
+      <workItem from="1491032056026" duration="104841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146275000" />
+    <option name="totallyTimeSpent" value="146731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-83" width="1920" height="1080" extended-state="0" />
@@ -999,8 +997,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/front/browse/_tag_browser.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="6" lean-forward="false" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+        <state relative-caret-position="540">
+          <caret line="36" column="42" lean-forward="false" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
           <folding />
         </state>
       </provider>
