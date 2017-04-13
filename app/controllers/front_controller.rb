@@ -43,13 +43,54 @@ require 'browser'
 		@merchant.products.each do |record|
 			case tog
 				when false
-					@product1.push(record)
+					@product1.push(record) #홀수는 여기다 넣고
 				when true
-					@product2.push(record)
+					@product2.push(record) #짝수는 여기다 넣어서 렌더링으로 넘겨준다
 			end
 			tog = !tog
 		end
 		render partial:"front/modal/shop_product",layout:false
+	end
+
+	def slide_tag
+		slide_type = params[:slide]
+
+		if slide_type =="shop"
+			render partial:"front/browse/tag_browser", layout:false
+		elsif slide_type =="item"
+			render partial:"front/items/tag_browser", layout:false
+		end
+
+	end
+
+	def slide_contents
+		slide_type = params[:slide]
+		index = params[:index]
+		page = params[:page].to_i
+
+		if slide_type =="shop"	#샵이 불리면 그냥 샵리스트를 불러주고 추가적인 처리는 contents reload메소드에서
+			render partial:"front/browse/contents", layout:false
+		elsif slide_type =="item"	#아이템이 불리면 인풋되는 인덱스/페이지에 따라서 아이템을 호출해서 렌더로 던져준다
+			start_number = page*30
+			#record_pool = Product.where() 추후 인덱스에 맞는것만 불러오게 수정
+			@records = (start_number..start_number+29).to_a.map{|x|Product.all[x]}
+
+			@product1 = []
+			@product2 = []
+			tog = false
+
+			@records.each do |record|
+				case tog
+					when false
+						@product1.push(record) #홀수는 여기다 넣고
+					when true
+						@product2.push(record) #짝수는 여기다 넣어서 렌더링으로 넘겨준다
+				end
+				tog = !tog
+			end
+			render partial:"front/items/contents", layout:false
+		end
+
 	end
 
 	def bridge
