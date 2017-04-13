@@ -7,7 +7,7 @@
 
   %>
 
-  <a onclick="shop_product_popup(<%=record.id%>);">
+  <a onclick="shop_product_popup(<%=record.id%>);ga('send','event','shop-card','click','<%=record.id%>');">
   <div class=content-block>
 	
 		<div class=content-ranking>
