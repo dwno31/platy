@@ -50,7 +50,7 @@
     <div class="modal-body">
       <div class="body-divide">
         <% @product1.each do |record| %>
-        <a href="<%=record.url%>">
+        <a href="<%=record.url%>" onclick="ga('send','event','product','<%=record.id%>');">
           <div class="modal-product-item">
             <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
             <div class="modal-product-detail">
@@ -65,7 +65,7 @@
       </div>
       <div class="body-divide">
         <% @product2.each do |record| %>
-        <a href="<%=record.url%>">
+        <a href="<%=record.url%>" onclick="ga('send','event','product','<%=record.id%>');">
           <div class="modal-product-item">
             <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
             <div class="modal-product-detail">
@@ -78,7 +78,7 @@
         <div style="height:10%;"></div>
       </div>
     </div>
-    <a href="<%=@merchant.url%>" target="_blank">
+    <a href="<%=@merchant.url%>" target="_blank" onclick="ga('send','event','shop-link','<%=@merchant.id%>');">
       <div class="modal-footer">
         <span>쇼핑몰로 이동</span>
       </div>

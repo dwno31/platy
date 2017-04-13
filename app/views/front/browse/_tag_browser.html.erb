@@ -1,7 +1,7 @@
 
 
 	<% @head_tag.each do |tag| %>
-	<div class=tag-button id="<%=tag%>"  onclick="tag_toggle(this);tag_sort();">
+	<div class=tag-button id="<%=tag%>"  onclick="tag_toggle(this);tag_sort();ga('send','event','shop-tag','click','<%=tag%>');">
 		<span class=tag-text ><%= '#'+tag%></span>
 	</div>
 	<% end %>
