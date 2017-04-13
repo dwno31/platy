@@ -33,6 +33,7 @@
 
   }
   function tag_toggle(a){
+    $(".tag-button").not(a).removeClass("tag-button-clicked");
     $(a).toggleClass("tag-button-clicked");
 
 
