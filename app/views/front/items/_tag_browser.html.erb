@@ -26,10 +26,11 @@
     }
     var page = 1;
     var index = "index";
-    var browser = $(".browser-contents");
+    var browser = $(window);
+    window.scrollTo(0,0);
 
     browser.scroll(function(){
-        if(browser[0].scrollHeight-browser.scrollTop()===browser.outerHeight())
+        if($('body')[0].scrollHeight-browser.scrollTop()===browser.outerHeight())
         {
             $("<div>").load("/slide_contents/item/"+index+"/"+page,function(){
                 append_str = $(this).find(".body-divide");
