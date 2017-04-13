@@ -32,6 +32,16 @@ a:active {color:black;}
   background:#e8e8e8;
 }
 
+//loading image
+.contents-loading{
+  height:10vh;
+  background-image:url("/assets/loading.gif");
+  background-position:center;
+  background-size:15%;
+  background-repeat:no-repeat;
+
+}
+
 // top nav bar
 
 .top-bar{
@@ -108,7 +118,6 @@ background: white;
 
 .browser-contents{
 
-padding:1%;
 height:78%;
 width:100%;
 -webkit-overflow-scrolling: touch;
@@ -277,7 +286,6 @@ margin-top:24vh;
     background:#e8e8e8;
   }
     .body-divide{
-      height:100%;
       width:50%;
       float:left;
 
