@@ -1,5 +1,5 @@
 <script>
-  $(".browser-contents").addClass("background-grey");
+  $("body").addClass("background-grey");
 </script>
 <div class="body-divide">
   <% @product1.each do |record| %>
@@ -14,6 +14,7 @@
         </div>
       </a>
   <% end %>
+  <div class="contents-loading" style="display:none;"></div>
 </div>
 <div class="body-divide">
   <% @product2.each do |record| %>
@@ -27,5 +28,6 @@
         </div>
       </a>
   <% end %>
+  <div class="contents-loading" style="display:none;"></div>
 </div>
-
+<!--<div class="contents-loading"></div>-->

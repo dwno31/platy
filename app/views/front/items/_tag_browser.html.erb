@@ -32,6 +32,8 @@
     browser.scroll(function(){
         if($('body')[0].scrollHeight-browser.scrollTop()===browser.outerHeight())
         {
+            $(".body-divide>.contents-loading:last-child").show();
+
             $("<div>").load("/slide_contents/item/"+index+"/"+page,function(){
                 append_str = $(this).find(".body-divide");
 
@@ -40,6 +42,8 @@
 
                 $(".browser-contents").find(".body-divide")[1].append(append_str[1]);
                 $(".body-divide>div>a").unwrap();
+
+                $(".contents-loading").hide();
 
             });
             page = page+1;
