@@ -11,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <script>
+      //에러이미지 서버 호출-인코딩
       function imgError(image,type,id) {
           image.onerror = "";
           $.ajax({
@@ -23,7 +24,7 @@
           });
           return true;
       };
-
+      //구글어낼러틱스 호출
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -31,9 +32,63 @@
 
       ga('create', 'UA-96186716-1', 'auto');
       ga('send', 'pageview');
+    //address-bar hide
+        window.addEventListener("load",function() {
+            // Set a timeout...
+            setTimeout(function(){
+                // Hide the address bar!
+                window.scrollTo(0, 1);
+            }, 0);
+        });
+    //샵 선택시 모달 팝업 및 모달 히스토리 설정
+    function shop_product_popup(id){
+        var id = id;
+        $(".shop-product-popup").load("/shop_product/"+id,function(id){
+            $(".modal").modal('show');
+        });
+
+    }
+   $('div.modal').on('show.bs.modal', function() {
+        var modal = this;
+        var hash = modal.id;
+        window.location.hash = hash;
+        window.onhashchange = function() {
+            if (!location.hash){
+                $(modal).modal('hide');
+            }
+        }
+    });
+
+    $('div.modal').on('hidden.bs.modal', function() {
+        var hash = this.id;
+        history.replaceState('', document.title, window.location.pathname);
+    });
+
+    // when close button clicked simulate back
+    $('div.modal button.close').on('click', function(){
+        window.history.back();
+    })
+
+    // when esc pressed when modal open simulate back
+    $('div.modal').keyup(function(e) {
+        if (e.keyCode == 27){
+            window.history.back();
+        }
+    });
+
+    //slide toggle
+    var id = "item"
+    function slide_toggle(){
+        $(".tag-browser").load("/slide_tag/"+id,function(){});
+        $(".browser-contents").load("/slide_contents/"+id,function(){});
+
+    }  //나중에 토글 만들어서 아이템-샵 바뀌게 해야 함
 
 
-  </script>
+
+
+
+    </script>
   </head>
 
   <body>

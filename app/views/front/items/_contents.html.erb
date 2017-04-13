@@ -1,0 +1,31 @@
+<script>
+  $(".browser-contents").addClass("background-grey");
+</script>
+<div class="body-divide">
+  <% @product1.each do |record| %>
+      <a href="<%=record.url%>">
+        <div class="modal-product-item">
+          <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
+          <div class="modal-product-detail">
+            <span><%=record.title%></span><br>
+            <span><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
+            <span></span>
+          </div>
+        </div>
+      </a>
+  <% end %>
+</div>
+<div class="body-divide">
+  <% @product2.each do |record| %>
+      <a href="<%=record.url%>">
+        <div class="modal-product-item">
+          <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
+          <div class="modal-product-detail">
+            <span><%=record.title%></span><br>
+            <span><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
+          </div>
+        </div>
+      </a>
+  <% end %>
+</div>
+

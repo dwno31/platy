@@ -10,6 +10,7 @@
 //border:solid 1px black;
 }
 html, body{
+
 height:100%;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -26,6 +27,11 @@ a{
 a:visited {color:black;}  /* visited link */
 a:hover {color:black;}  /* mouse over link */
 a:active {color:black;}
+
+.background-grey{
+  background:#e8e8e8;
+}
+
 // top nav bar
 
 .top-bar{
@@ -36,6 +42,9 @@ height:9%;
 text-align:center;
 background-color: #ff7171;
 margin-bottom:1%;
+position:fixed;
+top:0;
+z-index: 10;
 
 }
 		
@@ -56,6 +65,9 @@ margin-bottom:1%;
 
 height:15%;
 width:100%;
+position:fixed;
+top:9%;
+background: white;
 
 }
 
@@ -96,10 +108,11 @@ width:100%;
 
 .browser-contents{
 
+padding:1%;
 height:78%;
 width:100%;
-overflow-y: auto;
 -webkit-overflow-scrolling: touch;
+margin-top:34%;
 
 }
 
@@ -302,6 +315,10 @@ overflow-y: auto;
       font-size:1.2em;
     }
 
+// 제품리스트
+.contents-scroll{
+  height:5%;
+}
 
   //outlink
 

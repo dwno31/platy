@@ -8,6 +8,9 @@ Rails.application.routes.draw do
  get "contents/(:id)", to:"front#contents_reload"
  get "outlink/(:id)", to:"front#outlink"
  get "shop_product/(:id)", to:"front#shop_product"
+ get "develop", to:"front#index"
+ get "slide_tag/(:slide)", to:"front#slide_tag"
+ get "slide_contents/(:slide)/(:index)/(:page)", to:"front#slide_contents"
 
  #poset forward backend
  post "delete/(:id)", to:"backend#db_delete"

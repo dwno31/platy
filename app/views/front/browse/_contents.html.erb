@@ -1,4 +1,6 @@
-
+<script>
+  $(".browser-contents").removeClass("background-grey");
+</script>
 
 	<% i=1
     @merchant.each do |record|
@@ -47,50 +49,5 @@
 
 	<% end %>
 
-  <script>
-    function shop_product_popup(id){
-        var id = id;
-        $(".shop-product-popup").load("/shop_product/"+id,function(id){
-            $(".modal").modal('show');
-        });
-
-    }
-//    $(".modal").on("shown.bs.modal", function()  { // any time a modal is shown
-//        var urlReplace = "#" + $(this).attr('id'); // make the hash the id of the modal shown
-//    });
-//
-//    // If a pushstate has previously happened and the back button is clicked, hide any modals.
-//    $(window).on('popstate', function() {
-//        $(".modal").modal('hide');
-//    });
-    $('div.modal').on('show.bs.modal', function() {
-        var modal = this;
-        var hash = modal.id;
-        window.location.hash = hash;
-        window.onhashchange = function() {
-            if (!location.hash){
-                $(modal).modal('hide');
-            }
-        }
-    });
-
-    $('div.modal').on('hidden.bs.modal', function() {
-        var hash = this.id;
-        history.replaceState('', document.title, window.location.pathname);
-    });
-
-    // when close button clicked simulate back
-    $('div.modal button.close').on('click', function(){
-        window.history.back();
-    })
-
-    // when esc pressed when modal open simulate back
-    $('div.modal').keyup(function(e) {
-        if (e.keyCode == 27){
-            window.history.back();
-        }
-    });
-
-  </script>
 
 
