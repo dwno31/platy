@@ -70,6 +70,14 @@ class BackendController < ApplicationController
 							record.img_url = att
 						when 4
 							record.url = att
+            when 5
+              record.category = att.gsub(/ /,'')
+            when 6
+              record.hashtag = att.gsub(/ /,'')
+            when 7
+              record.hashtag = att.gsub(/ /,'')
+            when 8
+              record.hashtag = att.gsub(/ /,'')
 					end
 
 					i = i+1;
