@@ -95,7 +95,12 @@ class BackendController < ApplicationController
 		Merchant.destroy_all
 		redirect_to "/db_admin"
 
-	end
+  end
+
+  def db_product_destroy
+    Product.destroy_all
+    redirect_to "/db_admin"
+  end
 
   def img_reproduce
     input_type = params[:type]
