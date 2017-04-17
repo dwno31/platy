@@ -11,6 +11,7 @@ Rails.application.routes.draw do
  get "develop", to:"front#index"
  get "slide_tag/(:slide)", to:"front#slide_tag"
  get "slide_contents/(:slide)/(:index)/(:page)", to:"front#slide_contents"
+ get "section/(:menu)", to: "front#section_load"
 
  #poset forward backend
  post "delete/(:id)", to:"backend#db_delete"

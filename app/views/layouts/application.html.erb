@@ -7,8 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-	<!--<meta name="viewport" content="width=device-width, user-scalable=no">-->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
     <script>
       //에러이미지 서버 호출-인코딩
@@ -43,14 +42,6 @@
 
     }
 
-
-    //slide toggle
-    var id = "item"
-    function slide_toggle(){
-        $(".tag-browser").load("/slide_tag/"+id,function(){});
-        $(".browser-contents").load("/slide_contents/"+id,function(){});
-
-    }  //나중에 토글 만들어서 아이템-샵 바뀌게 해야 함
 
 
 

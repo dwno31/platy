@@ -32,11 +32,19 @@ a:active {color:black;}
   background:#e8e8e8;
 }
 
+//icon mother
+
+.iconimg{
+  background-size:35%;
+  background-position:center;
+  background-repeat: no-repeat;
+}
+
 //loading image
 .contents-loading{
-  height:10vh;
+  height:20vh;
   background-image:url("/assets/loading.gif");
-  background-position:center;
+  background-position:top;
   background-size:15%;
   background-repeat:no-repeat;
 
@@ -69,6 +77,10 @@ z-index: 10;
 
     }
 
+//contents
+.contents-frame{
+  height:100%;
+}
 // tag-browser
 
 .tag-browser{
@@ -76,7 +88,7 @@ z-index: 10;
 height:15vh;
 width:100%;
 position:fixed;
-top:9vh;
+top:8.9vh;
 background: white;
 
 }
@@ -214,6 +226,44 @@ margin-top:24vh;
       width:95%;
       height:1px;
     }
+
+
+//footer
+.footer{
+  height:8vh;
+  position:fixed;
+  bottom:0;
+  width:100%;
+  z-index: 10;
+  background: white;
+  border-top:1px #e8e8e8 solid;
+  text-align: center;
+}
+
+.footer-button{
+  height:100%;
+  width:25%;
+  float:left;
+  display: table;
+
+}
+
+.footer-button>span{
+  display: table-cell;
+  vertical-align: middle;
+  font-size:2em;
+  color: #000;
+
+}
+
+.shop{
+  background-image: url("/assets/shopicon.png");
+}
+
+.plate{
+  background-image: url("/assets/plateicon.png");
+}
+
 //shop-product list modal
 .modal.fade:not(.in) .modal-dialog {
   -webkit-transform: translate3d(25%, 0, 0);

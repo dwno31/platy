@@ -1,0 +1,22 @@
+<div class="footer-button shoplist" >
+  <span class="iconimg shop" onclick="section_transfer('shop');"></span>
+</div>
+<div class="footer-button productlist">
+  <span class="iconimg plate" onclick="section_transfer('product');"></span>
+</div>
+<div class="footer-button likelist">
+  <span class="glyphicon glyphicon-heart" onclick="section_transfer('like');"></span>
+</div>
+<div class="footer-button etc">
+  <span class="glyphicon glyphicon-th-list" onclick="section_transfer('etc');"></span>
+</div>
+
+<script>
+    function section_transfer(menu){
+        window.stop();
+        var menu = menu;
+        $(".contents-frame").load("/section/"+menu,function(){});
+
+    }
+
+</script>
