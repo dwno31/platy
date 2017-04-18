@@ -19,7 +19,6 @@ require 'browser'
 
 	def section_load
 		menu = params[:menu]
-		@head_tag = ["모던한","북유럽","브랜드","핸드메이드","일본식","귀여운","클래식","한식"]
 		case menu
 			when "shop"
 				shoplist(nil)
@@ -36,19 +35,42 @@ require 'browser'
 	end
 
 	def contents_reload
-		if params[:id].nil?
-			@merchant = Merchant.all
-		else
-      input_tags = params[:id].split(',')
-      input_tags.shift #destroy first one
-      logger.info input_tags
-      @merchant = []
-      input_tags.each do |tag|
-        @merchant = @merchant + Merchant.where("category like ?","%#{tag}%")
-      end
-      @merchant = @merchant.uniq
+		section_type = params[:section]
+		case section_type
+			when "shop"
+				if params[:id].nil?
+					@merchant = Merchant.all
+				else
+					input_tags = params[:id].split(',')
+					input_tags.shift #destroy first one
+					logger.info input_tags
+					@merchant = []
+					input_tags.each do |tag|
+						@merchant = @merchant + Merchant.where("category like ?","%#{tag}%")
+					end
+					@merchant = @merchant.uniq
+				end
+
+				render partial: "front/browse/contents", layout: false
+			when "item"
+				if params[:id].nil?
+					@product = Product.all
+				else
+					input_tags = params[:id].split(',')
+					input_tags.shift #destroy first one
+					logger.info input_tags
+					@product = []
+					input_tags.each do |tag|
+						@product = @product + Product.where("category like ?","%#{tag}%")
+					end
+					@product = @product.uniq
+				end
+
+				productlist(@product)
+				logger.info @product1
+				render partial: "front/items/contents", layout: false
 		end
-      render partial: "front/browse/contents", layout: false
+
 	end
 
 	def shop_product
@@ -89,9 +111,13 @@ require 'browser'
 		if slide_type =="shop"	#샵이 불리면 그냥 샵리스트를 불러주고 추가적인 처리는 contents reload메소드에서
 			render partial:"front/browse/contents", layout:false
 		elsif slide_type =="item"	#아이템이 불리면 인풋되는 인덱스/페이지에 따라서 아이템을 호출해서 렌더로 던져준다
-			start_number = page*24
-			#record_pool = Product.where() 추후 인덱스에 맞는것만 불러오게 수정
-			@records = (start_number..start_number+24).to_a.map{|x|Product.all[x]}
+			start_number = page*25
+			if index=="index"
+				@product = Product.all
+			else
+				@product = Product.where("category like ?","%#{index}%") #추후 인덱스에 맞는것만 불러오게 수정
+			end
+			@records = (start_number..start_number+24).to_a.map{|x|@product[x]}
 
 			@product1 = []
 			@product2 = []
@@ -105,8 +131,16 @@ require 'browser'
 						@product2.push(record) #짝수는 여기다 넣어서 렌더링으로 넘겨준다
 				end
 				tog = !tog
+      end
+
+			@product1.compact!
+			@product2.compact!
+
+			if (@product1.empty?)&(@product2.empty?)
+				render text: "nil"
+			else
+				render partial:"front/items/contents", layout:false
 			end
-			render partial:"front/items/contents", layout:false
 		end
 
 	end
@@ -158,6 +192,7 @@ private
 	end
 
 	def shoplist(record)
+		@head_tag = ["모던한","북유럽","브랜드","핸드메이드","일본식","귀여운","클래식","한식"]
 		if record.nil?
 			@merchant = Merchant.all
 		else
@@ -174,10 +209,17 @@ private
 	end
 
 	def productlist(record)
-		@product = Product.all
+    @head_tag = ["머그","우드트레이","볼","플레이트","커트러리","소품","티세트","밥국그릇"]
+    if record.nil?
+      @product = Product.all
+		else
+			@product = record
+		end
+		logger.info @product
 		start_number = 0
+		prolong_number = 19
 		#record_pool = Product.where() 추후 인덱스에 맞는것만 불러오게 수정
-		@records = (start_number..start_number+19).to_a.map{|x|Product.all[x]}
+		@records = (start_number..start_number+prolong_number).to_a.map{|x|@product[x]}
 
 		@product1 = []
 		@product2 = []
@@ -193,7 +235,8 @@ private
 			tog = !tog
 		end
 
-		return @product
+    @product1.compact!
+		@product2.compact!
 	end
 
 	def likelist(record)
