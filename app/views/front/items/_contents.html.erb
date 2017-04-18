@@ -18,6 +18,7 @@
 </div>
 <div class="body-divide">
   <% @product2.each do |record| %>
+      <% logger.info record %>
       <a href="<%=record.url%>">
         <div class="modal-product-item">
           <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
