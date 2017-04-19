@@ -49,7 +49,6 @@
                 $(".body-divide>.contents-loading:last-child").show();
 
                 $("<div>").load("/slide_contents/item/" + index + "/" + page, function (data) {
-                    console.log(data);
                     if(data==="nil"){
                         $(".contents-loading").hide();
                         end_param = false;

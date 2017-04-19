@@ -257,11 +257,28 @@ margin-top:24vh;
 }
 
 .shop{
-  background-image: url("/assets/shopicon.png");
+  background-image: url("/assets/ICON/HOME.svg");
 }
-
-.plate{
-  background-image: url("/assets/plateicon.png");
+.shop-clicked{
+  background-image: url("/assets/ICON/HOME_touch.svg");
+}
+.product{
+  background-image: url("/assets/ICON/PRODUCT.svg");
+}
+.product-clicked{
+  background-image: url("/assets/ICON/PRODUCT_touch.svg");
+}
+.like{
+  background-image: url("/assets/ICON/LIKE.svg");
+}
+.like-clicked{
+  background-image: url("/assets/ICON/LIKE_touch.svg");
+}
+.etc{
+  background-image: url("/assets/ICON/LIST.svg");
+}
+.etc-clicked{
+  background-image: url("/assets/ICON/LIST_touch.svg");
 }
 
 //shop-product list modal
