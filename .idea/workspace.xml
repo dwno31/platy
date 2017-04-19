@@ -38,8 +38,8 @@
           <file leaf-file-name="front.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="237" column="33" lean-forward="false" selection-start-line="237" selection-start-column="33" selection-end-line="237" selection-end-column="33" />
+                <state relative-caret-position="315">
+                  <caret line="232" column="11" lean-forward="false" selection-start-line="232" selection-start-column="11" selection-end-line="232" selection-end-column="11" />
                   <folding />
                 </state>
               </provider>
@@ -653,12 +653,12 @@
       <workItem from="1490201857960" duration="31032000" />
       <workItem from="1490814028835" duration="1945000" />
       <workItem from="1490940835323" duration="8913000" />
-      <workItem from="1491032056026" duration="152745000" />
+      <workItem from="1491032056026" duration="153140000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194635000" />
+    <option name="totallyTimeSpent" value="195030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1025,8 +1025,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="237" column="33" lean-forward="false" selection-start-line="237" selection-start-column="33" selection-end-line="237" selection-end-column="33" />
+        <state relative-caret-position="315">
+          <caret line="232" column="11" lean-forward="false" selection-start-line="232" selection-start-column="11" selection-end-line="232" selection-end-column="11" />
           <folding />
         </state>
       </provider>
