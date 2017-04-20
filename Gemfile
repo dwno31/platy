@@ -8,7 +8,7 @@ end
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-naver'
-gem 'omniauth-kakao'
+gem 'omniauth-kakao', :git => 'git://github.com/dwno31/omniauth-kakao'
 
 gem 'browser'
 gem 'bootstrap-sass', '~> 3.3.6'
