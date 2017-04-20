@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
  root to:"front#index"
  get "pcindex", to: "front#pcindex"
  get "db_admin", to: "front#db_admin"
