@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
     # user와 identity가 nil이 아니라면 받는다
     identity = Identity.find_for_oauth(auth)
+    logger.info auth
+    logger.info "auth 확인"
     user = signed_in_resource ? signed_in_resource : identity.user
 
     # user가 nil이라면 새로 만든다.
