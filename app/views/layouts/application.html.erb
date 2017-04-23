@@ -42,6 +42,20 @@
 
     }
 
+    function userlike(click,type,id){
+        $(click).toggleClass('likebutton-'+type+'-clicked');
+        var type=type;
+        var id = id;
+        $.ajax({
+            url:'/userlike/'+type+'/'+id,
+            data:{type:type, id:id},
+            method:'POST',
+            success:function(){
+
+            }
+        })
+
+    }
 
 
 

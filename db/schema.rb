@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420071930) do
+ActiveRecord::Schema.define(version: 20170422162936) do
 
   create_table "identities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -49,6 +49,26 @@ ActiveRecord::Schema.define(version: 20170420071930) do
     t.index ["merchant_id"], name: "index_products_on_merchant_id", using: :btree
   end
 
+  create_table "userlikeitems", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "active",     default: false
+    t.index ["product_id"], name: "index_userlikeitems_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_userlikeitems_on_user_id", using: :btree
+  end
+
+  create_table "userlikeshops", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "merchant_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "active",      default: false
+    t.index ["merchant_id"], name: "index_userlikeshops_on_merchant_id", using: :btree
+    t.index ["user_id"], name: "index_userlikeshops_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at",                          null: false
@@ -69,4 +89,8 @@ ActiveRecord::Schema.define(version: 20170420071930) do
 
   add_foreign_key "identities", "users"
   add_foreign_key "products", "merchants"
+  add_foreign_key "userlikeitems", "products"
+  add_foreign_key "userlikeitems", "users"
+  add_foreign_key "userlikeshops", "merchants"
+  add_foreign_key "userlikeshops", "users"
 end

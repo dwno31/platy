@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  has_many :products, through: :userlikeitems
+  has_many :merchants, through: :userlikeshops
+  has_many :userlikeitems
+  has_many :userlikeshops
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
