@@ -99,6 +99,19 @@ require 'browser'
 		render partial:"front/modal/shop_product",layout:false
 	end
 
+	def item_filter
+    @category_list=[]
+		@style_list=[]
+		@purpose_list=[]
+		@render_hash = {}
+
+		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','잔','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
+		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','브랜드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
+		@purpose_list = ['한식','양식','면','혼밥','술','홈카페','디저트','홈파티','어린이','신혼','선물','조리']
+		@render_hash = {:카테고리=>@category_list,:스타일=>@style_list,:용도=>@purpose_list}
+		render partial:"front/modal/product_filter",layout:false
+	end
+
 	def slide_tag
 		slide_type = params[:slide]
 
@@ -111,6 +124,7 @@ require 'browser'
 	end
 
 	def slide_contents
+		userlikelist(current_user)
 		slide_type = params[:slide]
 		index = params[:index]
 		page = params[:page].to_i
