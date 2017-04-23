@@ -2,13 +2,12 @@
   $("body").addClass("background-grey");
 </script>
 <div class="body-divide">
-  <% userlikeitems = current_user.userlikeitems.where("active=?",true).pluck(:product_id) %>
   <% @product1.each do |record| %>
       <div class="modal-product-item">
       <a href="<%=record.url%>" onclick="ga('send','event','product','<%=record.id%>');">
           <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
       </a>
-      <% if !userlikeitems.include?(record.id)%>
+      <% if !@userlikeitems.include?(record.id)%>
           <div class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>')"></div>
       <% else %>
           <div class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>')"></div>
@@ -30,7 +29,7 @@
         <a href="<%=record.url%>" onclick="ga('send','event','product','<%=record.id%>');">
             <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
         </a>
-        <% if !userlikeitems.include?(record.id)%>
+        <% if !@userlikeitems.include?(record.id)%>
             <div class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>')"></div>
         <% else %>
             <div class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>')"></div>
