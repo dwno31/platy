@@ -65,7 +65,18 @@ top:0;
 z-index: 10;
 
 }
-		
+    .itemfilter-button{
+      position: absolute;
+      height: 80%;
+      top: 10%;
+      left: 10px;
+      width: 20%;
+      background-image: url("/assets/ICON/header/filter.png");
+      background-size: 50%;
+      background-repeat:no-repeat;
+      background-position: left;
+    }
+
 	.service-title{
 
       vertical-align: middle;
@@ -113,7 +124,7 @@ z-index: 3;
 
     .tag-button-clicked{
     color:white;
-    background-color:#d15753;
+    background-color:#d15753!important;
     }
 
 	.tag-text{
@@ -153,7 +164,6 @@ margin-top:24vh;
 	display:table;
 	text-align:center;
 	float:left;
-
 	}
 		.ranking-number{
 		display:table-cell;
@@ -431,7 +441,64 @@ margin-top:24vh;
       font-size:1.2em;
     }
 
-// 제품리스트
+
+//필터 모달
+
+.modal-filter-body{
+  padding:1%;
+  border-bottom: solid grey 1px;
+
+}
+.modal-filter-body-header{
+  color:black;
+  font-size:1.3em;
+}
+.modal-filter-list{
+  display:block;
+}
+.modal-filter-button{
+  padding: 2.5%;
+  margin: 1.5%;
+  min-width:9vw;
+  text-align: center;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: white;
+  border: solid #d15753 1px;
+}
+  .modal-filter-button>span{
+  }
+
+
+//login modal
+.login-modal-position{
+  margin-top:25vh
+}
+
+.login-modal-header{
+  height:6vh;
+}
+
+.login-modal-body{
+  padding:10% 15% 10% 15%;
+  height:35vh;
+}
+
+.login-button{
+  height: 40%;
+  width: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.naver{
+  background-image: url(/assets/ICON/naver_login.png);
+}
+.kakao{
+  background-image: url(/assets/ICON/kakao_login.png);
+}
+
+//kjj품리스트
 .contents-scroll{
   height:5%;
 }

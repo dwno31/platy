@@ -37,9 +37,19 @@
     function shop_product_popup(id){
         var id = id;
         $(".shop-product-popup").load("/shop_product/"+id,function(id){
-            $(".modal").modal('show');
+            $(".shop-product-popup").modal('show');
         });
 
+    }
+
+    function item_filter_popup(){
+        $(".shop-product-popup").load("/item_filter",function(){
+           $(".shop-product-popup").modal('show');
+        });
+    }
+
+    function login_popup(){
+        $(".login-modal").modal('show');
     }
 
     function userlike(click,type,id){
@@ -51,7 +61,10 @@
             data:{type:type, id:id},
             method:'POST',
             success:function(){
-
+            },
+            error:function(){
+                $(click).toggleClass('likebutton-'+type+'-clicked');
+                login_popup();
             }
         })
 

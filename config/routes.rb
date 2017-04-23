@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  get "kakaoredirect", to: "users/omniauth_callbacks#kakao"
  root to:"front#index"
  get "pcindex", to: "front#pcindex"
  get "db_admin", to: "front#db_admin"
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
  get "slide_tag/(:slide)", to:"front#slide_tag"
  get "slide_contents/(:slide)/(:index)/(:page)", to:"front#slide_contents"
  get "section/(:menu)", to: "front#section_load"
+ get "item_filter", to:"front#item_filter"
 
  #poset forward backend
  post "delete/(:id)", to:"backend#db_delete"

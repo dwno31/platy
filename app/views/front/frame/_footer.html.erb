@@ -16,6 +16,11 @@
 
 <script>
     function section_transfer(menu){
+        if(menu==="product"){
+            $(".itemfilter-button").show();
+        }else{
+            $(".itemfilter-button").hide();
+        }
         window.stop();
         var menu = menu;
         $("span[class*=clicked]").each(function(i,e){e.className+=e.getAttribute('name')})
