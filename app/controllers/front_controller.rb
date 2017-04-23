@@ -7,6 +7,7 @@ require 'browser'
 	def index
 		@head_tag = ["모던한","북유럽","브랜드","핸드메이드","일본식","귀여운","클래식","한식"]
     @merchant= Merchant.all.order('ranknumber ASC')
+    userlikelist(current_user)
 	end
 
 	def table
@@ -18,6 +19,7 @@ require 'browser'
 	end
 
 	def section_load
+		userlikelist(current_user)
 		menu = params[:menu]
 		case menu
 			when "shop"
@@ -25,19 +27,20 @@ require 'browser'
 				render partial: "front/browse/contents-frame"
 			when "likeshop"
 				shoplist(current_user)
-				render partial: "front/browse/contents-frame"
+				render partial: "front/likelist/contents-shop-frame"
 			when "product"
 				productlist(nil)
 				render partial: "front/items/contents-frame"
 			when "likeitem"
 				likelist(current_user)
-				render partial: "front/likelist/contents-frame"
+				render partial: "front/likelist/contents-item-frame"
 			when "etc"
 				render text: "not yet"
 		end
 	end
 
 	def contents_reload
+		userlikelist(current_user)
 		section_type = params[:section]
 		case section_type
 			when "shop"
@@ -77,6 +80,7 @@ require 'browser'
 	end
 
 	def shop_product
+		userlikelist(current_user)
 		@product1 = []
 		@product2 = []
 		tog = false
@@ -194,12 +198,21 @@ private
 
 	end
 
+	def userlikelist(record)
+		@userlikeshops = []
+		@userlikeitems = []
+		unless record.nil?
+      @userlikeshops = current_user.userlikeshops.where(:active=>true).pluck(:merchant_id)
+      @userlikeitems = current_user.userlikeitems.where("active=?",true).pluck(:product_id)
+		end
+	end
+
 	def shoplist(record)
 		@head_tag = ["모던한","북유럽","브랜드","핸드메이드","일본식","귀여운","클래식","한식"]
 		if record.nil?
-			@merchant = Merchant.all
+			@merchant = []
 		elsif record.is_a?(ActiveRecord::Base)
-			@merchant = record.userlikeshops.where(:active=>true).map{|x|x.product}
+			@merchant = record.userlikeshops.where(:active=>true).map{|x|x.merchant}
 		elsif record.kind_of?(String)
 			input_tags = params[:id].split(',')
 			input_tags.shift #destroy first one
@@ -245,7 +258,10 @@ private
 	end
 
 	def likelist(record)
+		@records = []
+		unless record.nil?
 		@records = record.userlikeitems.where("active=?",true).map{|x|x.product}
+		end
 		@product1 = []
 		@product2 = []
 		tog = false
