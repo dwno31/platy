@@ -43,7 +43,7 @@
             index = index.attr('id');
         };
 
-        if($('body')[0].scrollHeight-browser.scrollTop()<browser.outerHeight()+40)
+        if($('body')[0].scrollHeight-browser.scrollTop()<browser.outerHeight()+60)
         {
             if(switcher&end_param) {
                 $(".body-divide>.contents-loading:last-child").show();
@@ -57,10 +57,10 @@
                         append_str = $(this).find(".body-divide");
 
                         $(".browser-contents").find(".body-divide")[0].append(append_str[0]);
-                        $(".body-divide>div>a").unwrap();
+                        $(".body-divide>.body-divide>div").unwrap();
 
                         $(".browser-contents").find(".body-divide")[1].append(append_str[1]);
-                        $(".body-divide>div>a").unwrap();
+                        $(".body-divide>.body-divide>div").unwrap();
 
                         $(".contents-loading").hide();
                     };

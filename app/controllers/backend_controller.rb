@@ -1,6 +1,26 @@
 class BackendController < ApplicationController
   require 'open-uri'
 
+  def userlike
+    type = params[:type]
+    id = params[:id].to_i
+
+    if type == "item"
+      record = Userlikeitem.where("user_id=? and product_id=?",current_user.id,id).first_or_create
+      record.user_id = current_user.id
+      record.product_id = id
+      record.active = !record.active
+      record.save
+    elsif type == "shop"
+      record = Userlikeshop.where("user_id=? and merchant_id=?",current_user.id,id).first_or_create
+      record.user_id = current_user.id
+      record.merchant_id = id
+      record.active = !record.active
+      record.save
+    end
+    render plain: "success"
+  end
+
 	def db_input
 		input = params[:input_textarea]
 		

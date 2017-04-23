@@ -22,5 +22,6 @@ Rails.application.routes.draw do
  post "db_input", to: "backend#db_input"
  post "img_reproduce", to:"backend#img_reproduce"
  post "product_destroy", to:"backend#db_product_destroy"
+ post "userlike/(:type)/(:id)", to:"backend#userlike"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -35,7 +35,7 @@ a:active {color:black;}
 //icon mother
 
 .iconimg{
-  background-size:30%;
+  background-size:47%;
   background-position:center;
   background-repeat: no-repeat;
 }
@@ -90,6 +90,7 @@ width:100%;
 position:fixed;
 top:8.9vh;
 background: white;
+z-index: 3;
 
 }
 
@@ -142,8 +143,9 @@ margin-top:24vh;
 
 	height:14%;
 	width:100%;
-
+    position:relative;
 	}
+
 
 	.content-ranking{
 	height:100%;
@@ -178,6 +180,22 @@ margin-top:24vh;
       .content-thumbnail-img{
         width:100%;
       }
+
+    .likebutton-shop{
+      position: absolute;
+      height: 80%;
+      width: 17%;
+      top: 5%;
+      right:0px;
+      background-image: url(/assets/ICON/shoplike.png);
+      background-size: 40%;
+      background-repeat: no-repeat;
+      background-position: center;
+
+    }
+    .likebutton-shop-clicked{
+      background-image: url("/assets/ICON/shoplike-clicked.png");
+    }
 	.content-title{
 	float:left;
     height:50%;
@@ -242,7 +260,7 @@ margin-top:24vh;
 
 .footer-button{
   height:100%;
-  width:25%;
+  width:20%;
   float:left;
   display: table;
 
@@ -257,28 +275,34 @@ margin-top:24vh;
 }
 
 .shop{
-  background-image: url("/assets/ICON/HOME.svg");
+  background-image: url("/assets/ICON/footer/shop.png");
 }
 .shop-clicked{
-  background-image: url("/assets/ICON/HOME_touch.svg");
+  background-image: url("/assets/ICON/footer/shop-clicked.png");
+}
+.likeshop{
+  background-image: url("/assets/ICON/footer/likeshop.png");
+}
+.likeshop-clicked{
+  background-image: url("/assets/ICON/footer/likeshop-clicked.png");
 }
 .product{
-  background-image: url("/assets/ICON/PRODUCT.svg");
+  background-image: url("/assets/ICON/footer/item.png");
 }
 .product-clicked{
-  background-image: url("/assets/ICON/PRODUCT_touch.svg");
+  background-image: url("/assets/ICON/footer/item-clicked.png");
 }
-.like{
-  background-image: url("/assets/ICON/LIKE.svg");
+.likeitem{
+  background-image: url("/assets/ICON/footer/likeitem.png");
 }
-.like-clicked{
-  background-image: url("/assets/ICON/LIKE_touch.svg");
+.likeitem-clicked{
+  background-image: url("/assets/ICON/footer/likeitem-clicked.png");
 }
 .etc{
-  background-image: url("/assets/ICON/LIST.svg");
+  background-image: url("/assets/ICON/footer/etc.png");
 }
 .etc-clicked{
-  background-image: url("/assets/ICON/LIST_touch.svg");
+  background-image: url("/assets/ICON/footer/etc-clicked.png");
 }
 
 //shop-product list modal
@@ -364,12 +388,28 @@ margin-top:24vh;
         margin:5% 1% 5% 1%;
         border-radius:3px;
         min-height:30%;
-
+        position:relative;
       }
 
         .modal-product-img{
           width:100%;
         }
+
+        .likebutton-item{
+          position: absolute;
+          top: 1px;
+          right: 1px;
+          background-image: url(/assets/ICON/like.png);
+          height: 60px;
+          width: 60px;
+          background-size: 55%;
+          background-repeat: no-repeat;
+          background-position: right top;
+        }
+        .likebutton-item-clicked{
+          background-image:url("/assets/ICON/like-touch.png");
+        }
+
         .modal-product-detail{
           text-align:center;
         }

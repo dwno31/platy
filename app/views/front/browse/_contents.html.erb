@@ -7,42 +7,44 @@
 
   %>
 
-  <a onclick="shop_product_popup(<%=record.id%>);ga('send','event','shop-card','click','<%=record.id%>');">
   <div class=content-block>
-	
-		<div class=content-ranking>
-			<span class=ranking-number><%=i%></span>
-		</div>
-		<div class=content-thumbnail>
-      <div class="thumbnail-img" style="background-image:url('<%= record.thumbnail%>');">
-        <!--<img src="" class="content-thumbnail-img">-->
+    <a onclick="shop_product_popup(<%=record.id%>);ga('send','event','shop-card','click','<%=record.id%>');">
+      <div class=content-ranking>
+        <span class=ranking-number><%=i%></span>
       </div>
-		</div>
-		<div class=content-title>
-      <span class="title-text"><%= record.title%></span>
-		</div>
-		<!--<div class=content-explain>-->
-      <!--<span class="explain-text"><%= record.explain%></span>-->
-		<!--</div>-->
-		<div class=content-hashtag>
-      <%
-        hashtag_array = record.category.gsub(' ','').split(',')
-        hashtag_text = ""
+      <div class=content-thumbnail>
+        <div class="thumbnail-img" style="background-image:url('<%= record.thumbnail%>');">
+          <!--<img src="" class="content-thumbnail-img">-->
+        </div>
+      </div>
+    </a>
+    <div class="likebutton-shop" onclick="userlike(this,'shop','<%= record.id%>');"></div>
+    <a onclick="shop_product_popup(<%=record.id%>);ga('send','event','shop-card','click','<%=record.id%>');">
+      <div class=content-title>
+        <span class="title-text"><%= record.title%></span>
+      </div>
+      <!--<div class=content-explain>-->
+        <!--<span class="explain-text"><%= record.explain%></span>-->
+      <!--</div>-->
+      <div class=content-hashtag>
+        <%
+          hashtag_array = record.category.gsub(' ','').split(',')
+          hashtag_text = ""
 
-        hashtag_array.each do |one|
+          hashtag_array.each do |one|
 
-         hashtag_text = hashtag_text + '#' + one +' '
+           hashtag_text = hashtag_text + '#' + one +' '
 
-        end
-        i= i+1;
-      %>
-      <span class="hashtag-cell"><%=hashtag_text%></span>
+          end
+          i= i+1;
+        %>
+        <span class="hashtag-cell"><%=hashtag_text%></span>
 
-		</div>
+      </div>
 
 
+    </a>
 	</div>
-  </a>
   <hr class="content-border">
 	
 

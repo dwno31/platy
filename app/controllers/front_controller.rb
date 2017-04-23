@@ -23,12 +23,15 @@ require 'browser'
 			when "shop"
 				shoplist(nil)
 				render partial: "front/browse/contents-frame"
+			when "likeshop"
+				shoplist(current_user)
+				render partial: "front/browse/contents-frame"
 			when "product"
 				productlist(nil)
 				render partial: "front/items/contents-frame"
-			when "like"
-				likelist(nil)
-				render partial: "front/items/contents"
+			when "likeitem"
+				likelist(current_user)
+				render partial: "front/likelist/contents-frame"
 			when "etc"
 				render text: "not yet"
 		end
@@ -195,7 +198,9 @@ private
 		@head_tag = ["모던한","북유럽","브랜드","핸드메이드","일본식","귀여운","클래식","한식"]
 		if record.nil?
 			@merchant = Merchant.all
-		else
+		elsif record.is_a?(ActiveRecord::Base)
+			@merchant = record.userlikeshops.where(:active=>true).map{|x|x.product}
+		elsif record.kind_of?(String)
 			input_tags = params[:id].split(',')
 			input_tags.shift #destroy first one
 			logger.info input_tags
@@ -240,7 +245,7 @@ private
 	end
 
 	def likelist(record)
-		@records = [Product.first]
+		@records = record.userlikeitems.where("active=?",true).map{|x|x.product}
 		@product1 = []
 		@product2 = []
 		tog = false
