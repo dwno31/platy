@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/views/front/likelist/_contents-frame.html.erb" afterPath="$PROJECT_DIR$/app/views/front/likelist/_contents-item-frame.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/front_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/front_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/userlikeshop.rb" afterPath="$PROJECT_DIR$/app/models/userlikeshop.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/browse/_contents.html.erb" afterPath="$PROJECT_DIR$/app/views/front/browse/_contents.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/items/_contents.html.erb" afterPath="$PROJECT_DIR$/app/views/front/items/_contents.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/modal/_shop_product.html.erb" afterPath="$PROJECT_DIR$/app/views/front/modal/_shop_product.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/front.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -50,17 +45,17 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="front.scss" pinned="false" current-in-tab="false">
+          <file leaf-file-name="front.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1695">
-                  <caret line="188" column="15" lean-forward="false" selection-start-line="188" selection-start-column="15" selection-end-line="188" selection-end-column="15" />
+                <state relative-caret-position="330">
+                  <caret line="190" column="24" lean-forward="false" selection-start-line="190" selection-start-column="24" selection-end-line="190" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="front_controller.rb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="front_controller.rb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/front_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="225">
@@ -247,7 +242,6 @@
         <option value="$PROJECT_DIR$/app/views/front/likelist/_contents-frame.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/frame/_footer.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
         <option value="$PROJECT_DIR$/app/controllers/backend_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/front/likelist/_contents-shop-frame.html.erb" />
         <option value="$PROJECT_DIR$/app/models/userlikeshop.rb" />
@@ -256,6 +250,7 @@
         <option value="$PROJECT_DIR$/app/views/front/items/_contents.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/modal/_shop_product.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/front_controller.rb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
       </list>
     </option>
   </component>
@@ -871,11 +866,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="231443000" />
+    <option name="totallyTimeSpent" value="231902000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19742489" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -885,7 +880,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3291506" sideWeight="0.49520767" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973376" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33995327" sideWeight="0.49201277" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33995327" sideWeight="0.49201277" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1204,14 +1199,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1695">
-          <caret line="188" column="15" lean-forward="false" selection-start-line="188" selection-start-column="15" selection-end-line="188" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="339">
@@ -1336,6 +1323,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="212" column="19" lean-forward="false" selection-start-line="212" selection-start-column="19" selection-end-line="212" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="190" column="24" lean-forward="false" selection-start-line="190" selection-start-column="24" selection-end-line="190" selection-end-column="24" />
           <folding />
         </state>
       </provider>
