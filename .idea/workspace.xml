@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/merchant.rb" afterPath="$PROJECT_DIR$/app/models/merchant.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/product.rb" afterPath="$PROJECT_DIR$/app/models/product.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -120,7 +118,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="false">
+          <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="399">
@@ -160,7 +158,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="merchant.rb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="merchant.rb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/models/merchant.rb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="45">
@@ -773,12 +771,12 @@
       <workItem from="1490814028835" duration="1945000" />
       <workItem from="1490940835323" duration="8913000" />
       <workItem from="1491032056026" duration="153249000" />
-      <workItem from="1492962433161" duration="7416000" />
+      <workItem from="1492962433161" duration="8363000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246212000" />
+    <option name="totallyTimeSpent" value="247159000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1191,14 +1189,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1219,6 +1209,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="46" lean-forward="false" selection-start-line="3" selection-start-column="46" selection-end-line="3" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding />
         </state>
       </provider>

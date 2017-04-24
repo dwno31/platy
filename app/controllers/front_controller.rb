@@ -241,7 +241,7 @@ private
 	end
 
 	def productlist(record)
-    @head_tag = ["머그","우드트레이","볼","플레이트","커트러리","소품","티세트","밥국그릇"]
+    @head_tag = ["우드트레이","볼","플레이트","커트러리","홈세트","컵","잔","매트"]
     if record.nil?
       @product = Product.all
 		else
