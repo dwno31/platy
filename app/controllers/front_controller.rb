@@ -79,8 +79,11 @@ before_action :mobile_check, only:[:index]
 					input_category = params[:id]
 					input_style = params[:hashtag].split(',')[0]
 					input_purpose = params[:hashtag].split(',')[1]
-					@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{input_category}%","%#{input_style}%","%#{input_purpose}%")
-
+					if input_purpose.nil?
+						@product = Product.where("category like ? and (hashtag like ?)","%#{input_category}%","%#{input_style}%")
+					else
+						@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{input_category}%","%#{input_style}%","%#{input_purpose}%")
+					end
 
 				end
 
