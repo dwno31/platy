@@ -329,7 +329,7 @@ margin-top:24vh;
 .modal-content{
   padding:0;
   height:100%;
-  border-radius:0;
+  border-radius:0px;
   border:0;
 }
   .modal-header{
@@ -474,14 +474,18 @@ margin-top:24vh;
 
 //login modal
 .login-modal-position{
-  margin-top:25vh
+  margin-top:25vh;
+  background:transparent;
+  box-shadow:none;
 }
 
 .login-modal-header{
   height:6vh;
+  border-radius:15px 15px 0 0;
 }
 
 .login-modal-body{
+  border-radius: 0 0 15px 15px;
   padding:10% 5% 10% 5%;
   text-align: center;
   height:35vh;
@@ -490,7 +494,7 @@ margin-top:24vh;
 .login-button{
   height: 40%;
   width: 100%;
-  background-size: 80%;
+  background-size: 65%;
   background-repeat: no-repeat;
   background-position: center;
 }
