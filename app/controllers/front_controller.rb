@@ -61,7 +61,7 @@ require 'browser'
 			when "item"
 				if params[:id].nil?
 					@product = Product.all
-				else
+				elsif params[:hashtag].nil?
 					input_tags = params[:id].split(',')
 					input_tags.shift #destroy first one
 					logger.info input_tags
@@ -70,6 +70,13 @@ require 'browser'
 						@product = @product + Product.where("category like ?","%#{tag}%")
 					end
 					@product = @product.uniq
+				else
+					input_category = params[:id]
+					input_style = params[:hashtag].split(',')[0]
+					input_purpose = params[:hashtag].split(',')[1]
+					@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{input_category}%","%#{input_style}%","%#{input_purpose}%")
+
+
 				end
 
 				productlist(@product)
