@@ -28,15 +28,20 @@
     });
 
     function filter_apply(){
-        var collect_array = [];
-        var send_array = [];
-        var category = $("#카테고리>.tag-button-clicked").each(function(k,v){ collect_array.push(v.getAttribute('id')) });
-        var style = $("#스타일>.tag-button-clicked");
-        var purpose = $("#용도>.tag-button-clicked");
-        var collect_string = "";
+
+        var category = $("#카테고리>.tag-button-clicked").map(function(){return this.id}).get().join(',');
+        var style = $("#스타일>.tag-button-clicked").map(function(){return this.id}).get().join(',');
+        var purpose = $("#용도>.tag-button-clicked").map(function(){return this.id}).get().join(',');
+        var hashtag = style+','+purpose;
         //카테고리 스타일 용도를 층별로 모
 
+        $(".browser-contents").load('/contents/item/?id='+category+'&hashtag='+hashtag,function(){}).scrollTop(0);
+        $(".modal").modal('hide');
+    }
 
+    function filter_toggle(a){
+        $(a).parent().find(".modal-filter-button").not(a).removeClass("tag-button-clicked");
+        $(a).toggleClass("tag-button-clicked");
     }
 
 </script>
@@ -63,7 +68,7 @@
         </div>
         <div class="modal-filter-list" id="<%=k%>">
         <% v.each do |tag| %>
-          <div  id='<%=tag%>' class="modal-filter-button" onclick="tag_toggle(this)">
+          <div  id='<%=tag%>' class="modal-filter-button" onclick="filter_toggle(this)">
             <span><%=tag%></span>
           </div>
         <% end %>
