@@ -2,7 +2,7 @@ class FrontController < ApplicationController
 
 require 'browser'
 
-#before_action :mobile_check, only:[:index]
+before_action :mobile_check, only:[:index]
 
 	def index
 		@head_tag = ["모던한","북유럽","브랜드","핸드메이드","일본식","귀여운","클래식","한식"]
