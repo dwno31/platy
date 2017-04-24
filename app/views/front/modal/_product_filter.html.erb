@@ -26,6 +26,19 @@
             window.history.back();
         }
     });
+
+    function filter_apply(){
+        var collect_array = [];
+        var send_array = [];
+        var category = $("#카테고리>.tag-button-clicked").each(function(k,v){ collect_array.push(v.getAttribute('id')) });
+        var style = $("#스타일>.tag-button-clicked");
+        var purpose = $("#용도>.tag-button-clicked");
+        var collect_string = "";
+        //카테고리 스타일 용도를 층별로 모
+
+
+    }
+
 </script>
 <div class="modal-dialog" role="document">
   <div class="modal-content">
@@ -48,7 +61,7 @@
         <div class="modal-filter-body-header">
           <span><%=k%></span>
         </div>
-        <div class="modal-filter-list">
+        <div class="modal-filter-list" id="<%=k%>">
         <% v.each do |tag| %>
           <div  id='<%=tag%>' class="modal-filter-button" onclick="tag_toggle(this)">
             <span><%=tag%></span>
@@ -59,7 +72,7 @@
       <% end %>
       <div style="height:10vh;"></div>
     </div>
-    <a>
+    <a onclick="filter_apply()">
       <div class="modal-footer">
         <span>필터 적용하기</span>
       </div>
