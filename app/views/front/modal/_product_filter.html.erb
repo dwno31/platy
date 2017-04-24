@@ -36,13 +36,16 @@
         //카테고리 스타일 용도를 층별로 모
 
         $(".browser-contents").load('/contents/item/?id='+category+'&hashtag='+hashtag,function(){});
+        $(".tag-browser>.tag-button-clicked").removeClass("tag-button-clicked");
         $(".modal").modal('hide');
         window.scrollTo(0,1);
     }
 
     function filter_toggle(a){
+
         $(a).parent().find(".modal-filter-button").not(a).removeClass("tag-button-clicked");
         $(a).toggleClass("tag-button-clicked");
+
     }
 
 </script>
