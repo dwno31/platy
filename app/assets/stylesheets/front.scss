@@ -460,7 +460,7 @@ margin-top:24vh;
 }
 .modal-filter-button{
   padding: 2.5%;
-  margin: 1.5%;
+  margin: 1%;
   min-width:9vw;
   text-align: center;
   display: inline-block;
@@ -482,14 +482,15 @@ margin-top:24vh;
 }
 
 .login-modal-body{
-  padding:10% 15% 10% 15%;
+  padding:10% 5% 10% 5%;
+  text-align: center;
   height:35vh;
 }
 
 .login-button{
   height: 40%;
   width: 100%;
-  background-size: 100%;
+  background-size: 80%;
   background-repeat: no-repeat;
   background-position: center;
 }
