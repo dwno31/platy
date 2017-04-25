@@ -139,7 +139,7 @@ before_action :mobile_check, only:[:index]
 			if (index=="index" && hashtag.empty?)
 				@product = Product.all
 			else
-
+				index = index.gsub('index','');
 				if hashtag.length == 2
 					@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{index}%","%#{hashtag[0]}%","%#{hashtag[1]}%")
 				else
