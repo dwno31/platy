@@ -14,6 +14,7 @@
     var page = 1;
     var end_param = true;
     function tag_sort(){
+        $(".filter-popup").find(".tag-button-clicked").removeClass('tag-button-clicked');
         var tags = $('.tag-button-clicked');
         parameter = "";
         $.each(tags,function(index, value){
@@ -36,11 +37,17 @@
     window.scrollTo(0,0);
 
     browser.scroll(function(){
-        var index = $(".tag-button-clicked");
+        var category = $("#카테고리>.tag-button-clicked").attr('id');
+        var style = $("#스타일>.tag-button-clicked").attr('id');
+        var purpose = $("#용도>.tag-button-clicked").attr('id');
+        var index = $(".tag-browser>.tag-button-clicked").attr('id');
+
+        if(index===undefined){
+            index = category;
+        };
+
         if(index.length === 0){
             index = "index";
-        }else{
-            index = index.attr('id');
         };
 
         if($('body')[0].scrollHeight-browser.scrollTop()<browser.outerHeight()+60)
@@ -48,7 +55,7 @@
             if(switcher&end_param) {
                 $(".body-divide>.contents-loading:last-child").show();
 
-                $("<div>").load("/slide_contents/item/" + index + "/" + page, function (data) {
+                $("<div>").load("/slide_contents/item/" + index + "?page=" + page+"&hashtag="+style+','+purpose, function (data) {
                     if(data==="nil"){
                         $(".contents-loading").hide();
                         end_param = false;

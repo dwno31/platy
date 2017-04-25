@@ -129,6 +129,7 @@ before_action :mobile_check, only:[:index]
 		userlikelist(current_user)
 		slide_type = params[:slide]
 		index = params[:index]
+    hashtag = params[:hashtag].gsub('undefined','').split(',')
 		page = params[:page].to_i
 
 		if slide_type =="shop"	#샵이 불리면 그냥 샵리스트를 불러주고 추가적인 처리는 contents reload메소드에서
@@ -138,7 +139,13 @@ before_action :mobile_check, only:[:index]
 			if index=="index"
 				@product = Product.all
 			else
-				@product = Product.where("category like ?","%#{index}%") #추후 인덱스에 맞는것만 불러오게 수정
+
+				if hashtag.length == 2
+					@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{index}%","%#{hashtag[0]}%","%#{hashtag[1]}%")
+				else
+					@product = Product.where("category like ? and hashtag like ?","%#{index}%","%#{hashtag[0]}%") #추후 인덱스에 맞는것만 불러오게 수
+				end
+				logger.info @product.size
 			end
 			@records = (start_number..start_number+24).to_a.map{|x|@product[x]}
 
@@ -160,7 +167,7 @@ before_action :mobile_check, only:[:index]
 			@product2.compact!
 
 			if (@product1.empty?)&(@product2.empty?)
-				render text: "nil"
+				render plain: "nil"
 			else
 				render partial:"front/items/contents", layout:false
 			end
