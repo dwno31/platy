@@ -95,9 +95,10 @@ class BackendController < ApplicationController
             when 6
               record.hashtag = att.gsub(/ /,'')
             when 7
-              record.hashtag = record.hashtag +','+ att.gsub(/ /,'')
+              logger.info record.hashtag
+              record.hashtag = record.hashtag+','+ att.gsub(/ /,'')
             when 8
-              record.hashtag = record.hashtag +','+ att.gsub(/ /,'')
+              record.hashtag = record.hashtag+','+att.gsub(/ /,'')
 					end
 
 					i = i+1;
