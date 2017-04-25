@@ -135,7 +135,7 @@ before_action :mobile_check, only:[:index]
 		if slide_type =="shop"	#샵이 불리면 그냥 샵리스트를 불러주고 추가적인 처리는 contents reload메소드에서
 			render partial:"front/browse/contents", layout:false
 		elsif slide_type =="item"	#아이템이 불리면 인풋되는 인덱스/페이지에 따라서 아이템을 호출해서 렌더로 던져준다
-			start_number = page*25
+			start_number = page*24
 			if index=="index"
 				@product = Product.all
 			else
@@ -147,7 +147,7 @@ before_action :mobile_check, only:[:index]
 				end
 				logger.info @product.size
 			end
-			@records = (start_number..start_number+24).to_a.map{|x|@product[x]}
+			@records = (start_number..start_number+23).to_a.map{|x|@product[x]}
 
 			@product1 = []
 			@product2 = []
@@ -258,7 +258,7 @@ private
 		end
 		logger.info @product
 		start_number = 0
-		prolong_number = 19
+		prolong_number = 23
 		#record_pool = Product.where() 추후 인덱스에 맞는것만 불러오게 수정
 		@records = (start_number..start_number+prolong_number).to_a.map{|x|@product[x]}
 
