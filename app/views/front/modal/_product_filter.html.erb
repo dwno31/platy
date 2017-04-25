@@ -35,6 +35,7 @@
         var hashtag = style+','+purpose;
         //카테고리 스타일 용도를 층별로 모
         end_param = true;
+        page = 1;
         $(".browser-contents").load('/contents/item/?id='+category+'&hashtag='+hashtag,function(){});
         $(".tag-browser>.tag-button-clicked").removeClass("tag-button-clicked");
         $(".modal").modal('hide');
