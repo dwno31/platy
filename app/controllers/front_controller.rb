@@ -129,7 +129,7 @@ before_action :mobile_check, only:[:index]
 		userlikelist(current_user)
 		slide_type = params[:slide]
 		index = params[:index]
-    hashtag = params[:hashtag].gsub('undefined','').split(',')
+    hashtag = params[:hashtag].gsub('undefined','').split(',').reject { |c| c.empty? }
 		page = params[:page].to_i
 
 		if slide_type =="shop"	#샵이 불리면 그냥 샵리스트를 불러주고 추가적인 처리는 contents reload메소드에서
@@ -140,6 +140,7 @@ before_action :mobile_check, only:[:index]
 				@product = Product.all
 			else
 				index = index.gsub('index','');
+
 				if hashtag.length == 2
 					@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{index}%","%#{hashtag[0]}%","%#{hashtag[1]}%")
 				else
