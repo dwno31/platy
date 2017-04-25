@@ -136,7 +136,7 @@ before_action :mobile_check, only:[:index]
 			render partial:"front/browse/contents", layout:false
 		elsif slide_type =="item"	#아이템이 불리면 인풋되는 인덱스/페이지에 따라서 아이템을 호출해서 렌더로 던져준다
 			start_number = page*24
-			if (index=="index"&hashtag.empty?)
+			if (index=="index" && hashtag.empty?)
 				@product = Product.all
 			else
 
