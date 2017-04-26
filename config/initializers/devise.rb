@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '912a5d00b6b40a474a45fafa568f26dfc9de0d7f6eec00060a7bf77358dcd9efef646ec84ede823f43f51b4374455645c0bf32d16fb7cc3f7e32a70fc96a633d'
+  config.secret_key = ENV['secret_key']
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -251,9 +251,9 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, '1316895755054996', '782fe72dd06311a624e923b669167feb', callback_url: "http://localhost:3000/"
-  config.omniauth :naver, 'couSGacEKMj_68RPpGin', 'gghHWo7rzf'
-  config.omniauth :kakao, 'ea86cc637338dcb0b95bb068f1550e5a', :redirect_path => "/users/auth/kakao/callback"
+  config.omniauth :facebook, ENV['facebook_key'], ENV['facebook_secret'], callback_url: "http://platy.life/"
+  config.omniauth :naver, ENV['naver_key'], ENV['naver_secret']
+  config.omniauth :kakao, ENV['kakao_key'], :redirect_path => "/users/auth/kakao/callback"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
