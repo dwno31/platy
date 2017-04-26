@@ -5,8 +5,7 @@ require 'browser'
 before_action :mobile_check, only:[:index]
 
 	def index
-		@head_tag = ["모던한","북유럽","브랜드","핸드메이드","일본식","귀여운","클래식","한식"]
-    @merchant= Merchant.all.order('ranknumber ASC')
+    productlist(Product.all)
     userlikelist(current_user)
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','잔','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
 		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','브랜드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
