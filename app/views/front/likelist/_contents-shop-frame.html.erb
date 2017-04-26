@@ -2,6 +2,9 @@
     switcher = false;
     end_param = false;
     $(".body-divide").attr('style','padding-bottom:15%;')
+    <% if @userlikeshops.empty? %>
+    $(".login-modal").modal('show');
+    <% end %>
 </Script>
 <div class="browser-contents" style="margin-top:9vh;">
   <%= render "front/browse/contents" %>
