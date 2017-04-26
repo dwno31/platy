@@ -19,8 +19,14 @@
 # Ignore database setting in local
 /config/database.yml
 
+<<<<<<< HEAD
+=======
 # Ignore rubymine setting
 /.idea/*
+<<<<<<< HEAD
+>>>>>>> 17455f644efdf8f0af4c0325098412c46c4a5c48
+=======
 
 # Ignore application configuration
 /config/application.yml
+>>>>>>> e5773bf6cbd2e0ff18ae24ff6b363655f2e580ea
