@@ -157,14 +157,18 @@ class BackendController < ApplicationController
   end
 
   def kakao
-    data = {}
-    uri = URI.parse('https://kapi.kakao.com/v1/user/me')
-    http = Net::HTTP.new(uri.host, uri.port)
-    req = Net::HTTP::Get.new(uri.request_uri)
-    req['Authorization'] = "Bearer "+params[:token]
+    address = "http://platy.life"
+    port = "80"
+    data = {'grant_type'=>'refresh_token','client_id'=>"{#{ENV['kakao_key']}}",'refresh_token'=>"#{params[:refresh]}"}
+    uri = URI.parse('https://kauth.kakao.com/')
+    http = Net::HTTP.new(uri.host, uri.port, address, port)
+    http.use_ssl = true
 
+    req = Net::HTTP::Post.new("/oauth/token")
+    req.body = data.to_json
     response = http.request(req)
-    logger.info response
+    logger.info data
+    logger.info response.message
     render plain: response.inspect
   end
 end
