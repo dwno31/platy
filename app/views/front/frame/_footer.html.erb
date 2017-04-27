@@ -26,6 +26,7 @@
         $("span[class*=clicked]").each(function(i,e){e.className+=e.getAttribute('name')})
         $("."+menu).toggleClass(menu+"-clicked");
         $(".contents-frame").load("/section/"+menu,function(){});
+        window.scrollTo(0,0);
 
     }
 
