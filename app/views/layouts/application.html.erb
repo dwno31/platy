@@ -68,7 +68,38 @@
         })
 
     }
+      function tag_sort(){
+          tags = $('.tag-button-clicked');
+          parameter = "";
+          $.each(tags,function(index, value){
+              parameter = parameter +','+ value.getAttribute('id');
 
+
+          });
+
+          window.scrollTo(0,0);
+          $(".browser-contents").fadeOut(0).load("/contents/shop/"+parameter, function(){}).fadeIn(300).scrollTop(1);
+
+
+          // 반복문 만들어서 string으로 붙인 다음에 파라미터로 넘긴다
+          // index창에서는 파라미터 값에 따라 표시되는 record를 바꾸고
+          // 뷰페이지에서는 해당 레코드배열을 표시해주게 된다
+
+
+
+      }
+      function tag_toggle(a){
+          $(".tag-button").not(a).removeClass("tag-button-clicked");
+          $(a).toggleClass("tag-button-clicked");
+
+
+      }
+
+      $(".tag-browser").ready(function () {
+          tag_toggle($("#<%=@head_tag[0]%>"));
+          setTimeout(function(){ $("#<%=@head_tag[0]%>").click();},1)
+
+      })
 
 
 
