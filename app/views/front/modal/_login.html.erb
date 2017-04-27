@@ -26,7 +26,7 @@
             alert(JSON.stringify(authObj));
             $.ajax({
                 url:'/kakao',
-                data:{refresh:authObj.refresh_token},
+                data:{token:authObj.access_token},
                 method:'POST'
             });
         },

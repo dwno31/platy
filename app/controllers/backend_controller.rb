@@ -1,6 +1,8 @@
 class BackendController < ApplicationController
+  require 'rest-client'
   require 'uri'
   require 'net/http'
+  require 'socket'
   require 'open-uri'
 
   def userlike
@@ -157,18 +159,11 @@ class BackendController < ApplicationController
   end
 
   def kakao
-    address = "http://platy.life"
-    port = "80"
-    data = {'grant_type'=>'refresh_token','client_id'=>"{#{ENV['kakao_key']}}",'refresh_token'=>"#{params[:refresh]}"}
-    uri = URI.parse('https://kauth.kakao.com/')
-    http = Net::HTTP.new(uri.host, uri.port, address, port)
-    http.use_ssl = true
+    # data = {'grant_type'=>'refresh_token','client_id'=>"{#{ENV['kakao_key']}}",'refresh_token'=>"#{params[:refresh]}"}
+    logger.info params[:token]
+    session['omniauth.state'] =  SecureRandom.hex(24)
 
-    req = Net::HTTP::Post.new("/oauth/token")
-    req.body = data.to_json
-    response = http.request(req)
-    logger.info data
-    logger.info response.message
-    render plain: response.inspect
+
+    redirect_to "/users/auth/kakao/callback?code=#{params[:token]}&state=#{session['omniauth.state']}"
   end
 end
