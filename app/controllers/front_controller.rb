@@ -234,7 +234,7 @@ private
 	def shoplist(record)
 		@head_tag = ["모던한","북유럽","브랜드","핸드메이드","일본식","귀여운","클래식","한식"]
 		if record.nil?
-			@merchant = []
+			@merchant = Merchant.all
 		elsif record.is_a?(ActiveRecord::Base)
 			@merchant = record.userlikeshops.where(:active=>true).map{|x|x.merchant}
 		elsif record.kind_of?(String)
