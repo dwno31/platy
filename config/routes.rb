@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, :controllers => { omniauth_callbacks: 'users/omniauth_callbacks' }, skip: ['sessions']
+  as :user do
+   get 'users/sign_in' => redirect('/users/auth/kakao')
+   post 'users/sign_in', to: 'devise/sessions#create', as: :user_session
+   get 'users/sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
+  end
+
 
  root to:"front#index"
  get "pcindex", to: "front#pcindex"
@@ -17,6 +23,7 @@ Rails.application.routes.draw do
  get "item_filter", to:"front#item_filter"
 
  #poset forward backend
+ post "kakao", to:"backend#kakao"
  post "delete/(:id)", to:"backend#db_delete"
  post "destroy", to:"backend#db_destroy"
  post "db_input", to: "backend#db_input"

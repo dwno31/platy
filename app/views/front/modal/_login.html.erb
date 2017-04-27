@@ -10,6 +10,29 @@
     <a href="/users/auth/naver"><div class="login-button naver"></div></a>
     <a href="/users/auth/kakao"><div class="login-button kakao"></div></a>
 
+    <a id="kakao-login-btn"></a>
+    <a href="http://developers.kakao.com/logout"></a>
+
+
   </div>
 </div>
 </div>
+<script type='text/javascript'>
+    Kakao.init('c73a1d8e4e61815c918d98d6b7922197');
+    // 카카오 로그인 버튼을 생성합니다.
+    Kakao.Auth.createLoginButton({
+        container: '#kakao-login-btn',
+        success: function(authObj) {
+            alert(JSON.stringify(authObj));
+            $.ajax({
+                url:'/kakao',
+                data:{token:authObj.access_token},
+                method:'POST'
+            });
+        },
+        fail: function(err) {
+            alert(JSON.stringify(err));
+        }
+    });
+    //]]>
+</script>

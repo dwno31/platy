@@ -1,4 +1,6 @@
 class BackendController < ApplicationController
+  require 'uri'
+  require 'net/http'
   require 'open-uri'
 
   def userlike
@@ -152,5 +154,17 @@ class BackendController < ApplicationController
     end
 
     render :json => {:url=>record}
+  end
+
+  def kakao
+    data = {}
+    uri = URI.parse('https://kapi.kakao.com/v1/user/me')
+    http = Net::HTTP.new(uri.host, uri.port)
+    req = Net::HTTP::Get.new(uri.request_uri)
+    req['Authorization'] = "Bearer "+params[:token]
+
+    response = http.request(req)
+    logger.info response
+    render plain: response.inspect
   end
 end
