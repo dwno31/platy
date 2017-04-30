@@ -102,7 +102,7 @@ class BackendController < ApplicationController
               logger.info record.hashtag
               record.hashtag = record.hashtag+','+ att.gsub(/ /,'')
             when 8
-              record.hashtag = record.hashtag+','+att.gsub(/ /,'')
+              record.rating = att
 					end
 
 					i = i+1;

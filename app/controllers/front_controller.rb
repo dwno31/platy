@@ -5,7 +5,7 @@ require 'browser'
 before_action :mobile_check, only:[:index]
 
 	def index
-    productlist(Product.all)
+    productlist(Product.order("RAND()").order(rating: :desc))
     userlikelist(current_user)
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','잔','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
 		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','브랜드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
@@ -64,14 +64,14 @@ before_action :mobile_check, only:[:index]
 				render partial: "front/browse/contents", layout: false
 			when "item"
 				if params[:id].nil?
-					@product = Product.all
+					@product = Product.order("RAND()").order(rating: :desc)
 				elsif params[:hashtag].nil?
 					input_tags = params[:id].split(',')
 					input_tags.shift #destroy first one
 					logger.info input_tags
 					@product = []
 					input_tags.each do |tag|
-						@product = @product + Product.where("category like ?","%#{tag}%")
+						@product = @product + Product.where("category like ?","%#{tag}%").order("RAND()").order(rating: :desc)
 					end
 					@product = @product.uniq
 				else
@@ -80,9 +80,9 @@ before_action :mobile_check, only:[:index]
 					input_style = params[:hashtag].split(',')[0]
 					input_purpose = params[:hashtag].split(',')[1]
 					if hashtag.length==2
-						@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{input_category}%","%#{input_style}%","%#{input_purpose}%")
+						@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{input_category}%","%#{input_style}%","%#{input_purpose}%").order("RAND()").order(rating: :desc)
 					else
-						@product = Product.where("category like ? and (hashtag like ?)","%#{input_category}%","%#{hashtag[0]}%")
+						@product = Product.where("category like ? and (hashtag like ?)","%#{input_category}%","%#{hashtag[0]}%").order("RAND()").order(rating: :desc)
 					end
 
 				end
@@ -253,7 +253,7 @@ private
 	def productlist(record)
     @head_tag = ["우드트레이","볼","플레이트","커트러리","홈세트","머그","소품","매트"]
     if record.nil?
-      @product = Product.all
+      @product = Product.order("RAND()").order(rating: :desc)
 		else
 			@product = record
 		end
