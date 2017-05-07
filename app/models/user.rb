@@ -12,8 +12,6 @@ class User < ApplicationRecord
 
     # user와 identity가 nil이 아니라면 받는다
     identity = Identity.find_for_oauth(auth)
-    logger.info auth
-    logger.info "auth 확인"
     user = signed_in_resource ? signed_in_resource : identity.user
 
     # user가 nil이라면 새로 만든다.
@@ -29,10 +27,12 @@ class User < ApplicationRecord
           user = User.new(
               name: auth.info.name,
               email: auth.info.email,
-              password: Devise.friendly_token[0,20]
+              password: Devise.friendly_token[0,20],
+              prefer: session[:prefer]
           )
 
           user.save!
+          session.delete(prefer)
         end
 
       end

@@ -15,11 +15,14 @@
 </div>
 
 <script>
+    $(".itemsearch-button").hide();
     function section_transfer(menu){
         if(menu==="product"){
             $(".itemfilter-button").show();
+           // $(".itemsearch-button").show();
         }else{
             $(".itemfilter-button").hide();
+            $(".itemsearch-button").hide();
         }
         window.stop();
         var menu = menu;

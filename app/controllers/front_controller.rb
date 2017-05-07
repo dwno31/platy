@@ -5,7 +5,11 @@ require 'browser'
 before_action :mobile_check, only:[:index]
 
 	def index
+		if current_user.nil?
     productlist(Product.order("RAND()").order(rating: :desc))
+		else
+		productlist(prefer_scenario(current_user))
+		end
     userlikelist(current_user)
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','잔','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
 		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','브랜드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
@@ -33,7 +37,7 @@ before_action :mobile_check, only:[:index]
 				shoplist(current_user)
 				render partial: "front/likelist/contents-shop-frame"
 			when "product"
-				productlist(nil)
+				productlist(prefer_scenario(current_user))
 				render partial: "front/items/contents-frame"
 			when "likeitem"
 				likelist(current_user)
@@ -88,7 +92,6 @@ before_action :mobile_check, only:[:index]
 				end
 
 				productlist(@product)
-				logger.info @product1
 				render partial: "front/items/contents", layout: false
 		end
 
@@ -137,9 +140,10 @@ before_action :mobile_check, only:[:index]
 		elsif slide_type =="item"	#아이템이 불리면 인풋되는 인덱스/페이지에 따라서 아이템을 호출해서 렌더로 던져준다
 			start_number = page*24
 			if (index=="index" && hashtag.empty?)
-				@product = Product.all
+				@product = prefer_scenario(current_user)
+        logger.info @product
 			else
-				index = index.gsub('index','');
+				index = index.gsub('index','')
 				logger.info hashtag
 				if hashtag.length == 2
 					@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{index}%","%#{hashtag[0]}%","%#{hashtag[1]}%")
@@ -257,7 +261,6 @@ private
 		else
 			@product = record
 		end
-		logger.info @product
 		start_number = 0
 		prolong_number = 23
 		#record_pool = Product.where() 추후 인덱스에 맞는것만 불러오게 수정
@@ -301,6 +304,56 @@ private
 		end
 	end
 
+  def prefer_scenario(user)
+    if user.prefer.nil?
+			user.prefer = session[:prefer]
+			user.save
+			session.delete('prefer')
+		end
+		user_prefer = eval(user.prefer)
+		prefer_tags = []
+		prefer_product = []
+		price_limit = false
+		case user_prefer
+			when [0,0]
+				prefer_tags = ['홈세트','볼','플레이트','커트러리','컵','잔']
+				price_limit = true
+			when [0,1]
+				prefer_tags = ['유니크','엔틱','로멘틱','럭셔리']
+			when [0,2]
+				prefer_tags = ['북유럽','모던','심플','홈세트','일러스트','컬러풀']
+			when [1,0]
+				prefer_tags = ['한식','면','양식','어린이','핸드메이드','컬러풀']
+			when [1,1]
+				prefer_tags = ['일러스트','유니크','엔틱','로맨틱','클래식','럭셔리','홈카페','술']
+			when [1,2]
+				prefer_tags = ['폴란드','북유럽','홈카페','술','디저트']
+      when [2,0]
+        price_limit = true
+				prefer_tags = ['커피','잔','컵','홈카페','티세트']
+			when [2,1]
+				prefer_tags = ['유니크','엔틱','로맨틱','럭셔리']
+			when [2,2]
+				prefer_tags = ['클래식','북유럽','폴란드','내츄럴','모던']
+			else
+
+		end
+
+		if price_limit
+			prefer_relation = prefer_tags.map{|x| if x=="홈카페" then Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000) else Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",30000) end}
+		else
+			prefer_relation = prefer_tags.map{|x|Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%")}
+		end
+
+		prefer_relation.each do |x|
+			x.each do |record|
+				prefer_product.push(record)
+			end
+		end
+		logger.info prefer_product.uniq.size
+    logger.info user.prefer
+		return prefer_product.uniq!
+	end
 
 
 end

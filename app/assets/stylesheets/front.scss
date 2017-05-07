@@ -58,6 +58,8 @@ a:active {color:black;}
 
 }
 
+
+
 // top nav bar
 
 .top-bar{
@@ -73,6 +75,18 @@ top:0;
 z-index: 10;
 
 }
+
+    .itemsearch-button{
+      position: absolute;
+      height: 80%;
+      top: 10%;
+      right: 10px;
+      width: 20%;
+      background-image: url("/assets/ICON/search.png");
+      background-size: 50%;
+      background-repeat:no-repeat;
+      background-position: right;
+    }
     .itemfilter-button{
       position: absolute;
       height: 80%;
@@ -470,10 +484,10 @@ margin-top:24vh;
 .modal-filter-button{
   padding: 2.5%;
   margin: 1%;
-  min-width:9vw;
+  min-width:12vw;
   text-align: center;
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: white;
   border: solid #d15753 1px;
 }
@@ -485,16 +499,16 @@ margin-top:24vh;
 .login-modal-position{
   margin-top:25vh;
   background:transparent;
-  border-radius:15px;
+  border-radius:10px;
 }
 
 .login-modal-header{
   height:6vh;
-  border-radius:15px 15px 0 0;
+  border-radius:10px 10px 0 0;
 }
 
 .login-modal-body{
-  border-radius: 0 0 15px 15px;
+  border-radius: 0 0 10px 10px;
   padding:10% 5% 10% 5%;
   text-align: center;
   height:35vh;
@@ -514,6 +528,82 @@ margin-top:24vh;
   background-image: url(/assets/ICON/kakao_login.png);
 }
 
+//intro modall
+.intro{
+}
+.intro-dialog{
+  height:100%;
+  width:100%;
+  margin:0;
+}
+.intro-body{
+  height:100%;
+  padding:0;
+}
+
+.face{
+  height:100%;
+  background-image:url('/assets/intro/intro.png');
+  background-size:100% 100%;
+}
+.face-padding{
+  height:69%;
+}
+.face-message{
+  height:30%;
+}
+.ask-step{
+  height:33%;
+  width:50%;
+  margin:auto;
+  display:table;
+  border:solid 1px white;
+}
+  .ask-step>div{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+    font-size:1.2em;
+  }
+.login-step{
+  color:white;
+  text-align: center;
+  margin-top:10px;
+}
+.face-login{
+  color: white;
+  border: solid 1px white;
+  font-size: 1.2em;
+  padding: 1px;
+}
+  
+//carousel
+#index-carousel{
+  height:100%;
+}
+#index-carousel>div{
+  height:100%;
+}
+
+.item{
+  height: 100%;
+  background-size: 100% 100%;
+}
+.option-padding{
+  padding: 4%;
+  font-size: 2em;
+  color: white;
+  height:30%;
+}
+.option-vertical{
+  float: left;
+  height: 53%;
+  width: 33%;
+}
+.option-horizon{
+  height:16.5%;
+}
 //kjj품리스트
 .contents-scroll{
   height:5%;

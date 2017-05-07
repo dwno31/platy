@@ -25,6 +25,17 @@ class BackendController < ApplicationController
     render plain: "success"
   end
 
+  def userprefer
+    input = params[:prefer]
+    session[:prefer] = input
+    if !current_user.nil?
+      current_user.prefer = session[:prefer]
+      current_user.save
+      session.delete(prefer)
+    end
+    render plain: session[:prefer]
+  end
+
 	def db_input
 		input = params[:input_textarea]
 		

@@ -1,0 +1,33 @@
+<div class="modal-dialog intro-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-body intro-body">
+      <div class="face">
+        <div class="face-padding"></div>
+        <div class="face-message">
+          <div class="ask-step">
+            <div onclick="call_ask()">나를 위한<br>상품 추천 받기</div>
+          </div>
+          <div class="login-step">
+            <div>이미 회원이시면 <a class="face-login" onclick="call_login()">로그인</a>해주세요</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  <% if current_user.nil?%>
+    $(".intro").modal('show');
+  <% elsif current_user.prefer.nil? %>
+    $(".intro").modal('show');
+  <% end%>
+    function call_ask(){
+        $(".intro").modal('hide');
+        $(".ask").modal('show');
+    }
+    function call_login(){
+        $(".intro").modal('hide');
+        $(".login-modal").modal('show');
+    }
+</script>
