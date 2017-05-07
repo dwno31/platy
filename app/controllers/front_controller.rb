@@ -6,9 +6,11 @@ before_action :mobile_check, only:[:index]
 
 	def index
 		if current_user.nil?
-    productlist(Product.order("RAND()").order(rating: :desc))
+      productlist(Product.order("RAND()").order(rating: :desc))
+		elsif current_user.prefer.nil?
+			productlist(Product.order("RAND()").order(rating: :desc))
 		else
-		productlist(prefer_scenario(current_user))
+      productlist(prefer_scenario(current_user))
 		end
     userlikelist(current_user)
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','잔','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
