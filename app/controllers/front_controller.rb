@@ -6,13 +6,16 @@ before_action :mobile_check, only:[:index]
 
 	def index
 		if current_user.nil?
-      productlist(Product.order("RAND()").order(rating: :desc))
+      prefer_product = prefer_scenario(nil)
+			productlist(prefer_product)
 		elsif current_user.prefer.nil?
-			productlist(Product.order("RAND()").order(rating: :desc))
+			prefer_product = prefer_scenario(current_user)
+			productlist(prefer_product)
 		else
       productlist(prefer_scenario(current_user))
 		end
     userlikelist(current_user)
+		logger.info @prefer_tags
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','잔','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
 		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','브랜드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
 		@purpose_list = ['한식','양식','면','혼밥','술','홈카페','디저트','홈파티','어린이','신혼','선물','조리']
@@ -39,7 +42,10 @@ before_action :mobile_check, only:[:index]
 				shoplist(current_user)
 				render partial: "front/likelist/contents-shop-frame"
 			when "product"
-				productlist(prefer_scenario(current_user))
+				logger.info "hello...?"
+				call_products = prefer_scenario(current_user)
+        @prefer_tags = session[:prefer_tags]
+				productlist(call_products)
 				render partial: "front/items/contents-frame"
 			when "likeitem"
 				likelist(current_user)
@@ -94,7 +100,11 @@ before_action :mobile_check, only:[:index]
 				end
 
 				productlist(@product)
-				render partial: "front/items/contents", layout: false
+				tags = ['플레이티',input_category,input_style,input_purpose,'그릇','프리티'].compact
+				@prefer_tags = tags.shift(4)
+
+
+				render partial: "front/items/contents-frame", layout: false
 		end
 
 	end
@@ -143,7 +153,6 @@ before_action :mobile_check, only:[:index]
 			start_number = page*24
 			if (index=="index" && hashtag.empty?)
 				@product = prefer_scenario(current_user)
-        logger.info @product
 			else
 				index = index.gsub('index','')
 				logger.info hashtag
@@ -307,15 +316,25 @@ private
 	end
 
   def prefer_scenario(user)
-    if user.prefer.nil?
+		prefer_tags = []
+		price_limit = false
+		prefer_product = []
+
+		if user.nil?&session[:prefer].nil?
+			user_prefer = [rand(0..2),rand(0..2)]
+			session[:prefer] = user_prefer
+			logger.info "2nil"
+		elsif user.nil?&!session[:prefer].nil?
+			user_prefer = session[:prefer]
+			logger.info "ssntnil"
+      logger.info user
+    else
 			user.prefer = session[:prefer]
 			user.save
-			session.delete('prefer')
+			user_prefer = session[:prefer]
 		end
-		user_prefer = eval(user.prefer)
-		prefer_tags = []
-		prefer_product = []
-		price_limit = false
+		user_prefer = eval(user_prefer.to_s)
+    logger.info user_prefer
 		case user_prefer
 			when [0,0]
 				prefer_tags = ['홈세트','볼','플레이트','커트러리','컵','잔']
@@ -338,22 +357,25 @@ private
 			when [2,2]
 				prefer_tags = ['클래식','북유럽','폴란드','내츄럴','모던']
 			else
-
+				logger.info "/?????anjdi"
 		end
-
+		logger.info prefer_tags
 		if price_limit
 			prefer_relation = prefer_tags.map{|x| if x=="홈카페" then Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000) else Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",30000) end}
 		else
 			prefer_relation = prefer_tags.map{|x|Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%")}
 		end
-
+		@prefer_tags = prefer_tags
+		session[:prefer_tags] = @prefer_tags
+		logger.info @prefer_tags
 		prefer_relation.each do |x|
 			x.each do |record|
 				prefer_product.push(record)
 			end
 		end
 		logger.info prefer_product.uniq.size
-    logger.info user.prefer
+    logger.info session[:prefer]
+		logger.info user_prefer
 		return prefer_product.uniq!
 	end
 

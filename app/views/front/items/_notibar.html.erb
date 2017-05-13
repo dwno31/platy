@@ -1,0 +1,91 @@
+<div class="noti-tag">
+  <% for i in 0..3 %>
+  <span>#<%=@prefer_tags[i]%></span>
+  <% end %>
+</div>
+<div class="noti-button" onclick="prefer_reset()">
+  <span>다시 설정하기</span>
+</div>
+<script>
+
+    //태그를 입력받는다 제이쿼리로 보낸다
+    //제이슨으로 받아서 틀 하나 만들어두고 반복문으로 dom재생성한다
+    //아니면 아래 부분만 새로운 데이터로 리로드한다
+    function prefer_reset(){
+        $(".ask").modal('show');
+        $(".carousel").carousel(0);
+    }
+
+    var page = 1;
+    var end_param = true;
+    function tag_sort(){
+        $(".filter-popup").find(".tag-button-clicked").removeClass('tag-button-clicked');
+        var tags = $('.tag-button-clicked');
+        parameter = "";
+        $.each(tags,function(index, value){
+            parameter = parameter +','+ value.getAttribute('id');
+        });
+        window.scrollTo(0,0);
+        page = 1;
+        end_param = true;
+        $(".browser-contents").fadeOut(0).load("/contents/item/"+parameter, function(){}).fadeIn(300).scrollTop(1);
+
+        // 반복문 만들어서 string으로 붙인 다음에 파라미터로 넘긴다
+        // index창에서는 파라미터 값에 따라 표시되는 record를 바꾸고
+        // 뷰페이지에서는 해당 레코드배열을 표시해주게 된다
+
+
+
+    }
+    var browser = $(window);
+    var switcher = true;
+    window.scrollTo(0,0);
+
+    browser.scroll(function(){
+        var category = $("#카테고리>.tag-button-clicked").attr('id');
+        var style = $("#스타일>.tag-button-clicked").attr('id');
+        var purpose = $("#용도>.tag-button-clicked").attr('id');
+        var index = $(".tag-browser>.tag-button-clicked").attr('id');
+
+        if(index===undefined){
+            index = category;
+        };
+
+        if(index === undefined){
+            index = "index";
+        };
+
+        if($('body')[0].scrollHeight-browser.scrollTop()<browser.outerHeight()+60)
+        {
+            if(switcher&end_param) {
+                $(".body-divide>.contents-loading:last-child").show();
+
+                $("<div>").load("/slide_contents/item/" + index + "?page=" + page+"&hashtag="+style+','+purpose, function (data) {
+                    if(data==="nil"){
+                        $(".contents-loading").hide();
+                        end_param = false;
+                        $(".body-divide").attr('style','padding-bottom:15%;');
+                    }else {
+                        append_str = $(this).find(".body-divide");
+
+                        $(".browser-contents").find(".body-divide")[0].append(append_str[0]);
+                        $(".body-divide>.body-divide>div").unwrap();
+
+                        $(".browser-contents").find(".body-divide")[1].append(append_str[1]);
+                        $(".body-divide>.body-divide>div").unwrap();
+
+                        $(".contents-loading").hide();
+                    };
+
+                });
+                page = page + 1;
+                switcher = false;
+            }
+            else{
+                setTimeout(function(){switcher=true;},1000);
+            }
+        }
+
+    })
+
+</script>

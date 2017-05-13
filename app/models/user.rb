@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  has_many :products, through: :userlikeitems
-  has_many :merchants, through: :userlikeshops
-  has_many :userlikeitems
-  has_many :userlikeshops
+  has_many :identities,:dependent => :destroy
+  has_many :products, through: :userlikeitems,:dependent => :destroy
+  has_many :merchants, through: :userlikeshops,:dependent => :destroy
+  has_many :userlikeitems,:dependent => :destroy
+  has_many :userlikeshops,:dependent => :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -20,7 +21,7 @@ class User < ApplicationRecord
       # 이미 있는 이메일인지 확인한다.
       email = auth.info.email
       user = User.where(:email => email).first
-      unless self.where(email: auth.info.email).exists?
+      if !self.where(email: auth.info.email).exists?
 
         # 없다면 새로운 데이터를 생성한다.
         if user.nil?
@@ -28,11 +29,8 @@ class User < ApplicationRecord
               name: auth.info.name,
               email: auth.info.email,
               password: Devise.friendly_token[0,20],
-              prefer: session[:prefer]
           )
-
           user.save!
-          session.delete(prefer)
         end
 
       end

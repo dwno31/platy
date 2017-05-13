@@ -11,16 +11,12 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
           <% (0..3).each do |x| %>
-          <div class="item" style="background-image:url('/assets/intro/ask_0<%= x+1%>.png');">
+          <div class="item" style="background-image:url('/assets/intro/ask_0<%= x+1%>.jpg');">
             <div class="option-padding">
               <span onclick="carousel_prev()" style="display:none;"><</span>
             </div>
             <% (0..2).each do |y| %>
-              <% if x==0 %>
-            <div class="option-vertical" onclick="set_option(<%=x%>,<%=y%>)"></div>
-              <% else %>
             <div class="option-horizon" onclick="set_option(<%=x%>,<%=y%>)"></div>
-              <% end %>
             <% end %>
           </div>
           <% end %>
@@ -44,10 +40,19 @@
             $.ajax({
                 url:"/userprefer",
                 method:"POST",
-                data:{prefer:JSON.stringify(option)}
+                data:{prefer:JSON.stringify(option)},
+                success:function(data){
+                $(".contents-frame").load('/section/product',function(){});
+                $(".carousel").carousel(0);
+                }
 
             });
+            <% if current_user.nil? %>
             $(".login-modal").modal('show');
+            <% else %>
+            $(".modal").modal('hide');
+            <% end %>
+
         }else{
             option[0] = number;
             $(".carousel").carousel(number+1);

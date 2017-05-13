@@ -4,12 +4,16 @@
       <div class="face">
         <div class="face-padding"></div>
         <div class="face-message">
+          <div class="face-header">예쁜 그릇을 사랑하시나요?</div>
           <div class="ask-step">
-            <div onclick="call_ask()">나를 위한<br>상품 추천 받기</div>
+            <div onclick="call_ask()">상품 추천 받기</div>
           </div>
-          <div class="login-step">
-            <div>이미 회원이시면 <a class="face-login" onclick="call_login()">로그인</a>해주세요</div>
+          <div class="ask-step">
+            <div onclick="call_login()">로그인/무료회원가입</div>
           </div>
+        </div>
+        <div class="face-footer">
+          <div onclick="$('.modal').modal('hide');">로그인 없이 둘러보기 <span>></span></div>
         </div>
       </div>
     </div>

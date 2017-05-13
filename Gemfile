@@ -12,6 +12,12 @@ gem 'omniauth-naver'
 gem 'omniauth-kakao', :git => 'git://github.com/dwno31/omniauth-kakao'
 gem 'rest-client'
 
+gem 'carrierwave'
+gem 'carrierwave-azure'
+gem 'activerecord-session_store'
+gem 'fog'
+gem 'azure'
+
 gem 'browser'
 gem 'bootstrap-sass', '~> 3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

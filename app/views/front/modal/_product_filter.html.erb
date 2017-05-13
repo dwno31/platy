@@ -36,8 +36,12 @@
         //카테고리 스타일 용도를 층별로 모
         end_param = true;
         page = 1;
-        $(".browser-contents").load('/contents/item/?id='+category+'&hashtag='+hashtag,function(){});
+        $(".contents-frame").load('/contents/item/?id='+category+'&hashtag='+hashtag,function(){
+            $(".noti-button").attr('onclick','reset_filter()');
+            $(".noti-button>span").text('초기화');
+        });
         $(".tag-browser>.tag-button-clicked").removeClass("tag-button-clicked");
+
         $(".modal").modal('hide');
         window.scrollTo(0,1);
     }
@@ -47,6 +51,11 @@
         $(a).parent().find(".modal-filter-button").not(a).removeClass("tag-button-clicked");
         $(a).toggleClass("tag-button-clicked");
 
+    }
+
+    function reset_filter(){
+        $(".modal-filter-button").removeClass("tag-button-clicked");
+        section_transfer('product');
     }
 
 </script>

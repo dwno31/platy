@@ -21,6 +21,7 @@ Rails.application.routes.draw do
  get "item_filter", to:"front#item_filter"
 
  #poset forward backend
+ post "userimage", to:"backend#userimage"
  post "userprefer", to:"backend#userprefer"
  post "kakao", to:"backend#kakao"
  post "delete/(:id)", to:"backend#db_delete"

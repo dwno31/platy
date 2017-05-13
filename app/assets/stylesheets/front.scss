@@ -115,6 +115,49 @@ z-index: 10;
   height:100%;
   overflow-x:disabled;
 }
+//notibar
+.notibar{
+
+  height: 8vh;
+  width: 100%;
+  position: fixed;
+  top: 8.9vh;
+  background: #e9e9e9;
+  z-index: 3;
+  padding:2%;
+
+}
+.noti-tag{
+  width:70%;
+  height:100%;
+  float:left;
+  padding:2% 0%;
+  font-size:1.1em;
+  text-align:center;
+}
+.noti-tag>span{
+  margin:2%;
+  color: rgba(0,0,0,0.5);
+  font-weight: 500;
+}
+.noti-button{
+  width:30%;
+  height:100%;
+  border:white 1px solid;
+  border-radius:20px;
+  background:rgba(0,0,0,0.4);
+  float:left;
+  display: table;
+}
+.noti-button:active{
+  background:rgba(0,0,0,0.5);
+}
+.noti-button>span{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  color:white;
+}
 // tag-browser
 
 .tag-browser{
@@ -168,7 +211,7 @@ z-index: 3;
 height:78%;
 width:100%;
 -webkit-overflow-scrolling: touch;
-margin-top:24vh;
+margin-top:17vh;
 
 
 }
@@ -497,30 +540,48 @@ margin-top:24vh;
 
 //login modal
 .login-modal-position{
-  margin-top:25vh;
-  background:transparent;
-  border-radius:10px;
 }
-
-.login-modal-header{
-  height:6vh;
-  border-radius:10px 10px 0 0;
+.login-dialog{
+  height:100%;
+  width:100%;
+  margin:0;
 }
-
-.login-modal-body{
-  border-radius: 0 0 10px 10px;
-  padding:10% 5% 10% 5%;
+.login-face{
+  height: 100%;
+  background-image: url(/assets/intro/login_background.png);
+  background-size: 100% 100%;
+}
+.login-padding{
+  height:25%;
+}
+.login-header{
+  height: 25%;
+  width:100%;
+  color:white;
+  margin-bottom: 10%;
+  background: rgba(0,0,0,0.4);
+  display:table;
   text-align: center;
-  height:35vh;
+  font-size:1.3em;
+}
+.login-header>div{
+  display: table-cell;
+  vertical-align: middle;
+
+}
+.login-icon{
+  width:30px;
+  height:30px;
+}
+.login-footer{
+  padding-right: 3%;
+  padding-top: 6%;
+  font-size: 1.2em;
+  text-align: right;
+  height: 10%;
+  color: white;
 }
 
-.login-button{
-  height: 40%;
-  width: 100%;
-  background-size: 65%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
 .naver{
   background-image: url(/assets/ICON/naver_login.png);
 }
@@ -543,21 +604,29 @@ margin-top:24vh;
 
 .face{
   height:100%;
-  background-image:url('/assets/intro/intro.png');
+  background-image:url('/assets/intro/intro_01.png');
   background-size:100% 100%;
 }
 .face-padding{
-  height:69%;
+  height:60%;
 }
 .face-message{
   height:30%;
 }
+.face-header{
+  font-size:1.3em;
+  color:white;
+  text-align:center;
+}
 .ask-step{
-  height:33%;
-  width:50%;
-  margin:auto;
-  display:table;
-  border:solid 1px white;
+  height: 25%;
+  width: 70%;
+  margin: 3% auto;
+  font-size:1.3em;
+  border-radius: 25px;
+  background: rgba(0,0,0,0.3);
+  display: table;
+  border: solid 1px white;
 }
   .ask-step>div{
     display: table-cell;
@@ -576,6 +645,17 @@ margin-top:24vh;
   border: solid 1px white;
   font-size: 1.2em;
   padding: 1px;
+}
+.face-footer{
+  padding-right: 3%;
+  font-size: 1.2em;
+  text-align: right;
+  position: fixed;
+  height: 6%;
+  bottom: 0;
+  width: 100%;
+  right: 0;
+  color: white;
 }
   
 //carousel

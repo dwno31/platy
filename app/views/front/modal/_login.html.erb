@@ -1,14 +1,40 @@
-<div class="modal-dialog" role="document" style="border-radius:15px;">
-<div class="modal-content login-modal-position">
-  <div class="modal-header login-modal-header">
-      <div class="modal-shoptitle">
-        <span>로그인</span>
+<div class="modal-dialog login-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-body intro-body">
+      <div class="login-face">
+        <div class="login-padding"></div>
+        <div class="login-header"><div>
+          감각적인 당신을 위해<br>꼭 맞는 테이블웨어를 찾았습니다<br>로그인하고 확인해보세요!</div>
+        </div>
+        <div class="face-message">
+          <div class="face-header">로그인 / 무료회원가입</div>
+          <a href="/users/auth/kakao">
+            <div class="ask-step">
+              <div onclick="">
+                <img src="/assets/intro/logos/kakao.png"  width=35px />
+                카카오톡
+              </div>
+            </div>
+          </a>
+          <a href="/users/auth/naver">
+            <div class="ask-step">
+              <div onclick="">
+                <img src="/assets/intro/logos/naver.png" class="login-icon"/>
+                네이버</div>
+            </div>
+          </a>
+          <a href="/users/auth/facebook">
+            <div class="ask-step">
+              <div onclick="">
+                <img src="/assets/intro/logos/facebook.png" width=20px />
+                페이스북</div>
+            </div>
+          </a>
+        </div>
+        <div class="face-footer">
+          <div onclick="$('.modal').modal('hide');">로그인 없이 둘러보기 <span>></span></div>
+        </div>
       </div>
+    </div>
   </div>
-  <div class="modal-body login-modal-body">
-    <p>로그인 하시고<br>당신을 위한 특별한 테이블웨어를 확인하세요</p>
-    <a href="/users/auth/naver"><div class="login-button naver"></div></a>
-    <a href="/users/auth/kakao"><div class="login-button kakao"></div></a>
-  </div>
-</div>
 </div>

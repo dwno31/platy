@@ -5,6 +5,15 @@ class BackendController < ApplicationController
   require 'socket'
   require 'open-uri'
 
+  def userimage
+    azure_blob_service = Azure::Blob::BlobService.new
+    image = Userimage.new
+    image.platy = params[:image_file]
+    image.save
+
+    redirect_to :back
+  end
+
   def userlike
     type = params[:type]
     id = params[:id].to_i
@@ -31,7 +40,6 @@ class BackendController < ApplicationController
     if !current_user.nil?
       current_user.prefer = session[:prefer]
       current_user.save
-      session.delete(prefer)
     end
     render plain: session[:prefer]
   end

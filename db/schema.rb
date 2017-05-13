@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507162252) do
+ActiveRecord::Schema.define(version: 20170513023154) do
 
   create_table "identities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -48,6 +48,25 @@ ActiveRecord::Schema.define(version: 20170507162252) do
     t.text     "img_url",     limit: 65535
     t.integer  "rating"
     t.index ["merchant_id"], name: "index_products_on_merchant_id", using: :btree
+  end
+
+  create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "session_id",               null: false
+    t.text     "data",       limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+    t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+  end
+
+  create_table "userimages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.text     "hashtag",    limit: 65535
+    t.string   "category"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "platy"
+    t.index ["user_id"], name: "index_userimages_on_user_id", using: :btree
   end
 
   create_table "userlikeitems", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

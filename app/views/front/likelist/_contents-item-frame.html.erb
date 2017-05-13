@@ -3,10 +3,13 @@
   end_param = false;
   window.scrollTo(0,0);
   $(".body-divide").attr('style','padding-bottom:15%;')
-  <% if @userlikeitems.empty? %>
+  <% if current_user.nil? %>
     $(".login-modal").modal('show');
   <% end %>
 </Script>
 <div class="browser-contents" style="margin-top:9vh;">
   <%= render "front/items/contents" %>
 </div>
+<script>
+    $(".browser-contents").attr('style','margin-top:9vh;');
+</script>

@@ -2,6 +2,10 @@
   <form action='/destroy' method=post onsubmit="return confirm('샵 전부 다 삭제?????');"><input type=submit value="DB날리기"></form>
   <form action='/product_destroy' method=post onsubmit="return confirm('제품 전부 다 삭제?????');"><input type=submit value="제품날리기"></form>
 <a href=/db_input>데이터베이스 입력하러가기</a>
+  <form action="/userimage" method="post" enctype="multipart/form-data" >
+    <input type="file" name="image_file">
+    <input type="submit" value="dd">
+  </form>
 </div>
 <table class="table table-bordered">
 	

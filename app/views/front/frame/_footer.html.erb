@@ -17,18 +17,19 @@
 <script>
     $(".itemsearch-button").hide();
     function section_transfer(menu){
-        if(menu==="product"){
-            $(".itemfilter-button").show();
-           // $(".itemsearch-button").show();
-        }else{
-            $(".itemfilter-button").hide();
-            $(".itemsearch-button").hide();
-        }
+
         window.stop();
         var menu = menu;
         $("span[class*=clicked]").each(function(i,e){e.className+=e.getAttribute('name')})
         $("."+menu).toggleClass(menu+"-clicked");
         $(".contents-frame").load("/section/"+menu,function(){});
+        if(menu==="product"){
+            $(".itemfilter-button").show();
+            // $(".itemsearch-button").show();
+        }else{
+            $(".itemfilter-button").hide();
+            $(".itemsearch-button").hide();
+        }
         window.scrollTo(0,0);
 
     }

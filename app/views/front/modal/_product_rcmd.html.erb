@@ -1,0 +1,104 @@
+<script>
+    $('.product-rcmd-modal').on('show.bs.modal', function() {
+        var modal = this;
+        var hash = modal.id;
+        window.location.hash = hash;
+        window.onhashchange = function() {
+            if (!location.hash){
+                $(modal).modal('hide');
+            }
+        }
+    });
+
+    $('div.modal').on('hidden.bs.modal', function() {
+        var hash = this.id;
+        history.replaceState('', document.title, window.location.pathname);
+    });
+
+    // when close button clicked simulate back
+    $('div.modal button.close').on('click', function(){
+        window.history.back();
+    })
+
+    // when esc pressed when modal open simulate back
+    $('div.modal').keyup(function(e) {
+        if (e.keyCode == 27){
+            window.history.back();
+        }
+    });
+</script>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-header-left">
+        <div class="backbutton" data-dismiss="modal">
+
+          <span class="glyphicon glyphicon-menu-left"></span>
+        </div>
+      </div>
+      <div class="modal-header-center">
+        <!--<div class="modal-shoplogo"></div>-->
+        <div class="modal-shoptitle">
+          <span><%=@merchant.title%></span>
+        </div>
+        <!--<div class="modal-shoptags"><%= %></div>-->
+      </div>
+      <!--<div class="modal-header-section">-->
+
+      <!--</div>-->
+    </div>
+    <div class="modal-body">
+      <div class="body-divide">
+        <% @product1.each do |record| %>
+            <a href="<%=record.url%>" onclick="ga('send','event','product','<%=record.id%>');">
+              <div class="modal-product-item">
+                <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
+            </a>
+            <% if !@userlikeitems.include?(record.id)%>
+                <div class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>')"></div>
+            <% else %>
+                <div class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>')"></div>
+            <% end %>
+            <a href="<%=record.url%>" onclick="ga('send','event','product','<%=record.id%>');">
+              <div class="modal-product-detail">
+                <span><%=record.title%></span><br>
+                <span><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
+                <span></span>
+              </div>
+            </div>
+            </a>
+        <% end %>
+        <div style="height:10vh;"></div>
+        </div>
+    <div class="body-divide">
+      <% @product2.each do |record| %>
+          <a href="<%=record.url%>" onclick="ga('send','event','product','<%=record.id%>');">
+            <div class="modal-product-item">
+              <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
+          </a>
+          <% if !@userlikeitems.include?(record.id)%>
+              <div class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>')"></div>
+          <% else %>
+              <div class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>')"></div>
+          <% end %>
+          <a href="<%=record.url%>" onclick="ga('send','event','product','<%=record.id%>');">
+            <div class="modal-product-detail">
+              <span><%=record.title%></span><br>
+              <span><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
+            </div>
+          </div>
+          </a>
+      <% end %>
+      <div style="height:10vh;"></div>
+      </div>
+</div>
+<a href="<%=@merchant.url%>" target="_blank" onclick="ga('send','event','shop-link','<%=@merchant.id%>');">
+  <div class="modal-footer">
+    <span>쇼핑몰로 이동</span>
+  </div>
+</a>
+</div>
+</div>
+
+
+
