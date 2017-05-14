@@ -26,7 +26,7 @@ a{
   color:black;
 }
 a:visited {color:black;}  /* visited link */
-a:hover {color:black;}  /* mouse over link */
+a:hover {color:inherit;}  /* mouse over link */
 a:active {color:black;}
 
 .pcindex{
@@ -687,6 +687,19 @@ margin-top:17vh;
 //kjj품리스트
 .contents-scroll{
   height:5%;
+}
+
+//likelist
+.likelist{
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.likelist-item-empty{
+  background-image:url(/assets/likelist-item.png);
+}
+.likelist-shop-empty{
+  background-image:url(/assets/likelist-shop.png);
 }
 
   //outlink

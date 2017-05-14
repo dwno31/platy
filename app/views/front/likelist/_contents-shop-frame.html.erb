@@ -3,12 +3,14 @@
     end_param = false;
     $(".body-divide").attr('style','padding-bottom:15%;')
     <% if current_user.nil? %>
-    $(".login-modal").modal('show');
+      $(".likelist").addClass('likelist-shop-empty');
+    <% elsif current_user.userlikeshops.where(:active=>true).empty? %>
+      $(".likelist").addClass('likelist-shop-empty');
     <% end %>
 </Script>
-<div class="browser-contents" style="margin-top:9vh;">
+<div class="browser-contents likelist" style="margin-top:9vh;">
   <%= render "front/browse/contents" %>
 </div>
 <script>
-    $(".browser-contents").attr('style','margin-top:9vh;');
+    $(".browser-contents").attr('style','margin-top:9vh;height:84%;');
 </script>

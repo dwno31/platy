@@ -39,7 +39,11 @@ before_action :mobile_check, only:[:index]
 				shoplist(nil)
 				render partial: "front/browse/contents-frame"
 			when "likeshop"
-				shoplist(current_user)
+				if current_user.nil?
+					shoplist(false)
+				else
+					shoplist(current_user)
+				end
 				render partial: "front/likelist/contents-shop-frame"
 			when "product"
 				logger.info "hello...?"
@@ -261,6 +265,8 @@ private
 				@merchant = @merchant + Merchant.where("category like ?","%#{tag}%")
 			end
 			@merchant = @merchant.uniq
+		elsif !record
+			@merchant = []
 		end
 		return @merchant
 	end
