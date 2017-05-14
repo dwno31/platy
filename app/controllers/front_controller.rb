@@ -31,6 +31,36 @@ before_action :mobile_check, only:[:index]
 
 	end
 
+	def search_toggle
+		if params[:toggle]=="1"
+		render partial: "front/items/item_search"
+		else
+		@prefer_tags = session[:prefer_tags]
+		render partial: "front/items/notibar"
+		end
+	end
+
+  def search_item
+		userlikelist(current_user)
+		keyword = params[:keyword]
+		@records = Product.where("title like ? or category like ? or hashtag like ?","%#{keyword}%","%#{keyword}%","%#{keyword}%")
+		@product1 = []
+		@product2 = []
+		tog = false
+
+		@records.each do |record|
+			case tog
+				when false
+					@product1.push(record) #홀수는 여기다 넣고
+				when true
+					@product2.push(record) #짝수는 여기다 넣어서 렌더링으로 넘겨준다
+			end
+			tog = !tog
+		end
+
+		render partial: "front/items/contents"
+  end
+
 	def section_load
 		userlikelist(current_user)
 		menu = params[:menu]

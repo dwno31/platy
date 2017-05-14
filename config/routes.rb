@@ -19,6 +19,8 @@ Rails.application.routes.draw do
  get "slide_contents/(:slide)/(:index)/(:page)", to:"front#slide_contents"
  get "section/(:menu)", to: "front#section_load"
  get "item_filter", to:"front#item_filter"
+ get "search_toggle", to:"front#search_toggle"
+ get "search_item", to:"front#search_item"
 
  #poset forward backend
  post "userimage", to:"backend#userimage"

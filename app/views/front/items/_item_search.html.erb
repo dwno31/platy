@@ -1,0 +1,25 @@
+<div class="search-input form-group has-feedback has-feedback-left">
+  <input type="text" placeholder="검색 키워드를 입력해주세요" />
+  <i style="left:0;font-size:1.2em;color:#ff7171;"class="glyphicon glyphicon-search form-control-feedback"></i>
+</div>
+
+<div class="search-end" onclick="item_search_toggle(false)">
+  <div>취소</div>
+</div>
+
+<script>
+ $(".search-input>input").first().keypress(function (e) {
+     var key = e.which;
+     if(key == 13)  // the enter key code
+     {
+         keyword = $(".search-input>input").first().val();
+         $(".search-input>input").first().attr("placeholder","검색 : " +$(".search-input>input").first().val());
+         $(".search-input>input").first().val('');
+         window.scrollTo(0,0);
+
+         $(".browser-contents").load("/search_item?keyword="+keyword,function(){});
+         return false;
+     }
+ });
+
+</script>

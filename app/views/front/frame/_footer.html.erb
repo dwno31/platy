@@ -15,7 +15,6 @@
 </div>
 
 <script>
-    $(".itemsearch-button").hide();
     function section_transfer(menu){
 
         window.stop();
@@ -25,7 +24,7 @@
         $(".contents-frame").load("/section/"+menu,function(){});
         if(menu==="product"){
             $(".itemfilter-button").show();
-            // $(".itemsearch-button").show();
+             $(".itemsearch-button").show();
         }else{
             $(".itemfilter-button").hide();
             $(".itemsearch-button").hide();

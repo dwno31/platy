@@ -47,6 +47,18 @@
            $(".filter-popup").modal('show');
     }
 
+    function item_search_toggle(data){
+        if(data){
+        $(".notibar").load("/search_toggle/?toggle=1");
+        }
+        else{
+        $(".notibar").load("/search_toggle/?toggle=0")
+        }
+    }
+    function item_search(){
+
+    }
+
     function login_popup(){
         $(".login-modal").modal('show');
     }
