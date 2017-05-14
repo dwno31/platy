@@ -663,16 +663,17 @@ margin-top:17vh;
 .face-message{
   height:30%;
 }
+.face-message>a:visited{
+  color:white;
+  border-color:white;
+
+}
 .face-header{
   font-size:1.3em;
   color:white;
   text-align:center;
 }
-.face-header>a:visited{
-  color:white;
-  border-color:white;
 
-}
 .ask-step{
   height: 25%;
   width: 70%;
