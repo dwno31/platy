@@ -25,7 +25,7 @@ a{
   text-decoration: none !important;
   color:black;
 }
-a:visited {color:black;}  /* visited link */
+a:visited {color:inherit;}  /* visited link */
 a:hover {color:inherit;}  /* mouse over link */
 a:active {color:black;}
 
@@ -667,6 +667,11 @@ margin-top:17vh;
   font-size:1.3em;
   color:white;
   text-align:center;
+}
+.face-header>a:visited{
+  color:white;
+  border-color:white;
+
 }
 .ask-step{
   height: 25%;
