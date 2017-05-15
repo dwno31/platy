@@ -43,7 +43,7 @@ before_action :mobile_check, only:[:index]
   def search_item
 		userlikelist(current_user)
 		keyword = params[:keyword]
-		@records = Product.where("title like ? or category like ? or hashtag like ?","%#{keyword}%","%#{keyword}%","%#{keyword}%")
+		@records = Product.where("title like ? or category like ? or hashtag like ?","%#{keyword}%","%#{keyword}%","%#{keyword}%").order(rating: :desc)
 		@product1 = []
 		@product2 = []
 		tog = false
@@ -191,9 +191,9 @@ before_action :mobile_check, only:[:index]
 				index = index.gsub('index','')
 				logger.info hashtag
 				if hashtag.length == 2
-					@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{index}%","%#{hashtag[0]}%","%#{hashtag[1]}%")
+					@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{index}%","%#{hashtag[0]}%","%#{hashtag[1]}%").order(rating: :desc)
 				else
-					@product = Product.where("category like ? and hashtag like ?","%#{index}%","%#{hashtag[0]}%") #추후 인덱스에 맞는것만 불러오게 수
+					@product = Product.where("category like ? and hashtag like ?","%#{index}%","%#{hashtag[0]}%").order(rating: :desc) #추후 인덱스에 맞는것만 불러오게 수
 				end
 				logger.info @product.size
 			end
@@ -384,7 +384,7 @@ private
 			when [1,1]
 				prefer_tags = ['일러스트','유니크','엔틱','로맨틱','클래식','럭셔리','홈카페','술']
 			when [1,2]
-				prefer_tags = ['폴란드','북유럽','홈카페','술','디저트']
+				prefer_tags = ['북유럽','홈카페','술','디저트']
       when [2,0]
         price_limit = true
 				prefer_tags = ['커피','잔','컵','홈카페','티세트']
@@ -397,9 +397,9 @@ private
 		end
 		logger.info prefer_tags
 		if price_limit
-			prefer_relation = prefer_tags.map{|x| if x=="홈카페" then Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000) else Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",30000) end}
+			prefer_relation = prefer_tags.map{|x| if x=="홈카페" then Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000).order(rating: :desc) else Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",30000).order(rating: :desc) end}
 		else
-			prefer_relation = prefer_tags.map{|x|Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%")}
+			prefer_relation = prefer_tags.map{|x|Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").order(rating: :desc)}
 		end
 		@prefer_tags = prefer_tags
 		session[:prefer_tags] = @prefer_tags

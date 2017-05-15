@@ -50,9 +50,10 @@ class BackendController < ApplicationController
 		table = input.split("\r\n")
 		table.each do |line|
 			i = 0
+      whole_att = line.split("\t")
 			if params[:table]=="merchant"
-        record = Merchant.new
-        line.split("\t").each do |att|
+        record = Merchant.where("title=?",whole_att[2]).first_or_create
+        whole_att.each do |att|
 
           case i
             when 0
@@ -99,8 +100,8 @@ class BackendController < ApplicationController
         record.save
 
 			else
-				record = Product.new
-				line.split("\t").each do |att|
+        record = Product.where("title=? and img_url=?",whole_att[1],whole_att[3]).first_or_create
+				whole_att.each do |att|
 					case i
             when 0
               logger.info att
@@ -121,7 +122,7 @@ class BackendController < ApplicationController
               logger.info record.hashtag
               record.hashtag = record.hashtag+','+ att.gsub(/ /,'')
             when 8
-              record.rating = att
+              record.rating = att.to_i
 					end
 
 					i = i+1;
