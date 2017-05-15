@@ -55,8 +55,8 @@
             index = "index";
         };
 
-        if($('body')[0].scrollHeight-browser.scrollTop()<browser.outerHeight()+60)
-        {
+        if($('body')[0].scrollHeight-browser.scrollTop()<browser.outerHeight()+150)
+        {   console.log("90");
             if(switcher&end_param) {
                 $(".body-divide>.contents-loading:last-child").show();
 
@@ -80,11 +80,14 @@
                 });
                 page = page + 1;
                 switcher = false;
-            }
-            else{
                 setTimeout(function(){switcher=true;},1000);
             }
+            else{
+                console.log("timeout-90");
+            }
         }
+
+
 
     })
 
