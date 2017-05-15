@@ -376,7 +376,7 @@ private
 				prefer_tags = ['홈세트','볼','플레이트','커트러리','컵','잔']
 				price_limit = true
 			when [0,1]
-				prefer_tags = ['유니크','엔틱','로멘틱','럭셔리']
+				prefer_tags = ['폴란드','유니크','엔틱','로멘틱','럭셔리']
 			when [0,2]
 				prefer_tags = ['북유럽','모던','심플','홈세트','일러스트','컬러풀']
 			when [1,0]
