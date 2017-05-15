@@ -11,6 +11,21 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script>
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
       //에러이미지 서버 호출-인코딩
       function imgError(image,type,id) {
           image.onerror = "";
@@ -36,11 +51,11 @@
 
     //샵 선택시 모달 팝업 및 모달 히스토리 설정
     function shop_product_popup(id){
+        window.history.pushState({},"shopopen","");
         var id = id;
         $(".shop-product-popup").load("/shop_product/"+id,function(id){
             $(".shop-product-popup").modal('show');
         });
-
     }
 
     function item_filter_popup(){
@@ -52,7 +67,7 @@
         $(".notibar").load("/search_toggle/?toggle=1");
         }
         else{
-        $(".notibar").load("/search_toggle/?toggle=0")
+        $(".contents-frame").fadeOut(300).load("/section/product",function(){}).fadeIn(300);
         }
     }
     function item_search(){
@@ -89,11 +104,17 @@
 
 
 
-
     </script>
   </head>
 
   <body>
     <%= yield %>
   </body>
+<script>
+    $("a").on("click",function(){
+        document.cookie = "intro_switch=false";
+        console.log("a clicked");
+        window.history.pushState({},"lastscroll","");
+    });
+</script>
 </html>

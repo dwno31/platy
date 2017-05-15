@@ -21,11 +21,14 @@
 </div>
 
 <script>
+  if(getCookie('intro_switch')===''||getCookie('intro_switch')==='true'){
   <% if current_user.nil?%>
     $(".intro").modal('show');
   <% elsif current_user.prefer.nil? %>
     $(".intro").modal('show');
   <% end%>
+    document.cookie = "intro_switch=true";
+  }
     function call_ask(){
         $(".intro").modal('hide');
         $(".ask").modal('show');
