@@ -55,16 +55,19 @@
                 method:"POST",
                 data:{prefer:JSON.stringify(option)},
                 success:function(data){
-                $(".contents-frame").load('/section/product',function(){});
+                $(".contents-frame").load('/section/product',function(){
+                <% if current_user.nil? %>
+                $(".login-modal").modal('show');
+                <% else %>
+                $(".modal").modal('hide');
+                <% end %>
+
+
+                });
                 $(".carousel").carousel(0);
                 }
 
             });
-            <% if current_user.nil? %>
-            $(".login-modal").modal('show');
-            <% else %>
-            $(".modal").modal('hide');
-            <% end %>
 
         }else{
             option[0] = number;
