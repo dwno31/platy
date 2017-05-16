@@ -5,8 +5,10 @@
   $(".body-divide").attr('style','padding-bottom:15%;')
   <% if current_user.nil? %>
     $(".likelist").addClass('likelist-item-empty');
+    $(".likelist>div").attr("style","");
   <% elsif current_user.userlikeitems.where(:active=>true).empty? %>
     $(".likelist").addClass('likelist-item-empty');
+    $(".likelist>div").attr("style","");
   <% end %>
 </Script>
 <div class="browser-contents likelist" style="margin-top:9vh;">
