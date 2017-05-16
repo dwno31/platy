@@ -17,6 +17,7 @@ gem 'carrierwave-azure'
 gem 'activerecord-session_store'
 gem 'fog'
 gem 'azure'
+gem 'dalli'
 
 gem 'browser'
 gem 'bootstrap-sass', '~> 3.3.6'

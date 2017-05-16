@@ -334,7 +334,7 @@ private
 	def likelist(record)
 		@records = []
 		unless record.nil?
-		@records = record.userlikeitems.where("active=?",true).map{|x|x.product}
+		@records = record.userlikeitems.where("active=?",true).reverse.map{|x|x.product}
 		end
 		@product1 = []
 		@product2 = []
@@ -396,19 +396,35 @@ private
 				logger.info "/?????anjdi"
 		end
 		logger.info prefer_tags
+    #결론은 prefer relation, 분기를 여기서 잡아서 캐싱해야됨
 		if price_limit
-			prefer_relation = prefer_tags.map{|x| if x=="홈카페" then Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000).order(rating: :desc) else Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",30000).order(rating: :desc) end}
+			prefer_relation = prefer_tags.map{|x|
+				if x=="홈카페"
+					@products = Rails.cache.fetch(x,expires_in:30.minutes){
+					Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000).order("RAND()").order(rating: :desc)
+					}
+				else
+					@products = Rails.cache.fetch(x,expires_in:30.minutes){
+					Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",30000).order("RAND()").order(rating: :desc)
+					}
+				end
+			}
 		else
-			prefer_relation = prefer_tags.map{|x|Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").order(rating: :desc)}
+			prefer_relation = prefer_tags.map{|x|
+				@products = Rails.cache.fetch(x,expires_in:30.minutes){
+				Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").order(rating: :desc).to_a
+				}
+			}
 		end
 		@prefer_tags = prefer_tags
 		session[:prefer_tags] = @prefer_tags
-		logger.info @prefer_tags
+		logger.info prefer_relation.inspect
 		prefer_relation.each do |x|
 			x.each do |record|
 				prefer_product.push(record)
 			end
-		end
+    end
+
 		logger.info prefer_product.uniq.size
     logger.info session[:prefer]
 		logger.info user_prefer

@@ -93,6 +93,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    dalli (2.7.6)
     debug_inspector (0.0.2)
     devise (4.2.1)
       bcrypt (~> 3.0)
@@ -412,6 +413,7 @@ DEPENDENCIES
   carrierwave
   carrierwave-azure
   coffee-rails (~> 4.2)
+  dalli
   devise
   figaro
   fog
