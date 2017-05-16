@@ -56,6 +56,9 @@ Rails.application.configure do
   config.public_file_server.headers = {
       'Cache-Control' => 'public, max-age=172800'
   }
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=2592000"
+
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
