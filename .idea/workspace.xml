@@ -4,7 +4,6 @@
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/modal/intro/_ask.html.erb" afterPath="$PROJECT_DIR$/app/views/front/modal/intro/_ask.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/modal/intro/_intro.html.erb" afterPath="$PROJECT_DIR$/app/views/front/modal/intro/_intro.html.erb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -94,7 +93,7 @@
             <entry file="file://$PROJECT_DIR$/app/views/front/modal/intro/_ask.html.erb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="362">
-                  <caret line="66" column="42" lean-forward="false" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
+                  <caret line="66" column="33" lean-forward="false" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
                   <folding />
                 </state>
               </provider>
@@ -901,12 +900,12 @@
       <workItem from="1493701572847" duration="24743000" />
       <workItem from="1494172997260" duration="13632000" />
       <workItem from="1494319608793" duration="10589000" />
-      <workItem from="1494497640723" duration="61285000" />
+      <workItem from="1494497640723" duration="61469000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="421275000" />
+    <option name="totallyTimeSpent" value="421459000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1343,18 +1342,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/front/modal/intro/_ask.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="66" column="42" lean-forward="false" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/front_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="447">
           <caret line="431" column="39" lean-forward="false" selection-start-line="431" selection-start-column="39" selection-end-line="431" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/front/modal/intro/_ask.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="66" column="33" lean-forward="false" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
           <folding />
         </state>
       </provider>
