@@ -400,25 +400,37 @@ private
 		if price_limit
 			prefer_relation = prefer_tags.map{|x|
 				if x=="홈세트"
+					if Rails.cache.read(x).nil?
 					@products = Rails.cache.fetch(x,expires_in:30.minutes){
-					Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000).order("RAND()").order(rating: :desc)
+					Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000).order("RAND()").order(rating: :desc).to_a
 					}
+					else
+					@products = Rails.cache.read(x)
+					end
 				else
+					if Rails.cache.read(x).nil?
 					@products = Rails.cache.fetch(x,expires_in:30.minutes){
-					Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",30000).order("RAND()").order(rating: :desc)
+					Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",30000).order("RAND()").order(rating: :desc).to_a
 					}
+					else
+					@products = Rails.cache.read(x)
+					end
 				end
 			}
 		else
 			prefer_relation = prefer_tags.map{|x|
-				@products = Rails.cache.fetch(x,expires_in:30.minutes){
-				Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").order(rating: :desc).to_a
-				}
+       	if Rails.cache.read(x).nil?
+					@products = Rails.cache.fetch(x,expires_in:30.minutes){
+					Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000).order("RAND()").order(rating: :desc)
+					}
+					else
+					@products =Rails.cache.read(x)
+				end
 			}
 		end
 		@prefer_tags = prefer_tags
 		session[:prefer_tags] = @prefer_tags
-		logger.info prefer_relation.inspect
+		logger.info prefer_relation.size
 		prefer_relation.each do |x|
 			x.each do |record|
 				prefer_product.push(record)
