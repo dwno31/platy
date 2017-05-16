@@ -399,7 +399,7 @@ private
     #결론은 prefer relation, 분기를 여기서 잡아서 캐싱해야됨
 		if price_limit
 			prefer_relation = prefer_tags.map{|x|
-				if x=="홈카페"
+				if x=="홈세트"
 					@products = Rails.cache.fetch(x,expires_in:30.minutes){
 					Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000).order("RAND()").order(rating: :desc)
 					}
