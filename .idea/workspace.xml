@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/front.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/likelist/_contents-item-frame.html.erb" afterPath="$PROJECT_DIR$/app/views/front/likelist/_contents-item-frame.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/likelist/_contents-shop-frame.html.erb" afterPath="$PROJECT_DIR$/app/views/front/likelist/_contents-shop-frame.html.erb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -30,8 +27,8 @@
           <file leaf-file-name="front.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="751" column="29" lean-forward="false" selection-start-line="751" selection-start-column="29" selection-end-line="751" selection-end-column="29" />
+                <state relative-caret-position="360">
+                  <caret line="756" column="49" lean-forward="false" selection-start-line="756" selection-start-column="49" selection-end-line="756" selection-end-column="49" />
                   <folding />
                 </state>
               </provider>
@@ -892,12 +889,12 @@
       <workItem from="1493701572847" duration="24743000" />
       <workItem from="1494172997260" duration="13632000" />
       <workItem from="1494319608793" duration="10589000" />
-      <workItem from="1494497640723" duration="63645000" />
+      <workItem from="1494497640723" duration="64425000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="423635000" />
+    <option name="totallyTimeSpent" value="424415000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1344,8 +1341,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="751" column="29" lean-forward="false" selection-start-line="751" selection-start-column="29" selection-end-line="751" selection-end-column="29" />
+        <state relative-caret-position="360">
+          <caret line="756" column="49" lean-forward="false" selection-start-line="756" selection-start-column="49" selection-end-line="756" selection-end-column="49" />
           <folding />
         </state>
       </provider>
