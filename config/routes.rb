@@ -21,6 +21,7 @@ Rails.application.routes.draw do
  get "item_filter", to:"front#item_filter"
  get "search_toggle", to:"front#search_toggle"
  get "search_item", to:"front#search_item"
+ get "product_rcmd/(:id)", to:"front#product_rcmd"
 
  #poset forward backend
  post "userimage", to:"backend#userimage"

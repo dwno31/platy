@@ -58,6 +58,14 @@
         });
     }
 
+    function product_rcmd_popup(id){
+        var id = id;
+        window.history.pushState("","","");
+        $(".shop-product-popup").load("/product_rcmd/"+id,function(id){
+            $(".shop-product-popup").modal('show');
+        });
+    }
+
     function item_filter_popup(){
            $(".filter-popup").modal('show');
     }
@@ -75,6 +83,7 @@
     }
 
     function login_popup(){
+        $(".modal").modal('hide')
         $(".login-modal").modal('show');
     }
 
@@ -116,6 +125,7 @@
         console.log("a clicked");
         window.history.pushState({},"lastscroll","");
     });
+
     $('.modal').on('show.bs.modal', function(e) {
         window.location.hash = "modal";
     });

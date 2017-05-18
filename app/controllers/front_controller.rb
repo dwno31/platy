@@ -89,6 +89,22 @@ before_action :mobile_check, only:[:index]
 		end
 	end
 
+	def product_rcmd
+		input_id = params[:id].to_i
+		@input_record = Product.find(input_id)
+		rcmd_product = []
+		category = @input_record.category.split(',')
+		hashtag = @input_record.hashtag.split(',')
+
+		hashtag.each do |tag|
+			Product.where("hashtag like ? and rating=?","%#{tag}%",1).map{|record| rcmd_product.push(record)}
+		end
+
+		userlikelist(current_user)
+		productlist(rcmd_product)
+		render partial: "front/modal/product_rcmd", layout: false
+	end
+
 	def contents_reload
 		userlikelist(current_user)
 		section_type = params[:section]

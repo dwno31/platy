@@ -1,26 +1,51 @@
 
 <div class="modal-dialog" role="document">
   <div class="modal-content">
-    <div class="modal-header">
-      <div class="modal-header-left">
-        <div class="backbutton" data-dismiss="modal">
+    <div class="item-focus-header">
+      <div class="item-focus-title">
+        <div class="modal-header-left">
+          <div class="backbutton" data-dismiss="modal">
 
-          <span class="glyphicon glyphicon-menu-left"></span>
+            <span class="glyphicon glyphicon-menu-left"></span>
+          </div>
+        </div>
+        <div class="modal-header-center">
+          <!--<div class="modal-shoplogo"></div>-->
+          <div class="item-foucs-title-text">
+            <span><div><%= @input_record.title[0..42]%></div></span>
+          </div>
+          <!--<div class="modal-shoptags"></div>-->
+        </div>
+        <% if !@userlikeitems.include?(@input_record.id)%>
+            <div class="likebutton-item-modal" onclick="userlike(this,'item','<%= @input_record.id%>')"></div>
+        <% else %>
+            <div class="likebutton-item-modal likebutton-item-clicked" onclick="userlike(this,'item','<%= @input_record.id%>')"></div>
+        <% end %>
+        <!--<div class="modal-header-section">-->
+
+        <!--</div>-->
+      </div>
+      <div class="item-header-body">
+        <div class="item-image" style="background-image:url('<%=@input_record.img_url%>');"></div>
+        <div class="item-detail">
+          <div class="title">
+            <span><%=@input_record.merchant.title%></span>
+          </div>
+          <div class="tags">
+            <span>#<%=@input_record.hashtag.split(',').join(" #")%></span>
+          </div>
+          <div class="outlink">
+            <div>
+              <a target="_blank"href="<%=@input_record.url%>">구매하러 가기</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="modal-header-center">
-        <!--<div class="modal-shoplogo"></div>-->
-        <div class="modal-shoptitle">
-          <span><%=@merchant.title%></span>
-        </div>
-        <!--<div class="modal-shoptags"><%= %></div>-->
-      </div>
-      <!--<div class="modal-header-section">-->
-
-      <!--</div>-->
     </div>
-    <div class="modal-body">
+    <div class="modal-body" style="height:100%;">
+      <div class="item-focus-dummy"></div>
       <div class="body-divide">
+
         <% @product1.each do |record| %>
             <a href="<%=record.url%>" onclick="ga('send','event','product','<%=record.id%>');">
               <div class="modal-product-item">
@@ -40,7 +65,6 @@
             </div>
             </a>
         <% end %>
-        <div style="height:10vh;"></div>
         </div>
     <div class="body-divide">
       <% @product2.each do |record| %>
@@ -61,14 +85,8 @@
           </div>
           </a>
       <% end %>
-      <div style="height:10vh;"></div>
       </div>
 </div>
-<a href="<%=@merchant.url%>" target="_blank" onclick="ga('send','event','shop-link','<%=@merchant.id%>');">
-  <div class="modal-footer">
-    <span>쇼핑몰로 이동</span>
-  </div>
-</a>
 </div>
 </div>
 

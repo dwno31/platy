@@ -158,12 +158,14 @@ class BackendController < ApplicationController
   def img_reproduce
     input_type = params[:type]
     input_id = params[:id].to_i
-
+    record_url = ""
     case input_type
       when "merchant"
-        record = Merchant.find(input_id).thumbnail
+        record = Merchant.find(input_id)
+        record_img = record.thumbnail
       when "product"
-        record = Product.find(input_id).img_url
+        record = Product.find(input_id)
+        record_img = record.img_url
     end
 
     if record == ""
@@ -171,11 +173,18 @@ class BackendController < ApplicationController
     elsif record.nil?
       encode_text = 'nothumbnail'
     else
-      encode_text = Base64.encode64(open(record).read).gsub(/\n/,'')
-      record = "data:image/png;base64,"+encode_text
+      encode_text = Base64.encode64(open(record_img).read).gsub(/\n/,'')
+      record_url = "data:image/png;base64,"+encode_text
     end
 
-    render :json => {:url=>record}
+    case input_type
+      when "merchant"
+        # record.update(:thumbnail=>record_url)
+      when "product"
+        # record.update(:img_url=>record_url)
+    end
+
+    render :json => {:url=>record_url}
   end
 
   def kakao
