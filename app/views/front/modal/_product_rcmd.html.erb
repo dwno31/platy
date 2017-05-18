@@ -31,6 +31,9 @@
           <div class="title">
             <span><%=@input_record.merchant.title%></span>
           </div>
+          <div class="price">
+            <span><%=@input_record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
+          </div>
           <div class="tags">
             <span>#<%=@input_record.hashtag.split(',').join(" #")%></span>
           </div>
@@ -42,7 +45,7 @@
         </div>
       </div>
     </div>
-    <div class="modal-body" style="height:100%;">
+    <div class="modal-body" style="height:100%;" id="item-rcmd-body">
       <div class="item-focus-dummy"></div>
       <div class="body-divide">
 
@@ -89,6 +92,20 @@
 </div>
 </div>
 </div>
+<script>
+    $(".shop-product-popup").ready(function(){
+        var scrollTop = 0;
+        $("#item-rcmd-body").scroll(function(){
+            scrollTop = $("#item-rcmd-body").scrollTop();
+            if (scrollTop >= 100) {
+                $('.item-focus-header').addClass('item-focus-header-fold');
+                $(".item-header-body").hide();
+            } else if (scrollTop < 100) {
+                $('.item-focus-header').removeClass('item-focus-header-fold');
+                $(".item-header-body").show();
+            }
 
+        });
 
-
+    });
+</script>

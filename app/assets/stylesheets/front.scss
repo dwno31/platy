@@ -546,7 +546,7 @@ margin-top:17vh;
           height:100%;
           float:left;
           background-image: url(/assets/ICON/like.png);
-          background-size: 55% 55%;
+          background-size: 55% 50%;
           background-repeat:no-repeat;
           background-position: center;
         }
@@ -790,6 +790,9 @@ margin-top:17vh;
   transition: all 0.4s ease;
   box-shadow: 1px 1px 9px 0px grey;
 }
+.item-focus-header-fold{
+  height:9vh;
+}
 .item-focus-title{
   padding: 0;
   height: 9vh;
@@ -831,14 +834,17 @@ margin-top:17vh;
 }
 .item-detail>div{
   float:left;
-  height:33.3%;
+  height:25%;
   width:100%;
 }
 .item-detail>.title{
   display: table;
   text-align: center;
   font-size:1.2em;
-  height:33.4%;
+}
+.item-detail>.price{
+  display:table;
+  text-align: center;
 }
 .item-detail>.tags{
   display: table;
@@ -850,7 +856,7 @@ margin-top:17vh;
 }
 .item-detail>.outlink>div{
   border: 1px solid grey;
-  height: 60%;
+  height: 80%;
   width: 70%;
   margin: auto;
   border-radius:3px;

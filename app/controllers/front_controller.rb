@@ -97,7 +97,7 @@ before_action :mobile_check, only:[:index]
 		hashtag = @input_record.hashtag.split(',')
 
 		hashtag.each do |tag|
-			Product.where("hashtag like ? and rating=?","%#{tag}%",1).map{|record| rcmd_product.push(record)}
+			Product.where("hashtag like ? and rating=?","%#{tag}%",1).order("RAND()").map{|record| rcmd_product.push(record)}
 		end
 
 		userlikelist(current_user)
