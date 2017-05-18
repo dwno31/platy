@@ -6,7 +6,7 @@
 <div class="body-divide">
   <% @product1.each do |record| %>
       <div class="modal-product-item">
-      <a onclick="ga('send','event','product','<%=record.id%>');product_rcmd_popup(<%=record.id%>)">
+      <a id=item<%=record.id%> onclick="ga('send','event','product','<%=record.id%>');product_rcmd_popup(<%=record.id%>)">
           <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
       </a>
       <% if !@userlikeitems.include?(record.id)%>
@@ -28,7 +28,7 @@
 <div class="body-divide">
   <% @product2.each do |record| %>
       <div class="modal-product-item">
-        <a onclick="ga('send','event','product','<%=record.id%>');product_rcmd_popup(<%=record.id%>)">
+        <a id=item<%=record.id%> onclick="ga('send','event','product','<%=record.id%>');product_rcmd_popup(<%=record.id%>)">
             <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
         </a>
         <% if !@userlikeitems.include?(record.id)%>

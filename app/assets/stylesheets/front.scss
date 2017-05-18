@@ -39,7 +39,9 @@ a:active {color:black;}
 .background-grey{
   background:#e8e8e8;
 }
-
+.overflow-y-hidden{
+  overflow:hidden!important;
+}
 //icon mother
 
 .iconimg{
@@ -873,6 +875,24 @@ margin-top:17vh;
   height:48%;
   transition: all 0.4s ease;
   -webkit-transition: all 0.4s ease;
+}
+
+.item-focus-beforelogin{
+  position: absolute;
+  bottom:0;
+  left:0;
+  height:52%;
+  width:100%;
+  background:rgba(0,0,0,0.6);
+  z-index:1;
+  display:table;
+}
+.item-focus-beforelogin>span{
+  display:table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-size:1.5em;
+  color:white;
 }
   //outlink
 
