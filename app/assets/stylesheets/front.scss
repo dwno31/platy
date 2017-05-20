@@ -68,7 +68,7 @@ a:active {color:black;}
 
 display:table;
 width:100%;
-height:9vh;
+height:8vh;
 text-align:center;
 background-color: #ff7171;
 margin-bottom:1%;
@@ -108,7 +108,7 @@ z-index: 10;
       font-size: 1.5em;
       color: transparent;
       background: url('/assets/logo.png') no-repeat center;
-      background-size:25% 65%;
+      background-size:23% 65%;
 
     }
 
@@ -123,7 +123,7 @@ z-index: 10;
   height: 8vh;
   width: 100%;
   position: fixed;
-  top: 8.9vh;
+  top: 7.9vh;
   background: #e9e9e9;
   z-index: 3;
   padding:2%;
@@ -203,7 +203,7 @@ z-index: 10;
 height:15vh;
 width:100%;
 position:fixed;
-top:8.9vh;
+top:7.9vh;
 background: white;
 z-index: 3;
 box-shadow:1px 1px 8px grey;
@@ -453,7 +453,7 @@ margin-top:17vh;
 }
   .modal-header{
     padding:0;
-    height:9vh;
+    height:8vh;
     background-color:#ff7171;
     color:white;
     -webkit-transition: all 0.4s ease;
@@ -793,11 +793,11 @@ margin-top:17vh;
   box-shadow: 1px 1px 9px 0px grey;
 }
 .item-focus-header-fold{
-  height:9vh;
+  height:8vh;
 }
 .item-focus-title{
   padding: 0;
-  height: 9vh;
+  height: 8vh;
   color: rgba(0,0,0,0.6);
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;
