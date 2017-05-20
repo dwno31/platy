@@ -99,7 +99,7 @@
             success:function(){
             },
             error:function(){
-                $(click).toggleClass('likebutton-'+type+'-clicked');
+                $("div[name=likeitem"+id+"]").toggleClass('likebutton-'+type+'-clicked');
                 login_popup();
             }
         })
