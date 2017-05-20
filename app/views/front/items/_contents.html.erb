@@ -36,7 +36,7 @@
         <% else %>
             <div name=likeitem<%=record.id%> class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>')"></div>
         <% end %>
-        <a href="<%=record.url%>" onclick="ga('send','event','product','<%=record.id%>');">
+        <a id=item<%=record.id%> onclick="ga('send','event','product','<%=record.id%>');product_rcmd_popup(<%=record.id%>)">
             <div class="modal-product-detail">
                                                <span><%=record.title%></span><br>
                                                <span><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
