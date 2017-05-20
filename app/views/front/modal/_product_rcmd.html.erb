@@ -9,7 +9,7 @@
             <span class="glyphicon glyphicon-menu-left"></span>
           </div>
         </div>
-        <div class="modal-header-center">
+        <div class="modal-header-center" >
           <!--<div class="modal-shoplogo"></div>-->
           <div class="item-foucs-title-text">
             <span><div><%= @input_record.title[0..42]%></div></span>
@@ -17,9 +17,9 @@
           <!--<div class="modal-shoptags"></div>-->
         </div>
         <% if !@userlikeitems.include?(@input_record.id)%>
-            <div class="likebutton-item-modal" onclick="userlike(this,'item','<%= @input_record.id%>');hide_rcmd()"></div>
+            <div  name=likeitem<%=@input_record.id%> class="likebutton-item-modal" onclick="userlike(this,'item','<%= @input_record.id%>');hide_rcmd()"></div>
         <% else %>
-            <div class="likebutton-item-modal likebutton-item-clicked" onclick="userlike(this,'item','<%= @input_record.id%>');hide_rcmd()"></div>
+            <div  name=likeitem<%=@input_record.id%> class="likebutton-item-modal likebutton-item-clicked" onclick="userlike(this,'item','<%= @input_record.id%>');hide_rcmd()"></div>
         <% end %>
         <!--<div class="modal-header-section">-->
 

@@ -88,7 +88,8 @@
     }
 
     function userlike(click,type,id){
-        $(click).toggleClass('likebutton-'+type+'-clicked');
+        $("div[name=likeitem"+id+"]").toggleClass('likebutton-'+type+'-clicked');
+//        $(".userlike_parent"+click+">")
         var type=type;
         var id = id;
         $.ajax({

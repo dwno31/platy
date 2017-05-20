@@ -10,9 +10,9 @@
           <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
       </a>
       <% if !@userlikeitems.include?(record.id)%>
-          <div class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>')"></div>
+          <div name=likeitem<%=record.id%> class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>')"></div>
       <% else %>
-          <div class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>')"></div>
+          <div name=likeitem<%=record.id%> class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>')"></div>
       <% end %>
         <a onclick="ga('send','event','product','<%=record.id%>');product_rcmd_popup(<%=record.id%>)">
             <div class="modal-product-detail">
@@ -32,9 +32,9 @@
             <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
         </a>
         <% if !@userlikeitems.include?(record.id)%>
-            <div class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>')"></div>
+            <div name=likeitem<%=record.id%> class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>')"></div>
         <% else %>
-            <div class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>')"></div>
+            <div name=likeitem<%=record.id%> class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>')"></div>
         <% end %>
         <a href="<%=record.url%>" onclick="ga('send','event','product','<%=record.id%>');">
             <div class="modal-product-detail">
