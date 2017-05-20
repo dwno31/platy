@@ -115,7 +115,7 @@ z-index: 10;
 //contents
 .contents-frame{
   height:100%;
-  overflow-x:disabled;
+  //overflow-x:hidden;
 }
 //notibar
 .notibar{
@@ -548,7 +548,7 @@ margin-top:17vh;
           height:100%;
           float:left;
           background-image: url(/assets/ICON/like.png);
-          background-size: 55% 50%;
+          background-size: 55% 58%;
           background-repeat:no-repeat;
           background-position: center;
         }
