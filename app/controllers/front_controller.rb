@@ -17,7 +17,7 @@ before_action :mobile_check, only:[:index]
     userlikelist(current_user)
 		logger.info @prefer_tags
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','잔','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
-		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','브랜드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
+		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
 		@purpose_list = ['한식','양식','면','혼밥','술','홈카페','디저트','홈파티','어린이','신혼','선물','조리']
 		@render_hash = {:카테고리=>@category_list,:스타일=>@style_list,:용도=>@purpose_list}
 
@@ -137,7 +137,7 @@ before_action :mobile_check, only:[:index]
 					end
 					@product = @product.uniq
 				else
-					input_category = params[:id]
+					input_category = params[:id].split(',')[0]
 					hashtag = params[:hashtag].gsub('undefined','').split(',').reject{|c|c.empty?}
 					input_style = params[:hashtag].split(',')[0]
 					input_purpose = params[:hashtag].split(',')[1]
@@ -148,9 +148,9 @@ before_action :mobile_check, only:[:index]
 					end
 
 				end
-
 				productlist(@product)
-				tags = ['플레이티',input_category,input_style,input_purpose,'그릇','프리티'].compact
+				tags = [input_category,input_style,input_purpose,'그릇','프리티','마리아주'].compact
+				session[:prefer_tags] = tags
 				@prefer_tags = tags.shift(4)
 
 

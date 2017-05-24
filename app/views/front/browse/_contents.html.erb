@@ -20,9 +20,9 @@
     </a>
     <% %>
     <% if @userlikeshops.include?(record.id) %>
-      <div class="likebutton-shop likebutton-shop-clicked" onclick="userlike(this,'shop','<%= record.id%>');"></div>
+      <div  name=likeshop<%=record.id%>  class="likebutton-shop likebutton-shop-clicked" onclick="userlike(this,'shop','<%= record.id%>');"></div>
     <% else %>
-      <div class="likebutton-shop" onclick="userlike(this,'shop','<%= record.id%>');"></div>
+      <div  name=likeshop<%=record.id%> class="likebutton-shop" onclick="userlike(this,'shop','<%= record.id%>');"></div>
     <% end %>
     <a onclick="shop_product_popup(<%=record.id%>);ga('send','event','shop-card','click','<%=record.id%>');">
       <div class=content-title>

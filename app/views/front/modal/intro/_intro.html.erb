@@ -2,18 +2,47 @@
   <div class="modal-content">
     <div class="modal-body intro-body">
       <div class="face">
-        <div class="face-padding"></div>
-        <div class="face-message">
-          <div class="face-header">예쁜 그릇을 사랑하시나요?</div>
-          <div class="ask-step">
-            <div onclick="call_ask()">상품 추천 받기</div>
+        <div class="face-index">
+          <div class="face-padding">
           </div>
-          <div class="ask-step">
-            <div onclick="call_login()">로그인/무료회원가입</div>
+          <div class="face-logo"></div>
+          <div class="face-slogan">
+            감각적인 테이블웨어의 조화를 만들다
+          </div>
+          <div class="face-padding"></div>
+          <div class="face-message">
+            <div class="face-header">당신의 식탁에<br>꼭 어울리는 테이블웨어를 찾아보세요</div>
+            <div class="ask-step">
+              <div onclick="call_ask()">시작하기</div>
+            </div>
+            <!--<div class="ask-step">-->
+              <!--<div onclick="call_login()">로그인/무료회원가입</div>-->
+            <!--</div>-->
+          </div>
+        </div>
+        <div class="face-pick" style="display:none">
+          <div class="pick" id="style">
+            <div class="pick-header">어떤 스타일의 테이블웨어 마리아쥬를 찾으시나요?</div>
+            <div class="pick-box">
+              <% @style_list.each do |tag|%>
+              <div class="pick-button" onclick="call_category('<%=tag%>');intro_pick(this,'style','<%=tag%>');"><span><%=tag%></span></div>
+              <% end %>
+            </div>
+
+          </div>
+          <div class="pick" id="category" style="display:none;">
+            <div class="pick-header">주로 어떤 카테고리를 보고 싶으신가요?</div>
+            <div class="pick-box">
+              <% @category_list.each do |tag|%>
+                  <div class="pick-button" onclick="intro_pick(this,'category','<%=tag%>')"><span><%=tag%></span></div>
+              <% end %>
+
+            </div>
+
           </div>
         </div>
         <div class="face-footer" onclick="$('.modal').modal('hide');">
-          <div >로그인 없이 둘러보기 <span>></span></div>
+          <div >그냥 둘러보기 <span>></span></div>
         </div>
       </div>
     </div>
@@ -21,18 +50,43 @@
 </div>
 
 <script>
-  if(getCookie('intro_switch')===''||getCookie('intro_switch')==='true'){
+//  if(getCookie('intro_switch')===''||getCookie('intro_switch')==='true'){
   <% if current_user.nil?%>
     $(".intro").modal('show');
-  <% elsif current_user.prefer.nil? %>
-    $(".intro").modal('show');
   <% end%>
-    document.cookie = "intro_switch=true";
-  }
+//    document.cookie = "intro_switch=true";
+//  }
     function call_ask(){
-        $(".intro").modal('hide');
-        $(".ask").modal('show');
+      $(".face-index").fadeOut(300, function(){
+          $(".face-pick").fadeIn(300);
+
+      });
     }
+    function call_category(){
+        $("#style").fadeOut(300,function(){
+            $("#category").fadeIn(300);
+        });
+        $("body > div.modal.intro.in > div > div > div > div > div.face-footer").fadeOut(300);
+
+    }
+
+    var styletag = "";
+    var category = "";
+    function intro_pick(clicked,type,data){
+        $(clicked).addClass("tag-button-clicked");
+
+        if(type==="style"){
+           styletag = data;
+           console.log('sthle');
+        }
+        else{
+            category = data;
+            $(".intro").addClass("fade").modal('hide');
+            $(".contents-frame").load('/contents/item/?id='+category+'&hashtag='+styletag,function(){});
+        }
+
+    }
+
     function call_login(){
         $(".login-modal").modal('show');
     }
