@@ -7,7 +7,8 @@
 @import "bootstrap";
 
 *{
-//border:solid 1px black;
+
+  //border:solid 1px black;
 }
 
 html, body{
@@ -27,7 +28,7 @@ a{
 }
 a:visited {color:inherit;}  /* visited link */
 a:hover {color:inherit;}  /* mouse over link */
-a:active {color:black;}
+a:active {color:inherit;}
 
 .pcindex{
   background-image:url(/assets/pcindex.jpg);
