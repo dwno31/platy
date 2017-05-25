@@ -149,7 +149,7 @@ before_action :mobile_check, only:[:index]
 
 				end
 				productlist(@product)
-				tags = [input_category,input_style,input_purpose,'그릇','프리티','마리아주'].compact
+				tags = [input_category,input_style,input_purpose].compact
 				session[:prefer_tags] = tags
 				@prefer_tags = tags.shift(4)
 
