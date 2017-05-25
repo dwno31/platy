@@ -78,11 +78,13 @@
         if(type==="style"){
            styletag = data;
            console.log('sthle');
+           $("#"+data).addClass("tag-button-clicked");
         }
         else{
             category = data;
             $(".intro").addClass("fade").modal('hide');
             $(".contents-frame").load('/contents/item/?id='+category+'&hashtag='+styletag,function(){});
+            $("#"+data).addClass("tag-button-clicked");
         }
 
     }
