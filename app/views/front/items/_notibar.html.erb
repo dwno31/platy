@@ -1,7 +1,7 @@
 
 <div class="noti-tag">
-  <% for i in 0..3 %>
-  <span>#<%=@prefer_tags[i]%></span>
+  <% @prefer_tags.each do |tag| %>
+  <span>#<%=tag%></span>
   <% end %>
 </div>
 <div class="noti-button" onclick="prefer_reset()">
