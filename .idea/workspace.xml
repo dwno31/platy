@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/front/modal/intro/_ask.html.erb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/front_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/front_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/index.html.erb" afterPath="$PROJECT_DIR$/app/views/front/index.html.erb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/items/_notibar.html.erb" afterPath="$PROJECT_DIR$/app/views/front/items/_notibar.html.erb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -41,8 +38,18 @@
           <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1620">
-                  <caret line="108" column="41" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+                <state relative-caret-position="981">
+                  <caret line="141" column="6" lean-forward="false" selection-start-line="141" selection-start-column="6" selection-end-line="141" selection-end-column="6" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_notibar.html.erb" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/views/front/items/_notibar.html.erb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="483">
+                  <caret line="81" column="16" lean-forward="false" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
                   <folding />
                 </state>
               </provider>
@@ -58,10 +65,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="front_controller.rb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="front_controller.rb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/front_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="139">
+                <state relative-caret-position="192">
                   <caret line="394" column="40" lean-forward="false" selection-start-line="394" selection-start-column="40" selection-end-line="394" selection-end-column="40" />
                   <folding />
                 </state>
@@ -197,8 +204,8 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
         <option value="$PROJECT_DIR$/app/views/front/modal/intro/_intro.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/index.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/front/items/_notibar.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/front_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/front/items/_notibar.html.erb" />
       </list>
     </option>
   </component>
@@ -872,12 +879,12 @@
       <workItem from="1494319608793" duration="10589000" />
       <workItem from="1494497640723" duration="101939000" />
       <workItem from="1495512447225" duration="11029000" />
-      <workItem from="1495567373299" duration="28816000" />
+      <workItem from="1495567373299" duration="29177000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="501774000" />
+    <option name="totallyTimeSpent" value="502135000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1267,26 +1274,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/front/items/_notibar.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/front_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-807">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="192">
+          <caret line="394" column="40" lean-forward="false" selection-start-line="394" selection-start-column="40" selection-end-line="394" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="108" column="41" lean-forward="false" selection-start-line="108" selection-start-column="41" selection-end-line="108" selection-end-column="41" />
+        <state relative-caret-position="981">
+          <caret line="141" column="6" lean-forward="false" selection-start-line="141" selection-start-column="6" selection-end-line="141" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/front_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/views/front/items/_notibar.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="394" column="40" lean-forward="false" selection-start-line="394" selection-start-column="40" selection-end-line="394" selection-end-column="40" />
+        <state relative-caret-position="483">
+          <caret line="81" column="16" lean-forward="false" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
           <folding />
         </state>
       </provider>
