@@ -5,22 +5,24 @@ require 'browser'
 before_action :mobile_check, only:[:index]
 
 	def index
-		if current_user.nil?
-      prefer_product = prefer_scenario(nil)
-			productlist(prefer_product)
-		elsif current_user.prefer.nil?
-			prefer_product = prefer_scenario(current_user)
-			productlist(prefer_product)
-		else
-      productlist(prefer_scenario(current_user))
-		end
-    userlikelist(current_user)
-		logger.info @prefer_tags
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','잔','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
-		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
 		@purpose_list = ['한식','양식','면','혼밥','술','홈카페','디저트','홈파티','어린이','신혼','선물','조리']
+		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
 		@render_hash = {:카테고리=>@category_list,:스타일=>@style_list,:용도=>@purpose_list}
+		filter_tag = []
+		index_product = []
+		#유저가 그냥 넘어갔을때 보여주는 상품리스트, 프로덕트 레코드 어레이를 리턴해서 인덱스 프로덕트에 저장
+		if current_user.nil?||current_user.prefer.nil?
+      index_product = prefer_scenario(nil)
+      logger.info "index-nil"
+    else
+      index_product = prefer_scenario(current_user.prefer)
+    end
+    logger.info index_product.inspect
 
+		productlist(index_product)
+    userlikelist(current_user)
+    logger.info @prefer_tags
 	end
 
 	def table
@@ -77,8 +79,14 @@ before_action :mobile_check, only:[:index]
 				render partial: "front/likelist/contents-shop-frame"
 			when "product"
 				logger.info "hello...?"
-				call_products = prefer_scenario(current_user)
+				if current_user.nil?||current_user.prefer.nil?
+					prefer_tag = nil
+				elsif
+					prefer_tag = current_user.prefer
+				end
+				call_products = prefer_scenario(prefer_tag)
         @prefer_tags = session[:prefer_tags]
+				logger.info session[:prefer_tags]
 				productlist(call_products)
 				render partial: "front/items/contents-frame"
 			when "likeitem"
@@ -126,14 +134,14 @@ before_action :mobile_check, only:[:index]
 				render partial: "front/browse/contents", layout: false
 			when "item"
 				if params[:id].nil?
-					@product = Product.order("RAND()").order(rating: :desc)
+					@product = Product.order(rating: :desc)
 				elsif params[:hashtag].nil?
 					input_tags = params[:id].split(',')
 					input_tags.shift #destroy first one
 					logger.info input_tags
 					@product = []
 					input_tags.each do |tag|
-						@product = @product + Product.where("category like ?","%#{tag}%").order("RAND()").order(rating: :desc)
+						@product = @product + Product.where("category like ?","%#{tag}%").order(rating: :desc)
 					end
 					@product = @product.uniq
 				else
@@ -142,16 +150,16 @@ before_action :mobile_check, only:[:index]
 					input_style = params[:hashtag].split(',')[0]
 					input_purpose = params[:hashtag].split(',')[1]
 					if hashtag.length==2
-						@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{input_category}%","%#{input_style}%","%#{input_purpose}%").order("RAND()").order(rating: :desc)
+						@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{input_category}%","%#{input_style}%","%#{input_purpose}%").order(rating: :desc)
 					else
-						@product = Product.where("category like ? and (hashtag like ?)","%#{input_category}%","%#{hashtag[0]}%").order("RAND()").order(rating: :desc)
+						@product = Product.where("category like ? and (hashtag like ?)","%#{input_category}%","%#{hashtag[0]}%").order(rating: :desc)
 					end
 
 				end
 				productlist(@product)
-				tags = [input_category,input_style,input_purpose].compact
+				tags = [input_category,input_style,input_purpose]
 				session[:prefer_tags] = tags
-				@prefer_tags = tags.shift(4)
+				@prefer_tags = tags
 
 
 				render partial: "front/items/contents-frame", layout: false
@@ -196,13 +204,21 @@ before_action :mobile_check, only:[:index]
 		index = params[:index]
     hashtag = params[:hashtag].gsub('undefined','').split(',').reject{|c|c.empty?}
 		page = params[:page].to_i
+    logger.info "slidecontents"
+		logger.info hashtag.empty?
 
 		if slide_type =="shop"	#샵이 불리면 그냥 샵리스트를 불러주고 추가적인 처리는 contents reload메소드에서
 			render partial:"front/browse/contents", layout:false
 		elsif slide_type =="item"	#아이템이 불리면 인풋되는 인덱스/페이지에 따라서 아이템을 호출해서 렌더로 던져준다
 			start_number = page*24
-			if (index=="index" && hashtag.empty?)
-				@product = prefer_scenario(current_user)
+			if index=="index" && hashtag.empty?
+				if current_user.nil?||current_user.prefer.nil?
+					prefer_tag = nil
+				else
+					prefer_tag = current_user.prefer
+				end
+				@product = prefer_scenario(prefer_tag)
+				logger.info @product.size
 			else
 				index = index.gsub('index','')
 				logger.info hashtag
@@ -320,7 +336,7 @@ private
 	def productlist(record)
     @head_tag = ["우드트레이","볼","플레이트","커트러리","홈세트","머그","소품","매트"]
     if record.nil?
-      @product = Product.order("RAND()").order(rating: :desc)
+      @product = Product.order(rating: :desc)
 		else
 			@product = record
 		end
@@ -367,96 +383,36 @@ private
 		end
 	end
 
-  def prefer_scenario(user)
+	#prefer시나리오에 따라서 tag 를 받고(없으면 랜덤)product record array를 리턴해준다
+
+  def prefer_scenario(tags)
+		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','잔','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
+		@purpose_list = ['한식','양식','면','혼밥','술','홈카페','디저트','홈파티','어린이','신혼','선물','조리']
+		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
 		prefer_tags = []
-		price_limit = false
 		prefer_product = []
-
-		if user.nil?&session[:prefer].nil?
-			user_prefer = [rand(0..2),rand(0..2)]
-			session[:prefer] = user_prefer
+		if tags.nil?&&session[:prefer_tags].nil?
+			filter_tag = [@category_list.sample,@style_list.sample]
+			session[:prefer] = filter_tag
 			logger.info "2nil"
-		elsif user.nil?&!session[:prefer].nil?
-			user_prefer = session[:prefer]
-			logger.info "ssntnil"
-      logger.info user
-    else
-			user.prefer = session[:prefer]
-			user.save
-			user_prefer = session[:prefer]
+			logger.info filter_tag
+    elsif tags.nil?
+      filter_tag = session[:prefer_tags]
+		elsif session[:prefer_tags].nil?
+			filter_tag = eval(tags)
 		end
-		user_prefer = eval(user_prefer.to_s)
-    logger.info user_prefer
-		case user_prefer
-			when [0,0]
-				prefer_tags = ['홈세트','볼','플레이트','커트러리','컵','잔']
-				price_limit = true
-			when [0,1]
-				prefer_tags = ['폴란드','유니크','엔틱','로멘틱','럭셔리']
-			when [0,2]
-				prefer_tags = ['북유럽','모던','심플','홈세트','일러스트','컬러풀']
-			when [1,0]
-				prefer_tags = ['한식','면','양식','어린이','핸드메이드','컬러풀']
-			when [1,1]
-				prefer_tags = ['일러스트','유니크','엔틱','로맨틱','클래식','럭셔리','홈카페','술']
-			when [1,2]
-				prefer_tags = ['북유럽','홈카페','술','디저트']
-      when [2,0]
-        price_limit = true
-				prefer_tags = ['커피','잔','컵','홈카페','티세트']
-			when [2,1]
-				prefer_tags = ['유니크','엔틱','로맨틱','럭셔리']
-			when [2,2]
-				prefer_tags = ['클래식','북유럽','폴란드','내츄럴','모던']
-			else
-				logger.info "/?????anjdi"
-		end
-		logger.info prefer_tags
-    #결론은 prefer relation, 분기를 여기서 잡아서 캐싱해야됨
-		if price_limit
-			prefer_relation = prefer_tags.map{|x|
-				if x=="홈세트"
-					if Rails.cache.read(x).nil?
-					@products = Rails.cache.fetch(x,expires_in:30.minutes){
-					Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000).order("RAND()").order(rating: :desc).to_a
-					}
-					else
-					@products = Rails.cache.read(x)
-					end
-				else
-					if Rails.cache.read(x).nil?
-					@products = Rails.cache.fetch(x,expires_in:30.minutes){
-					Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",30000).order("RAND()").order(rating: :desc).to_a
-					}
-					else
-					@products = Rails.cache.read(x)
-					end
-				end
-			}
-		else
-			prefer_relation = prefer_tags.map{|x|
-       	if Rails.cache.read(x).nil?
-					@products = Rails.cache.fetch(x,expires_in:30.minutes){
-					Product.where("category like ? or hashtag like ?","%#{x}%","%#{x}%").where("price<?",150000).order("RAND()").order(rating: :desc)
-					}
-					else
-					@products =Rails.cache.read(x)
-				end
-			}
-		end
-		@prefer_tags = prefer_tags
-		session[:prefer_tags] = @prefer_tags
-		logger.info prefer_relation.size
-		prefer_relation.each do |x|
-			x.each do |record|
-				prefer_product.push(record)
-			end
-    end
+		@prefer_tags = filter_tag
 
-		logger.info prefer_product.uniq.size
-    logger.info session[:prefer]
-		logger.info user_prefer
-		return prefer_product.uniq!
+		Product.where("category like ? and hashtag like ?","%#{filter_tag[0]}%","%#{filter_tag[1]}%").each do |record|
+			prefer_product.push(record)
+		end
+
+
+		session[:prefer_tags] = @prefer_tags
+		logger.info session[:prefer_tags]
+    logger.info prefer_product.size
+
+		return prefer_product.uniq
 	end
 
 

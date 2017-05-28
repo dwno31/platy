@@ -1,6 +1,6 @@
 
 <div class="noti-tag">
-  <% @prefer_tags.each do |tag| %>
+  <% @prefer_tags.compact.each do |tag| %>
   <span>#<%=tag%></span>
   <% end %>
 </div>
