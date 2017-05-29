@@ -260,7 +260,7 @@ before_action :mobile_check, only:[:index]
 	def bridge
 
 		input = params[:id]
-		@record = Merchant.find(input.to_i)
+		@record = Product.find(input.to_i)
 		#@record.counter = @record.counter +1;
 		#@record.save
 

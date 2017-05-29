@@ -50,12 +50,10 @@
 </div>
 
 <script>
-//  if(getCookie('intro_switch')===''||getCookie('intro_switch')==='true'){
   <% if current_user.nil?%>
     $(".intro").modal('show');
+    $(".intro").addClass("fade");
   <% end%>
-//    document.cookie = "intro_switch=true";
-//  }
     function call_ask(){
       $(".face-index").fadeOut(300, function(){
           $(".face-pick").fadeIn(300);
@@ -82,7 +80,7 @@
         }
         else{
             category = data;
-            $(".intro").addClass("fade").modal('hide');
+            $(".intro").modal('hide');
             $(".contents-frame").load('/contents/item/?id='+category+'&hashtag='+styletag,function(){});
             $("#"+data).addClass("tag-button-clicked");
         }
