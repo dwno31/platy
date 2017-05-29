@@ -173,8 +173,14 @@ class BackendController < ApplicationController
     elsif record.nil?
       encode_text = 'nothumbnail'
     else
+      begin
       encode_text = Base64.encode64(open(record_img).read).gsub(/\n/,'')
+      rescue OpenURI::HTTPError => e
+        # it's 404, etc. (do nothing)
+        record.destroy
+      else
       record_url = "data:image/png;base64,"+encode_text
+      end
     end
 
     case input_type

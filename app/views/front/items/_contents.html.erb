@@ -48,8 +48,16 @@
   <% end %>
   <div class="contents-loading" style="display:none;"></div>
 </div>
+<div class="contents-end" onclick="addtagplz(this);" style="display: none;">
+  <span>상품 리스트 추가 요청하기</span>
+</div>
 <script>
     $(".body-divide").ready(function(){
         $("#loading").hide();
     });
+
+    function addtagplz(ele){
+        $(".contents-end>span").text('상품 리스트 추가 요청이 완료되었습니다, 감사합니다').addClass('complete');
+
+    }
 </script>

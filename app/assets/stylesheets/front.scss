@@ -13,6 +13,7 @@
 
 html, body{
 
+font-weight:300;
 height:100%;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -59,7 +60,28 @@ a:active {color:inherit;}
   background-size:15%;
   background-repeat:no-repeat;
 }
-
+.contents-end{
+  float:left;
+  margin-top:2%;
+  width:100%;
+  height:15%;
+  text-align: center;
+}
+.contents-end>span{
+  border: solid #a7c9a9 1px;
+  padding: 5px;
+  border-radius: 3px;
+  color: #6d6d6d;
+  background: white;
+}
+.contents-end>span:active{
+  background:#a7c9a9;
+  color:white;
+}
+  .contents-end>span.complete{
+    background:#a7c9a9;
+    color:white;
+  }
 
 
 // top nav bar
@@ -560,7 +582,9 @@ margin-top:17vh;
         }
 
         .modal-product-detail{
+          color:#333333;
           text-align:center;
+          padding:7% 2%;
         }
   .modal-footer{
     position:fixed;

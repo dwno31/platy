@@ -65,7 +65,8 @@
                     if(data==="nil"){
                         $(".contents-loading").hide();
                         end_param = false;
-                        $(".body-divide").attr('style','padding-bottom:15%;');
+                        $(".contents-end>span").text("["+$('.noti-tag').text()+'] 상품리스트 추가 요청하기');
+                        $(".contents-end").show();
                     }else {
                         append_str = $(this).find(".body-divide");
 
@@ -81,11 +82,10 @@
                 });
                 page = page + 1;
                 switcher = false;
-                setTimeout(function(){switcher=true;},300);
+                setTimeout(function(){switcher=true;},200);
             }
             else{
                 console.log("timeout-90");
-                setTimeout(function(){switcher=true;},300);
             }
         }else if ($('body')[0].scrollHeight-browser.scrollTop()===browser.outerHeight()){
             console.log("30");
@@ -113,11 +113,10 @@
                 });
                 page = page + 1;
                 switcher = false;
-                setTimeout(function(){switcher=true;},500);
+                setTimeout(function(){switcher=true;},200);
             }
             else{
                 console.log("timeout-30");
-                setTimeout(function(){switcher=true;},500);
             }
         }
 
