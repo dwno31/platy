@@ -104,7 +104,6 @@ class BackendController < ApplicationController
 				whole_att.each do |att|
 					case i
             when 0
-              logger.info att
 							record.merchant_id = Merchant.find_by(:title=>att).id
 						when 1
 							record.title = att
@@ -117,12 +116,13 @@ class BackendController < ApplicationController
             when 5
               record.category = att.gsub(/ /,'')
             when 6
-              record.hashtag = att.gsub(/ /,'')
+              record.category = att.category+','+att.gsub(/ /,'')
             when 7
-              logger.info record.hashtag
-              record.hashtag = record.hashtag+','+ att.gsub(/ /,'')
+              record.hashtag = att.gsub(/ /,'')
             when 8
               record.rating = att.to_i
+            when 9
+              record.color = att.gsub(/ /,'')
 					end
 
 					i = i+1;

@@ -1,6 +1,6 @@
 
 <div class="noti-tag">
-  <% @prefer_tags.compact.each do |tag| %>
+  <% @prefer_tags.compact.reject{|x|x.empty?}.each do |tag| %>
   <span>#<%=tag%></span>
   <% end %>
 </div>
