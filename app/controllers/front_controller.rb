@@ -7,8 +7,9 @@ before_action :mobile_check, only:[:index]
 	def index
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
 		@purpose_list = ['한식','양식','면','혼밥','술','홈카페','디저트','홈파티','어린이','신혼','선물','조리']
-		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
-		@render_hash = {:카테고리=>@category_list,:스타일=>@style_list,:용도=>@purpose_list}
+		@category_list = @category_list + @purpose_list
+		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','일본','북유럽','폴란드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
+		@render_hash = {:스타일=>@style_list,:카테고리=>@category_list}
 		filter_tag = []
 		index_product = []
 		#유저가 그냥 넘어갔을때 보여주는 상품리스트, 프로덕트 레코드 어레이를 리턴해서 인덱스 프로덕트에 저장
@@ -402,7 +403,9 @@ private
   def prefer_scenario(tags)
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
 		@purpose_list = ['한식','양식','면','혼밥','술','홈카페','디저트','홈파티','어린이','신혼','선물','조리']
-		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','한식','일본','북유럽','폴란드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
+		@category_list = @category_list+@purpose_list
+		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','일본','북유럽','폴란드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
+    @color_hash = {"white"=>"#ffffff", "black"=>"#000000", "gray"=>"#999999", "brown"=>"#662200", "purple"=>"#b30086", "orange"=>"#ff9900", "mint"=>"#99ffdd", "green"=>"#00cc44", "blue"=>"#0000ff", "skyblue"=>"#99ddff", "glass"=>"#ffffff", "metal"=>"#f2f2f2", "gold"=>"#ffff66", "copper"=>"#cc9900", "mix"=>"url('/assets/mix.png')", "flower"=>"url('/assets/flower.png')", "stripe"=>"url('/assets/stripe.png')", "ivory"=>"#ffffcc", "khaki"=>"#666633", "beige"=>"#fffae6", "red"=>"#ff3300", "pink"=>"#ffb3ff", "wine"=>"#990033", "wood"=>"#993300", "yellow"=>"#ffff00"}
 		prefer_tags = []
 		prefer_product = []
 		if tags.nil?&&session[:prefer_tags].nil?

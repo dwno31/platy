@@ -64,7 +64,7 @@
             <a href="<%=record.url%>" onclick="ga('send','event','recommend-body','outlink','<%=record.id%>');">
               <div class="modal-product-detail">
                 <span><%=record.title%></span><br>
-                <span><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
+                <span class="product-price"><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
                 <span></span>
               </div>
             </div>
@@ -85,7 +85,7 @@
           <a href="<%=record.url%>" onclick="ga('send','event','recommend-body','outlink','<%=record.id%>');">
             <div class="modal-product-detail">
               <span><%=record.title%></span><br>
-              <span><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
+              <span class="product-price"><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
             </div>
           </div>
           </a>

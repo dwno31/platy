@@ -116,7 +116,7 @@ class BackendController < ApplicationController
             when 5
               record.category = att.gsub(/ /,'')
             when 6
-              record.category = att.category+','+att.gsub(/ /,'')
+              record.category = record.category+','+att.gsub(/ /,'')
             when 7
               record.hashtag = att.gsub(/ /,'')
             when 8
