@@ -1,6 +1,7 @@
 
 
 <script>
+  ga('send','event','outlink','click','<%=@record.id%>');
   $(document).ready(function(){
       setTimeout(function(){ $(location).attr('href', '<%=@record.url%>') }, 1);
 

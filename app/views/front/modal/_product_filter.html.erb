@@ -9,6 +9,7 @@
         var hashtag = style+','+purpose;
         //카테고리 스타일 용도를 층별로 모
         end_param = true;
+        ga('send','event','filter','move',category+','+hashtag);
         page = 1;
         $(".contents-frame").load('/contents/item/?id='+category+'&hashtag='+hashtag,function(){
         });
@@ -54,7 +55,7 @@
         </div>
         <div class="modal-filter-list" id="<%=k%>">
         <% v.each do |tag| %>
-          <div  id='<%=tag%>' class="modal-filter-button" onclick="filter_toggle(this)">
+          <div  id='<%=tag%>' class="modal-filter-button" onclick="filter_toggle(this);ga('send','event','filter','browse','<%=tag%>');">
             <span><%=tag%></span>
           </div>
         <% end %>

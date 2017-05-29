@@ -45,7 +45,9 @@ before_action :mobile_check, only:[:index]
   def search_item
 		userlikelist(current_user)
 		keyword = params[:keyword]
+
 		@records = Product.where("title like ? or category like ? or hashtag like ?","%#{keyword}%","%#{keyword}%","%#{keyword}%").order(rating: :desc)
+		@merchant_record = Merchant.where("title like ?","%#{keyword}%").map{|x|x.products.order(rating: :desc)}
 		@product1 = []
 		@product2 = []
 		tog = false
@@ -58,6 +60,18 @@ before_action :mobile_check, only:[:index]
 					@product2.push(record) #짝수는 여기다 넣어서 렌더링으로 넘겨준다
 			end
 			tog = !tog
+		end
+
+		@merchant_record.each do |relation|
+			relation.each do |record|
+			case tog
+				when false
+					@product1.push(record) #홀수는 여기다 넣고
+				when true
+					@product2.push(record) #짝수는 여기다 넣어서 렌더링으로 넘겨준다
+			end
+			tog = !tog
+				end
 		end
 
 		render partial: "front/items/contents"

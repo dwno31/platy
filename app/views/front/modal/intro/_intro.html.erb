@@ -13,7 +13,7 @@
           <div class="face-message">
             <div class="face-header">당신의 식탁에<br>꼭 어울리는 테이블웨어를 찾아보세요</div>
             <div class="ask-step">
-              <div onclick="call_ask()">시작하기</div>
+              <div onclick="call_ask();ga('send','event','intro','move','intro1');">시작하기</div>
             </div>
             <!--<div class="ask-step">-->
               <!--<div onclick="call_login()">로그인/무료회원가입</div>-->
@@ -25,7 +25,7 @@
             <div class="pick-header">어떤 스타일의 테이블웨어 마리아쥬를 찾으시나요?</div>
             <div class="pick-box">
               <% @style_list.each do |tag|%>
-              <div class="pick-button" onclick="call_category('<%=tag%>');intro_pick(this,'style','<%=tag%>');"><span><%=tag%></span></div>
+              <div class="pick-button" onclick="call_category('<%=tag%>');intro_pick(this,'style','<%=tag%>');ga('send','event','intro','move','intro2');"><span><%=tag%></span></div>
               <% end %>
             </div>
 
@@ -34,14 +34,14 @@
             <div class="pick-header">주로 어떤 카테고리를 보고 싶으신가요?</div>
             <div class="pick-box">
               <% @category_list.each do |tag|%>
-                  <div class="pick-button" onclick="intro_pick(this,'category','<%=tag%>')"><span><%=tag%></span></div>
+                  <div class="pick-button" onclick="intro_pick(this,'category','<%=tag%>');ga('send','event','intro','move','intro3');"><span><%=tag%></span></div>
               <% end %>
 
             </div>
 
           </div>
         </div>
-        <div class="face-footer" onclick="$('.modal').modal('hide');">
+        <div class="face-footer" onclick="$('.modal').modal('hide');ga('send','event','intro','move','index');">
           <div >그냥 둘러보기 <span>></span></div>
         </div>
       </div>

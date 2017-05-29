@@ -9,21 +9,21 @@
         <div class="face-message">
           <div class="face-header">로그인 / 무료회원가입</div>
 
-          <a href="/users/auth/naver">
+          <a onclick="ga('send','event','login','click','naver');" href="/users/auth/naver">
             <div class="ask-step">
               <div onclick="">
                 <img src="/assets/intro/logos/naver.png" class="login-icon"/>
                 네이버</div>
             </div>
           </a>
-          <a href="/users/auth/facebook">
+          <a onclick="ga('send','event','login','click','facebook');" href="/users/auth/facebook">
             <div class="ask-step">
               <div onclick="">
                 <img src="/assets/intro/logos/facebook.png" width=17px />
                 페이스북</div>
             </div>
           </a>
-          <a href="/users/auth/kakao">
+          <a onclick="ga('send','event','login','click','kakao');" href="/users/auth/kakao">
             <div class="ask-step">
               <div onclick="">
                 <img src="/assets/intro/logos/kakao.png"  width=25px />
@@ -32,7 +32,7 @@
             </div>
           </a>
         </div>
-        <div class="face-footer" onclick="$('.modal').modal('hide');">
+        <div class="face-footer" onclick="$('.modal').modal('hide');ga('send','event','login','click','hide');">
           <div >로그인 없이 둘러보기 <span>></span></div>
         </div>
       </div>
