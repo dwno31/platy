@@ -148,6 +148,7 @@ before_action :mobile_check, only:[:index]
 
 				render partial: "front/browse/contents", layout: false
 			when "item"
+				input_color = params[:color].split(',').map{|x|"%#{x}%"}
 				if params[:id].nil?
 					@product = Product.order(rating: :desc)
 				elsif params[:hashtag].nil?
@@ -171,7 +172,20 @@ before_action :mobile_check, only:[:index]
 					end
 
 				end
-				productlist(@product)
+				product_with_color = []
+
+				input_color.each do |color|
+					product_with_color.push(@product.where("color like ?",color))
+				end
+
+				if product_with_color.empty?
+
+				else
+					@product = product_with_color.inject{|sum,x|sum+x}
+				end
+
+				logger.info @product.pluck(:color)
+				productlist(@product.uniq)
 				tags = [input_category,input_style,input_purpose]
 				session[:prefer_tags] = tags
 				@prefer_tags = tags
@@ -218,7 +232,9 @@ before_action :mobile_check, only:[:index]
 		slide_type = params[:slide]
 		index = params[:index]
     hashtag = params[:hashtag].gsub('undefined','').split(',').reject{|c|c.empty?}
+		input_color = params[:color].split(',').map{|x|"%#{x}%"}
 		page = params[:page].to_i
+    product_with_color = []
     logger.info "slidecontents"
 		logger.info hashtag.empty?
 
@@ -243,7 +259,23 @@ before_action :mobile_check, only:[:index]
 					@product = Product.where("category like ? and hashtag like ?","%#{index}%","%#{hashtag[0]}%").order(rating: :desc) #추후 인덱스에 맞는것만 불러오게 수
 				end
 				logger.info @product.size
+
 			end
+
+			product_with_color = []
+
+			input_color.each do |color|
+				product_with_color.push(@product.where("color like ?",color))
+			end
+
+			if product_with_color.empty?
+
+			else
+				@product = product_with_color.inject{|sum,x|sum+x}
+			end
+
+			@product = @product.uniq
+
 			@records = (start_number..start_number+23).to_a.map{|x|@product[x]}
 
 			@product1 = []
@@ -405,7 +437,7 @@ private
 		@purpose_list = ['한식','양식','면','혼밥','술','홈카페','디저트','홈파티','어린이','신혼','선물','조리']
 		@category_list = @category_list+@purpose_list
 		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','일본','북유럽','폴란드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
-    @color_hash = {"white"=>"#ffffff", "black"=>"#000000", "gray"=>"#999999", "brown"=>"#662200", "purple"=>"#b30086", "orange"=>"#ff9900", "mint"=>"#99ffdd", "green"=>"#00cc44", "blue"=>"#0000ff", "skyblue"=>"#99ddff", "glass"=>"#ffffff", "metal"=>"#f2f2f2", "gold"=>"#ffff66", "copper"=>"#cc9900", "mix"=>"url('/assets/mix.png')", "flower"=>"url('/assets/flower.png')", "stripe"=>"url('/assets/stripe.png')", "ivory"=>"#ffffcc", "khaki"=>"#666633", "beige"=>"#fffae6", "red"=>"#ff3300", "pink"=>"#ffb3ff", "wine"=>"#990033", "wood"=>"#993300", "yellow"=>"#ffff00"}
+    @color_hash = {"white"=>"#ffffff", "black"=>"#000000", "gray"=>"#999999", "brown"=>"#662200", "purple"=>"#b30086", "orange"=>"#ff9900", "mint"=>"#99ffdd", "green"=>"#00cc44", "blue"=>"#0000ff", "skyblue"=>"#99ddff", "glass"=>"url('/assets/glass.png')", "metal"=>"#f2f2f2", "gold"=>"url('/assets/gold.png')", "copper"=>"#cc9900", "mix"=>"url('/assets/mix.png')", "flower"=>"url('/assets/flower.png')", "stripe"=>"url('/assets/stripe.png')", "ivory"=>"#ffffcc", "khaki"=>"#666633", "beige"=>"#fffae6", "red"=>"#ff3300", "pink"=>"#ffb3ff", "wine"=>"#990033", "wood"=>"url('/assets/wood.png')", "yellow"=>"#ffff00"}
 		prefer_tags = []
 		prefer_product = []
 		if tags.nil?&&session[:prefer_tags].nil?

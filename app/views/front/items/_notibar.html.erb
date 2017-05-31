@@ -45,6 +45,7 @@
         var category = $("#카테고리>.tag-button-clicked").attr('id');
         var style = $("#스타일>.tag-button-clicked").attr('id');
         var purpose = $("#용도>.tag-button-clicked").attr('id');
+        var color = $("#색상>.color-button-clicked").map(function(){return this.id}).get().join(',');
         var index = $(".tag-browser>.tag-button-clicked").attr('id');
         console.log("scrollevent");
         if(index===undefined){
@@ -61,7 +62,7 @@
                 ga('send','event','product','scroll',index+','+style+','+purpose);
                 $(".body-divide>.contents-loading:last-child").show();
 
-                $("<div>").load("/slide_contents/item/" + index + "?page=" + page+"&hashtag="+style+','+purpose, function (data) {
+                $("<div>").load("/slide_contents/item/" + index + "?page=" + page+"&hashtag="+style+','+purpose+"&color="+color, function (data) {
                     if(data==="nil"){
                         $(".contents-loading").hide();
                         end_param = false;

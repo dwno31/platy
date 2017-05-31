@@ -619,6 +619,14 @@ margin-top:17vh;
   border-bottom: solid grey 1px;
 
 }
+.modal-filter-body-horizontal{
+  padding:1%;
+  overflow-x:scroll;
+  overflow-y:hidden;
+  white-space:nowrap;
+  height:20%;
+  border-bottom: solid grey 1px;
+}
 .modal-filter-body-header{
   color:black;
   font-size:1.3em;
@@ -640,6 +648,22 @@ margin-top:17vh;
   .modal-filter-button>span{
   }
 
+  .modal-filter-list>.color-button{
+    display:inline-block;
+    text-align: center;
+    color:white;
+    text-shadow:1px 1px 1px grey;
+    padding:0.5%;
+    margin:1%;
+    border-radius:100%;
+    line-height:3.1;
+    width:50px;
+    height:50px;
+  }
+
+  .color-button-clicked{
+
+  }
 
 //login modal
 .login-modal-position{
