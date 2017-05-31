@@ -118,13 +118,16 @@ before_action :mobile_check, only:[:index]
 		rcmd_product = []
 		category = @input_record.category.split(',')
 		hashtag = @input_record.hashtag.split(',')
+		colors = @input_record.color.split(',')
 
 		hashtag.each do |tag|
-			Product.where("hashtag like ? and rating=?","%#{tag}%",1).order("RAND()").map{|record| rcmd_product.push(record)}
+			colors.each do |color|
+				Product.where("hashtag like ? and rating=? and color like ?","%#{tag}%",1,"%#{color}%").order("RAND()").map{|record| rcmd_product.push(record)}
+			end
 		end
 
 		userlikelist(current_user)
-		productlist(rcmd_product)
+		productlist(rcmd_product.uniq)
 		render partial: "front/modal/product_rcmd", layout: false
 	end
 
