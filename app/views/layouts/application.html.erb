@@ -132,11 +132,11 @@
     $('.modal').on('hide.bs.modal',function(e){
         window.location.hash = "";
     });
-//    $(window).on('hashchange', function (event) {
-//        if(window.location.hash != "#modal") {
-//            $('.modal').modal('hide');
-//        }
-//    });
+    $(window).on('hashchange', function (event) {
+        if(window.location.hash != "#modal") {
+            $('.modal').modal('hide');
+        }
+    });
 
 
 </script>
