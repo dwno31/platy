@@ -64,6 +64,18 @@
       </div>
     </div>
     <div class="modal-body">
+      <div class="modal-filter-body-horizontal">
+        <div class="modal-filter-body-header">
+          <span>색상</span>
+        </div>
+        <div class="modal-filter-list" id="색상">
+          <% @color_hash.each do |color,code| %>
+              <div  id='<%=color%>' class="color-button" style="background:<%=code%>; background-size:contain;" onclick="color_toggle(this);ga('send','event','filter','browse','<%=color%>');">
+                <span><%=color%></span>
+              </div>
+          <% end %>
+        </div>
+      </div>
       <% @render_hash.each do |k,v| %>
       <div class="modal-filter-body">
         <div class="modal-filter-body-header">
@@ -78,18 +90,7 @@
         </div>
       </div>
       <% end %>
-      <div class="modal-filter-body-horizontal">
-        <div class="modal-filter-body-header">
-          <span>색상</span>
-        </div>
-        <div class="modal-filter-list" id="색상">
-          <% @color_hash.each do |color,code| %>
-              <div  id='<%=color%>' class="color-button" style="background:<%=code%>; background-size:contain;" onclick="color_toggle(this);ga('send','event','filter','browse','<%=color%>');">
-                <span><%=color%></span>
-              </div>
-          <% end %>
-        </div>
-      </div>
+
       <div style="height:10vh;"></div>
     </div>
     <a onclick="filter_apply()">

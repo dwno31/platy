@@ -50,10 +50,18 @@
 </div>
 
 <script>
-  <% if current_user.nil?%>
+    if(window.location.hash.includes('modallink')) {
+        console.log('modalkin');
+        var hash = window.location.hash.split('/');
+        console.log(hash[1]);
+        product_rcmd_popup(hash[1]);
+    }else{
+
+    <% if current_user.nil?%>
+
     $(".intro").modal('show');
     $(".intro").addClass("fade");
-  <% end%>
+  <% end%>}
     function call_ask(){
       $(".face-index").fadeOut(300, function(){
           $(".face-pick").fadeIn(300);

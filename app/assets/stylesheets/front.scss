@@ -620,8 +620,7 @@ margin-top:17vh;
 }
 .modal-filter-body-horizontal{
   padding:1%;
-  overflow-x:scroll;
-  overflow-y:hidden;
+  overflow:hidden;
   white-space:nowrap;
   height:20%;
   border-bottom: solid grey 1px;
@@ -631,6 +630,7 @@ margin-top:17vh;
   font-size:1.3em;
 }
 .modal-filter-list{
+  overflow-x:scroll;
   display:block;
 }
 .modal-filter-button{
