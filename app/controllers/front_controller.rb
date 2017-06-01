@@ -150,8 +150,12 @@ before_action :mobile_check, only:[:index]
 				end
 
 				render partial: "front/browse/contents", layout: false
-			when "item"
-				input_color = params[:color].split(',').map{|x|"%#{x}%"}
+      when "item"
+        if params[:color].nil?
+					input_color = []
+				else
+					input_color = params[:color].split(',').map{|x|"%#{x}%"}
+				end
 				if params[:id].nil?
 					@product = Product.order(rating: :desc)
 				elsif params[:hashtag].nil?
