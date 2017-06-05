@@ -8,7 +8,7 @@
   %>
 
   <div class=content-block>
-    <a onclick="shop_product_popup(<%=record.id%>);ga('send','event','shop-card','click','<%=record.id%>');">
+    <a onclick="shop_product_popup(<%=record.id%>);ga('send','event','shop-popup','popup','<%=record.id%>');">
       <div class=content-ranking>
         <span class=ranking-number><%=i%></span>
       </div>
@@ -20,16 +20,16 @@
     </a>
     <% %>
     <% if @userlikeshops.include?(record.id) %>
-      <div  name=likeshop<%=record.id%>  class="likebutton-shop likebutton-shop-clicked" onclick="userlike(this,'shop','<%= record.id%>');"></div>
+      <div  name=likeshop<%=record.id%>  class="likebutton-shop likebutton-shop-clicked" onclick="userlike(this,'shop','<%= record.id%>');ga('send','event','shop','like','<%=record.id%>');"></div>
     <% else %>
-      <div  name=likeshop<%=record.id%> class="likebutton-shop" onclick="userlike(this,'shop','<%= record.id%>');"></div>
+      <div  name=likeshop<%=record.id%> class="likebutton-shop" onclick="userlike(this,'shop','<%= record.id%>');ga('send','event','shop','like','<%=record.id%>');"></div>
     <% end %>
-    <a onclick="shop_product_popup(<%=record.id%>);ga('send','event','shop-card','click','<%=record.id%>');">
+    <a onclick="shop_product_popup(<%=record.id%>);ga('send','event','shop-popup','popup','<%=record.id%>');">
       <div class=content-title>
         <span class="title-text"><%= record.title%></span>
       </div>
       <!--<div class=content-explain>-->
-        <!--<span class="explain-text"><%= record.explain%></span>-->
+        <!--<span class="explain-text"></span>-->
       <!--</div>-->
       <div class=content-hashtag>
         <%
