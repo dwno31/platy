@@ -24,8 +24,12 @@
         $(".contents-frame").load("/section/"+menu,function(){});
         if(menu==="product"){
             $(".itemfilter-button").show();
-             $(".itemsearch-button").show();
-        }else{
+            $(".itemsearch-button").attr('onclick','item_search_toggle(true)').show();
+        }else if(menu==="shop"){
+            $(".itemfilter-button").hide();
+            $(".itemsearch-button").attr('onclick','shop_search_toggle(true)').show();
+        }
+        else{
             $(".itemfilter-button").hide();
             $(".itemsearch-button").hide();
         }

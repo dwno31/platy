@@ -35,14 +35,31 @@ before_action :mobile_check, only:[:index]
 	end
 
 	def search_toggle
-		if params[:toggle]=="1"
-		render partial: "front/items/item_search"
-		else
-		@prefer_tags = session[:prefer_tags]
-		render partial: "front/items/notibar"
+    type = params[:type]
+		if type == "item"
+      if params[:toggle]=="1"
+      render partial: "front/items/item_search"
+      else
+      @prefer_tags = session[:prefer_tags]
+      render partial: "front/items/notibar"
+			end
+		elsif type== 'shop'
+			if params[:toggle]=="1"
+				render partial: "front/browse/shop_search"
+			else
+				render partial: "front/browse/tag_browser"
+			end
 		end
 	end
 
+	def search_shop
+		userlikelist(current_user)
+		keyword = params[:keyword]
+		@merchant = Merchant.where("title like ? or hashtag like ?","%#{keyword}%","%#{keyword}%").order(rating: :desc)
+
+
+		render partial: "front/browse/contents"
+	end
   def search_item
 		userlikelist(current_user)
 		keyword = params[:keyword]

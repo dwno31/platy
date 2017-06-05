@@ -72,12 +72,21 @@
 
     function item_search_toggle(data){
         if(data){
-        $(".notibar").load("/search_toggle/?toggle=1");
+        $(".notibar").load("/search_toggle/?toggle=1&type=item");
         }
         else{
         $(".contents-frame").fadeOut(300).load("/section/product",function(){}).fadeIn(300);
         }
     }
+    function shop_search_toggle(data){
+        if(data){
+            $(".tag-browser").load("/search_toggle/?toggle=1&type=shop");
+        }
+        else{
+            $(".contents-frame").fadeOut(300).load("/section/shop",function(){}).fadeIn(300);
+        }
+    }
+
     function item_search(){
 
     }
@@ -89,7 +98,6 @@
 
     function userlike(click,type,id){
         $("div[name=like"+type+id+"]").toggleClass('likebutton-'+type+'-clicked');
-//        $(".userlike_parent"+click+">")
         var type=type;
         var id = id;
         $.ajax({
@@ -141,10 +149,13 @@ fbq('track', 'PageView');
         window.location.hash = "modal";
     });
     $('.modal').on('hide.bs.modal',function(e){
+        history.pushState('', document.title, window.location.pathname); // nice and clean
+
         window.location.hash = "";
     });
     $(window).on('hashchange', function (event) {
         if(window.location.hash != "#modal") {
+
             $('.modal').modal('hide');
         }
     });
