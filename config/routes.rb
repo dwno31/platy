@@ -15,6 +15,7 @@ Rails.application.routes.draw do
  get "outlink/(:id)", to:"front#outlink"
  get "shop_product/(:id)", to:"front#shop_product"
  get "develop", to:"front#index"
+ get "insp", to:"front#index"
  get "slide_tag/(:slide)", to:"front#slide_tag"
  get "slide_contents/(:slide)/(:index)/(:page)", to:"front#slide_contents"
  get "section/(:menu)", to: "front#section_load"
