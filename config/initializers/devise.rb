@@ -251,7 +251,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :facebook, ENV['facebook_key'], ENV['facebook_secret'], callback_url: "http://www.mariazu.co/users/auth/facebook/callback"
+  config.omniauth :facebook, ENV['facebook_key'], ENV['facebook_secret'], callback_url: "http://mariazu.co/users/auth/facebook/callback"
   config.omniauth :naver, ENV['naver_key'], ENV['naver_secret']
   config.omniauth :kakao, ENV['kakao_key'], :redirect_path => "/users/auth/kakao/callback"
 
