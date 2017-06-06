@@ -87,8 +87,21 @@
         }
     }
 
-    function item_search(){
+    function addtagplz(){
+//        $(".color-button-clicked").each(function(i,e){color.push($(e).attr('id'))});
+        $(".contents-end>span").text('상품 리스트 추가 요청이 완료되었습니다, 감사합니다').addClass('complete');
+        var category = $("#카테고리>.tag-button-clicked").map(function(){return this.id}).get().join(',');
+        var color = $("#색상>.color-button-clicked").map(function(){return this.id}).get().join(',');
+        var style = $("#스타일>.tag-button-clicked").map(function(){return this.id}).get().join(',');
+        var from = "item-scroll-body";
+        status = [color,category,style];
+        type = "tagplz";
 
+        $.ajax({
+          url:"/feedback",
+          method:"POST",
+          data:{location:from,status:status,type:type}
+        });
     }
 
     function login_popup(){

@@ -193,6 +193,24 @@ class BackendController < ApplicationController
     render :json => {:url=>record_url}
   end
 
+
+  def feedback
+    if params[:status].split(',').empty?
+      status = session[:prefer_tags]
+    else
+      status = params[:status]
+    end
+    feedback = Feedback.new
+    feedback.user_id = current_user
+    feedback.location = params[:location]
+    feedback.status = status
+    feedback.type = params[:type]
+    feedback.message = params[:message]
+    feedback.save
+
+    render :plain => "ok"
+  end
+
   def kakao
     # data = {'grant_type'=>'refresh_token','client_id'=>"{#{ENV['kakao_key']}}",'refresh_token'=>"#{params[:refresh]}"}
     logger.info params[:token]

@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529090643) do
+ActiveRecord::Schema.define(version: 20170606034116) do
+
+  create_table "feedbacks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "user_id"
+    t.string   "location"
+    t.string   "status"
+    t.string   "type"
+    t.text     "message",    limit: 65535
+    t.index ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
+  end
 
   create_table "identities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"

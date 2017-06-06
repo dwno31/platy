@@ -26,6 +26,7 @@ Rails.application.routes.draw do
  get "product_rcmd/(:id)", to:"front#product_rcmd"
 
  #poset forward backend
+ post "feedback", to:"backend#feedback"
  post "userimage", to:"backend#userimage"
  post "userprefer", to:"backend#userprefer"
  post "kakao", to:"backend#kakao"
