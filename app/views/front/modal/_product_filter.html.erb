@@ -44,7 +44,7 @@
     }
     function reset_filter(){
         $(".modal-filter-button").removeClass("tag-button-clicked");
-        section_transfer('product');
+        color_toggle($(".color-button-clicked"));
     }
 
 </script>
@@ -62,6 +62,10 @@
           <span>상품검색필터</span>
         </div>
       </div>
+      <div class="modal-header-right">
+        <span onclick="reset_filter()">초기화</span>
+      </div>
+
     </div>
     <div class="modal-body">
       <div class="modal-filter-body-horizontal">

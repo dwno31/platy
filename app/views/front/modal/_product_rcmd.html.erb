@@ -33,7 +33,7 @@
         </div>
         <div class="item-detail">
           <div class="title">
-            <span><%=@input_record.merchant.title%></span>
+            <span><a onclick="return confirm('쇼핑몰로 이동하겠습니까?')" href="<%=@input_record.merchant.url%>" target="_blank"><%=@input_record.merchant.title%></a></span>
           </div>
           <div class="price">
             <span><%=@input_record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>

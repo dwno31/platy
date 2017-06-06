@@ -228,6 +228,7 @@ z-index: 10;
   background: white;
   overflow-y: hidden;
   white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
   overflow-x: auto;
   padding: 1%;
   z-index: 3;
@@ -492,15 +493,26 @@ margin-top:17vh;
     }
     .modal-header-left{
       float:left;
-      width:15%;
+      width:20%;
       height:100%;
     }
     .modal-header-right{
-      float:left;
-      width:15%;
-      height:100%;
-
+      float: right;
+      width: 19%;
+      height: 100%;
+      text-align: center;
+      line-height: 320%;
     }
+      .modal-header-right>span{
+        vertical-align: middle;
+        border: 1px solid white;
+        padding: 7.5%;
+        border-radius: 3px;
+      }
+      .modal-header-right>span:active{
+        background:white;
+        color:#c9c9c9;
+      }
       .backbutton{
         float:left;
         height:100%;
@@ -517,7 +529,7 @@ margin-top:17vh;
         }
     .modal-header-center{
       float:left;
-      width:70%;
+      width:60%;
       height:100%;
     }
       .modal-shoptitle{
@@ -572,7 +584,7 @@ margin-top:17vh;
         .likebutton-item-modal{
           width:15%;
           height:100%;
-          float:left;
+          float:right;
           background-image: url(/assets/ICON/like.png);
           background-size: 55% 58%;
           background-repeat:no-repeat;
