@@ -105,7 +105,6 @@
     }
 
     function login_popup(){
-        $(".modal").modal('hide')
         $(".login-modal").modal('show');
     }
 
@@ -121,17 +120,25 @@
             },
             error:function(){
                 $("div[name=like"+type+id+"]").toggleClass('likebutton-'+type+'-clicked');
+                hide_rcmd();
+                $("#nudge-message").html("즐겨찾기에 추가하고<br>멋진 마리아주를 완성할<br>추천 리스트를 확인해 보세요");
                 login_popup();
             }
         })
 
     }
-      function tag_toggle(a){
-          $(".tag-button").not(a).removeClass("tag-button-clicked");
-          $(a).toggleClass("tag-button-clicked");
+    function hide_rcmd(){
+//        $("#item-rcmd-body").attr("style","height:100%;");
+        $("#item-rcmd-body").toggleClass('overflow-y-hidden');
+        $(".item-focus-beforelogin").toggle();
+        $("#item-rcmd-body").scrollTop(0);
+    }
+    function tag_toggle(a){
+        $(".tag-button").not(a).removeClass("tag-button-clicked");
+        $(a).toggleClass("tag-button-clicked");
 
 
-      }
+    }
 
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;

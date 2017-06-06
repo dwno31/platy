@@ -3,7 +3,7 @@
     <div class="modal-body intro-body">
       <div class="face">
         <div class="face-index">
-          <div class="face-padding">
+          <div class="face-padding" style="height:22%;">
           </div>
           <div class="face-logo"></div>
           <div class="face-slogan">
@@ -41,7 +41,7 @@
 
           </div>
         </div>
-        <div class="face-footer" onclick="$('.modal').modal('hide');ga('send','event','intro','move','index');">
+        <div class="face-footer" data-dismiss="modal" onclick="ga('send','event','intro','move','index');">
           <div >그냥 둘러보기 <span>></span></div>
         </div>
       </div>
@@ -90,7 +90,7 @@
             category = data;
             $(".intro").modal('hide');
             $(".contents-frame").load('/contents/item/?id='+category+'&hashtag='+styletag,function(){
-
+                $("#nudge-message").html(styletag+" 스타일의 "+category+" 오브제를 찾았습니다<br>멋진 마리아주를 완성할<br>추천 리스트까지 확인해 보세요");
                 $(".login-modal").modal('show');
             });
             $("#"+data).addClass("tag-button-clicked");
@@ -98,7 +98,4 @@
 
     }
 
-    function call_login(){
-        $(".login-modal").modal('show');
-    }
 </script>

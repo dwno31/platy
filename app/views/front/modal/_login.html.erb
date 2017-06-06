@@ -4,11 +4,11 @@
       <div class="login-face">
         <div class="login-padding"></div>
         <div class="login-header">
-          <div id="fishing-message">
+          <div id="nudge-message">
           감각적인 당신을 위해<br>꼭 맞는 테이블웨어를 찾았습니다<br>로그인하고 확인해보세요!</div>
         </div>
         <div class="face-message">
-          <div class="face-header">로그인 / 무료회원가입</div>
+          <div class="face-header">간편 로그인 후 추천 리스트 확인하기</div>
 
           <a onclick="ga('send','event','login','click','naver');" href="/users/auth/naver">
             <div class="ask-step">
@@ -33,8 +33,8 @@
             </div>
           </a>
         </div>
-        <div class="face-footer" onclick="$('.modal').modal('hide');ga('send','event','login','click','hide');">
-          <div >로그인 없이 둘러보기 <span>></span></div>
+        <div class="face-footer" data-dismiss="modal" onclick="ga('send','event','login','click','hide');">
+          <div >로그인 없이 그냥 둘러보기 <span>></span></div>
         </div>
       </div>
     </div>
