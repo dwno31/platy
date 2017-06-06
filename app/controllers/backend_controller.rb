@@ -204,7 +204,7 @@ class BackendController < ApplicationController
     feedback.user_id = current_user
     feedback.location = params[:location]
     feedback.status = status
-    feedback.type = params[:type]
+    feedback.request_type = params[:type]
     feedback.message = params[:message]
     feedback.save
 
