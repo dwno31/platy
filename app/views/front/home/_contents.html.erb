@@ -1,0 +1,59 @@
+<script>
+  $("body").addClass("background-grey");
+  $("#loading").show();
+  $(".browser-contents").attr('style','margin-top:16.5vh;');
+  window.location.hash = "";
+</script>
+<div id="loading" style="width:100%;height:105%;background: url(/assets/loading.svg) no-repeat center;"></div>
+<div class="body-divide">
+  <% @product1.each do |record| %>
+      <div class="modal-product-item">
+      <a id=item<%=record.id%> onclick="ga('send','event','recommend','popup','<%=record.id%>');product_rcmd_popup(<%=record.id%>)">
+          <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
+      </a>
+      <% if !@userlikeitems.include?(record.id)%>
+          <div name=likeitem<%=record.id%> class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>');ga('send','event','product','like','<%=record.id%>');"></div>
+      <% else %>
+          <div name=likeitem<%=record.id%> class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>');ga('send','event','product','like','<%=record.id%>');"></div>
+      <% end %>
+        <a onclick="ga('send','event','recommend','popup','<%=record.id%>');product_rcmd_popup(<%=record.id%>)">
+            <div class="modal-product-detail">
+              <span><%=record.title%></span><br>
+              <span class="product-price"><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
+              <span></span>
+            </div>
+        </a>
+      </div>
+  <% end %>
+  <div class="contents-loading" style="display:none;"></div>
+</div>
+<div class="body-divide">
+  <% @product2.each do |record| %>
+      <div class="modal-product-item">
+        <a id=item<%=record.id%> onclick="ga('send','event','recommend','popup','<%=record.id%>');product_rcmd_popup(<%=record.id%>)">
+            <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
+        </a>
+        <% if !@userlikeitems.include?(record.id)%>
+            <div name=likeitem<%=record.id%> class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>');ga('send','event','product','like','<%=record.id%>');"></div>
+        <% else %>
+            <div name=likeitem<%=record.id%> class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>');ga('send','event','product','like','<%=record.id%>');"></div>
+        <% end %>
+        <a id=item<%=record.id%> onclick="ga('send','event','recommend','popup','<%=record.id%>');product_rcmd_popup(<%=record.id%>)">
+            <div class="modal-product-detail">
+               <span><%=record.title%></span><br>
+               <span class="product-price"><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</spanc>
+               </div>
+        </a>
+      </div>
+  <% end %>
+  <div class="contents-loading" style="display:none;"></div>
+</div>
+<div class="contents-end" onclick="addtagplz(this);" style="display: none;">
+  <span>상품 리스트 추가 요청하기</span>
+</div>
+<script>
+    $(".body-divide").ready(function(){
+        $("#loading").hide();
+    });
+
+</script>

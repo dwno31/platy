@@ -1,0 +1,44 @@
+
+
+	<% @head_tag.each do |tag| %>
+	<div class=tag-button id="<%=tag%>"  onclick="tag_toggle(this);tag_sort();ga('send','event','shop-tag','click','<%=tag%>');">
+		<span class=tag-text ><%= '#'+tag%></span>
+	</div>
+	<% end %>
+
+
+<script>
+
+  //태그를 입력받는다 제이쿼리로 보낸다
+  //제이슨으로 받아서 틀 하나 만들어두고 반복문으로 dom재생성한다
+  //아니면 아래 부분만 새로운 데이터로 리로드한다
+  function tag_sort(){
+      tags = $('.tag-button-clicked');
+      parameter = "";
+      $.each(tags,function(index, value){
+          parameter = parameter +','+ value.getAttribute('id');
+
+
+      });
+
+      window.scrollTo(0,0);
+      $(".browser-contents").fadeOut(0).load("/contents/shop/"+parameter, function(){}).fadeIn(300).scrollTop(1);
+
+
+      // 반복문 만들어서 string으로 붙인 다음에 파라미터로 넘긴다
+      // index창에서는 파라미터 값에 따라 표시되는 record를 바꾸고
+      // 뷰페이지에서는 해당 레코드배열을 표시해주게 된다
+
+
+
+  }
+  function tag_toggle(a){
+    $(".tag-button").not(a).removeClass("tag-button-clicked");
+    $(a).toggleClass("tag-button-clicked");
+
+
+  }
+
+
+
+</script>

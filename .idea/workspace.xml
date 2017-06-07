@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/front.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/front_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/front_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/frame/_footer.html.erb" afterPath="$PROJECT_DIR$/app/views/front/frame/_footer.html.erb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -28,38 +30,28 @@
           <file leaf-file-name="front.scss" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="748" column="11" lean-forward="false" selection-start-line="748" selection-start-column="11" selection-end-line="748" selection-end-column="11" />
+                <state relative-caret-position="-1245">
+                  <caret line="399" column="9" lean-forward="false" selection-start-line="399" selection-start-column="9" selection-end-line="399" selection-end-column="9" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_footer.html.erb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/front/frame/_footer.html.erb">
+          <file leaf-file-name="front_controller.rb" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/controllers/front_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="524">
-                  <caret line="35" column="28" lean-forward="false" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+                <state relative-caret-position="271">
+                  <caret line="148" column="27" lean-forward="true" selection-start-line="148" selection-start-column="27" selection-end-line="148" selection-end-column="27" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_notibar.html.erb" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/views/front/items/_notibar.html.erb">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="68" column="97" lean-forward="false" selection-start-line="68" selection-start-column="97" selection-end-line="68" selection-end-column="97" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="application.html.erb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="297">
-                  <caret line="123" column="47" lean-forward="false" selection-start-line="123" selection-start-column="47" selection-end-line="123" selection-end-column="47" />
+                <state relative-caret-position="1555">
+                  <caret line="123" column="52" lean-forward="false" selection-start-line="123" selection-start-column="52" selection-end-line="123" selection-end-column="52" />
                   <folding>
                     <element signature="n#style#0;n#img#0;n#noscript#0;n#head#0;n#html#0;n#!!top" expanded="true" />
                   </folding>
@@ -91,11 +83,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_intro.html.erb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="_intro.html.erb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/front/modal/intro/_intro.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-787">
+                <state relative-caret-position="-897">
                   <caret line="5" column="51" lean-forward="false" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="_footer.html.erb" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/views/front/frame/_footer.html.erb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="110">
+                  <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
                   <folding />
                 </state>
               </provider>
@@ -189,7 +191,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/db/migrate/20170507162252_add_column_to_user_prefer_string_really.rb" />
         <option value="$PROJECT_DIR$/app/views/front/browse/_contents-frame.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/items/_contents-frame.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/frame/_contents-frame.html.erb" />
@@ -220,9 +221,7 @@
         <option value="$PROJECT_DIR$/app/views/front/browse/_contents.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/frame/_top_bar.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/browse/_shop_search.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/front/frame/_footer.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/modal/_shop_product.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/front_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20170420071930_create_identities.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20170606032521_create_feedbacks.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20170606033504_create_feedbacks.rb" />
@@ -237,9 +236,12 @@
         <option value="$PROJECT_DIR$/app/views/front/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/modal/_login.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/modal/_product_rcmd.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
         <option value="$PROJECT_DIR$/app/views/front/modal/intro/_intro.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
+        <option value="$PROJECT_DIR$/app/views/front/home/_contents-frame.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/front/frame/_footer.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/front_controller.rb" />
       </list>
     </option>
   </component>
@@ -426,11 +428,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="modal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="intro" />
+              <option name="myItemId" value="likelist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -471,6 +469,102 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="front" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="browse" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -530,13 +624,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/front" />
       <recent name="$PROJECT_DIR$/public/assets/ICON/footer" />
       <recent name="$PROJECT_DIR$/public/assets/intro/logos" />
       <recent name="$PROJECT_DIR$/public/assets/intro" />
       <recent name="$PROJECT_DIR$/app/views/front/items" />
-      <recent name="$PROJECT_DIR$/app/views/front/modal/intro" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/front/home" />
       <recent name="$PROJECT_DIR$/app/views/front/browse" />
       <recent name="$PROJECT_DIR$/app/views/front/modal" />
       <recent name="$PROJECT_DIR$/app/views/front/likelist" />
@@ -782,12 +877,12 @@
       <workItem from="1494497640723" duration="101939000" />
       <workItem from="1495512447225" duration="11029000" />
       <workItem from="1495567373299" duration="54972000" />
-      <workItem from="1496212319855" duration="32224000" />
+      <workItem from="1496212319855" duration="35629000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="560154000" />
+    <option name="totallyTimeSpent" value="563559000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -846,36 +941,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/application.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/front/browse/_contents-frame.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/front/likelist/_contents-shop-frame.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="52" lean-forward="false" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/candi/olivewhite.jpg" />
     <entry file="file://$PROJECT_DIR$/public/assets/intro/intro.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1010,14 +1075,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/front_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="57" column="115" lean-forward="false" selection-start-line="57" selection-start-column="115" selection-end-line="57" selection-end-column="115" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20170420071930_create_identities.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1122,14 +1179,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/front/items/_notibar.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="68" column="97" lean-forward="false" selection-start-line="68" selection-start-column="97" selection-end-line="68" selection-end-column="97" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/front/modal/_shop_product.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-507">
@@ -1180,25 +1229,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/front/frame/_footer.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="35" column="28" lean-forward="false" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="748" column="11" lean-forward="false" selection-start-line="748" selection-start-column="11" selection-end-line="748" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/front/modal/intro/_intro.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-787">
+        <state relative-caret-position="-897">
           <caret line="5" column="51" lean-forward="false" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
           <folding />
         </state>
@@ -1206,11 +1239,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="123" column="47" lean-forward="false" selection-start-line="123" selection-start-column="47" selection-end-line="123" selection-end-column="47" />
+        <state relative-caret-position="1555">
+          <caret line="123" column="52" lean-forward="false" selection-start-line="123" selection-start-column="52" selection-end-line="123" selection-end-column="52" />
           <folding>
             <element signature="n#style#0;n#img#0;n#noscript#0;n#head#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/front/browse/_contents-frame.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/front/home/_contents-frame.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/front/items/_contents-frame.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/front/home/_contents.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/front/home/_tag_browser.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/front/items/_notibar.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="68" column="97" lean-forward="false" selection-start-line="68" selection-start-column="97" selection-end-line="68" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1245">
+          <caret line="399" column="9" lean-forward="false" selection-start-line="399" selection-start-column="9" selection-end-line="399" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/front/frame/_footer.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/front_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="148" column="27" lean-forward="true" selection-start-line="148" selection-start-column="27" selection-end-line="148" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
