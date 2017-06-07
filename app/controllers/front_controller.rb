@@ -64,7 +64,7 @@ before_action :mobile_check, only:[:index]
 		userlikelist(current_user)
 		keyword = params[:keyword]
 
-		@records = Product.where("title like ? or category like ? or hashtag like ?","%#{keyword}%","%#{keyword}%","%#{keyword}%").order(rating: :desc)
+		@records = Product.where("title like ? or category like ? or hashtag like ? or id=?","%#{keyword}%","%#{keyword}%","%#{keyword}%",keyword.to_i).order(rating: :desc)
 		@merchant_record = Merchant.where("title like ?","%#{keyword}%").map{|x|x.products.order(rating: :desc)}
 		@product1 = []
 		@product2 = []
