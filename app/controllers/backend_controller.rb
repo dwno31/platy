@@ -100,7 +100,56 @@ class BackendController < ApplicationController
 
         record.save
 
-			else
+      elsif params[:table]=="promotion"
+        record = Promotion.where("title=? and banner_url=?",whole_att[0],whole_att[1]).first_or_create
+        whole_att.each do |att|
+          case i
+            when 0
+              record.title = att
+            when 1
+              record.banner_url = att
+            when 2
+              record.header_url = att
+            when 3
+              record.background = att
+          end
+
+          i = i+1;
+
+        end
+
+        record.save
+      elsif params[:table]=="promotion_product"
+        record = Product.where("title=? and img_url=?",whole_att[1],whole_att[3]).first_or_create
+        whole_att.each do |att|
+          case i
+            when 0
+              record.merchant_id = Merchant.find_by(:title=>att).id
+            when 1
+              record.title = att
+            when 2
+              record.price = att.to_i
+            when 4
+              record.price = att
+            when 5
+              record.category = att.gsub(/ /,'')
+            when 6
+              record.category = record.category+','+att.gsub(/ /,'')
+            when 7
+              record.hashtag = att.gsub(/ /,'')
+            when 8
+              record.rating = att.to_i
+            when 9
+              record.color = att.gsub(/ /,'')
+          end
+
+          i = i+1;
+
+        end
+
+        record.save
+
+      else
         record = Product.where("title=? and img_url=?",whole_att[1],whole_att[3]).first_or_create
 				whole_att.each do |att|
 					case i
