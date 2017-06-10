@@ -71,6 +71,11 @@ GEM
       faraday (~> 0.9)
       faraday_middleware (~> 0.10)
       nokogiri (~> 1.7)
+    azure-storage (0.12.1.preview)
+      azure-core (~> 0.1)
+      faraday (~> 0.9)
+      faraday_middleware (~> 0.10)
+      nokogiri (~> 1.7, < 1.8)
     bcrypt (3.1.11)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -407,6 +412,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-session_store
   azure
+  azure-storage
   bootstrap-sass (~> 3.3.6)
   browser
   byebug

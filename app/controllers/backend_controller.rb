@@ -7,6 +7,7 @@ class BackendController < ApplicationController
 
   def userimage
     azure_blob_service = Azure::Blob::BlobService.new
+
     image = Userimage.new
     image.platy = params[:image_file]
     image.save

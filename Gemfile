@@ -17,6 +17,7 @@ gem 'carrierwave-azure'
 gem 'activerecord-session_store'
 gem 'fog'
 gem 'azure'
+gem 'azure-storage'
 gem 'dalli'
 
 gem 'browser'

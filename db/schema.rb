@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606042559) do
+ActiveRecord::Schema.define(version: 20170609022442) do
 
   create_table "feedbacks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at",                 null: false
@@ -60,6 +60,26 @@ ActiveRecord::Schema.define(version: 20170606042559) do
     t.integer  "rating"
     t.string   "color"
     t.index ["merchant_id"], name: "index_products_on_merchant_id", using: :btree
+  end
+
+  create_table "productswithpromotions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id"
+    t.integer  "promotion_id"
+    t.string   "tag_type"
+    t.integer  "discount"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["product_id"], name: "index_productswithpromotions_on_product_id", using: :btree
+    t.index ["promotion_id"], name: "index_productswithpromotions_on_promotion_id", using: :btree
+  end
+
+  create_table "promotions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "position"
+    t.text     "banner_url", limit: 65535
+    t.text     "header_url", limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -122,6 +142,8 @@ ActiveRecord::Schema.define(version: 20170606042559) do
 
   add_foreign_key "identities", "users"
   add_foreign_key "products", "merchants"
+  add_foreign_key "productswithpromotions", "products"
+  add_foreign_key "productswithpromotions", "promotions"
   add_foreign_key "userlikeitems", "products"
   add_foreign_key "userlikeitems", "users"
   add_foreign_key "userlikeshops", "merchants"

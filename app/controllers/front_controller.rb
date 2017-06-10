@@ -19,7 +19,6 @@ before_action :mobile_check, only:[:index]
     else
       index_product = prefer_scenario(current_user.prefer)
     end
-    logger.info index_product.inspect
 
 		productlist(index_product)
     userlikelist(current_user)
@@ -209,11 +208,11 @@ before_action :mobile_check, only:[:index]
 					@product = product_with_color.inject{|sum,x|sum+x}
 				end
 
-				logger.info @product.pluck(:color)
 				productlist(@product.uniq)
 				tags = [input_category,input_style,input_purpose]
 				session[:prefer_tags] = tags
 				@prefer_tags = tags
+        logger.info @product.size
 
 
 				render partial: "front/items/contents-frame", layout: false
@@ -485,6 +484,10 @@ private
 		session[:prefer_tags] = @prefer_tags
 		logger.info session[:prefer_tags]
     logger.info prefer_product.size
+
+		if prefer_product.is_a?(Array)
+			prefer_product = Product.where(id: prefer_product.map(&:id)).order(rating: :desc)
+		end
 
 		return prefer_product.uniq
 	end
