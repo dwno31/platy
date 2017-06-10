@@ -120,27 +120,23 @@ class BackendController < ApplicationController
 
         record.save
       elsif params[:table]=="promotion_product"
-        record = Product.where("title=? and img_url=?",whole_att[1],whole_att[3]).first_or_create
+        record = Productswithpromotion.new
         whole_att.each do |att|
           case i
             when 0
-              record.merchant_id = Merchant.find_by(:title=>att).id
-            when 1
-              record.title = att
+              record.promotion_id = Promotion.find_by(:title=>att).id
             when 2
-              record.price = att.to_i
-            when 4
-              record.price = att
+              product_record = Product.where(:title=>att).first_or_create
+              product_record.merchant_id = Merchant.find_by(:title=>whole_att[1]).id
+              product_record.title = att
+              product_record.price = whole_att[4].gsub(/,/,'').to_i
+              product_record.img_url = whole_att[6]
+              product_record.url = whole_att[7]
+              product_record.save
+
+              record.product_id = product_record.id
             when 5
-              record.category = att.gsub(/ /,'')
-            when 6
-              record.category = record.category+','+att.gsub(/ /,'')
-            when 7
-              record.hashtag = att.gsub(/ /,'')
-            when 8
-              record.rating = att.to_i
-            when 9
-              record.color = att.gsub(/ /,'')
+              record.discount = att.gsub(/%/,'').to_i # 정수 ~~ 로 나온다 할인률이므로 가격표기는 1-할인률을 곱해서 floor(-2) 해서쓴다
           end
 
           i = i+1;

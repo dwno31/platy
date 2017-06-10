@@ -124,7 +124,7 @@ before_action :mobile_check, only:[:index]
 				likelist(current_user)
 				render partial: "front/likelist/contents-item-frame"
       when "home"
-        @head_tag = ["기획전","특가상품","작가추천","인기 Top10","기간할인"]
+				@head_tag = Promotion.all.pluck(:title)
 				render partial: "front/home/contents-frame"
 		end
 	end
