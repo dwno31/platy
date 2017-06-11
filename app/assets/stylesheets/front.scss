@@ -25,11 +25,195 @@ height:100%;
 
 a{
   text-decoration: none !important;
-  color:black;
+  color:inherit;
 }
 a:visited {color:inherit;}  /* visited link */
 a:hover {color:inherit;}  /* mouse over link */
 a:active {color:inherit;}
+
+//modal
+
+.close-modal{
+  position:fixed;
+  top:2%;
+  right:3%;
+  color:white;
+  font-size:2em;
+  font-weight:600;
+  z-index:1;
+}
+.close-modal>span{
+
+}
+
+//shop-product list modal
+.modal.fade:not(.in) .modal-dialog {
+  -webkit-transform: translate3d(25%, 0, 0);
+}
+.shop-product-popup .modal-dialog{
+  margin:0;
+  height:100%;
+}
+
+
+
+.modal-content{
+  padding:0;
+  height:100%;
+  border-radius:0px;
+  border:0;
+}
+.modal-header{
+  padding:0;
+  height:44px;
+  background-color:rgb(201,201,201);
+  color:white;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.modal-header .shrink{
+  min-height:10%;
+  //나중에 기능 추가해보자 이거 하려면 탑바랑 컨텐츠가 같은 div 상에 존재해야 편할듯
+}
+.modal-header-left{
+  float:left;
+  width:20%;
+  height:100%;
+}
+.modal-header-right{
+  float: right;
+  width: 19%;
+  height: 100%;
+  text-align: center;
+  line-height: 3em;
+}
+.modal-header-right>span{
+  vertical-align: middle;
+  border: 1px solid white;
+  padding: 7.5%;
+  border-radius: 3px;
+}
+.modal-header-right>span:active{
+  background:white;
+  color:#c9c9c9;
+}
+.backbutton{
+  float:left;
+  height:100%;
+  width:100%;
+  display:table;
+  text-align:left;
+  padding:10%;
+}
+.backbutton-float{
+  position: fixed;
+  top: 5;
+  height: 39px;
+  z-index: 3;
+  padding: 5px;
+  width: 10%;
+}
+.backbutton>span{
+  display:table-cell;
+  vertical-align:middle;
+  font-size:1.5em;
+
+}
+.backbutton-float>span{
+  color: #9c9b9a;
+  font-weight: 400;
+  font-size: 1.6em;
+}
+.modal-header-center{
+  float:left;
+  width:60%;
+  height:100%;
+}
+.modal-shoptitle{
+  text-align:center;
+  height:100%;
+  width:100%;
+  display:table;
+}
+.modal-shoptitle > span{
+  display:table-cell;
+  vertical-align:middle;
+  font-size:1.5em;
+}
+
+
+.modal-body{
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  height:92%;
+  width:100%;
+  background:#e8e8e8;
+  padding:5px
+}
+.body-divide{
+  width:50%;
+  float:left;
+
+}
+.modal-product-item{
+  background: white;
+  box-shadow:1px 1px 3px grey;
+  width:96%;
+  margin:5% 1% 5% 1%;
+  min-height:30%;
+  position:relative;
+}
+
+.modal-product-img{
+  width:100%;
+}
+
+.likebutton-item{
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  background-image: url(/assets/ICON/like.png);
+  height: 60px;
+  width: 60px;
+  background-size: 55%;
+  background-repeat: no-repeat;
+  background-position: right top;
+}
+.likebutton-item-modal{
+  width:15%;
+  height:100%;
+  float:right;
+  background: url(/assets/ICON/like.png) no-repeat center;
+  background-size: 55% 65%;
+}
+.likebutton-item-clicked{
+  background-image:url("/assets/ICON/likeitem-touch.png");
+}
+
+.modal-product-detail{
+  color:#333333;
+  text-align:center;
+  padding:7% 2%;
+}
+.modal-footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  height:10%;
+  display:table;
+  text-align:center;
+  background: rgba(128,128,128,0.5);
+  border:none;
+}
+.modal-footer > span{
+  display: table-cell;
+  vertical-align: middle;
+  color:white;
+  text-decoration: none;
+  font-size:1.2em;
+}
+
+
 
 .pcindex{
   background-image:url(/assets/pcindex.jpg);
@@ -90,7 +274,7 @@ a:active {color:inherit;}
 
 display:table;
 width:100%;
-height:8vh;
+height:44px;
 text-align:center;
 background-color: rgb(201,201,201);
 margin-bottom:1%;
@@ -130,7 +314,7 @@ z-index: 10;
       font-size: 1.5em;
       color: transparent;
       background: url('/assets/intro/logos/mariazu.png') no-repeat center;
-      background-size:30% 55%;
+      background-size:25% 55%;
 
     }
 
@@ -141,10 +325,10 @@ z-index: 10;
 //notibar
 .notibar{
 
-  height: 8vh;
+  height: 44px;
   width: 100%;
   position: fixed;
-  top: 7.9vh;
+  top: 44px;
   background: #e9e9e9;
   z-index: 3;
   padding:2%;
@@ -221,10 +405,10 @@ z-index: 10;
 
 .tag-browser{
 
-  height: 8vh;
+  height: 44px;
   width: 100%;
   position: fixed;
-  top: 7.9vh;
+  top: 44px;
   background: white;
   overflow-y: hidden;
   white-space: nowrap;
@@ -270,7 +454,7 @@ z-index: 10;
 height:78%;
 width:100%;
 -webkit-overflow-scrolling: touch;
-margin-top:17vh;
+margin-top:90px;
 
 
 }
@@ -381,6 +565,93 @@ margin-top:17vh;
       height:1px;
     }
 
+//promotion field
+
+.promotion-nav{
+  white-space: nowrap;
+  padding-left:2%;
+}
+.promotion-nav>li{
+  display:inline-block;
+  color:#6d6d6d;
+  margin:0 4%;
+
+}
+.scroll-active{
+  border-bottom:1px solid #a7c9a9;
+
+}
+.promotion-field{
+  width:100%;
+  height: 85vh;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 90px;
+}
+
+.promotion-block{
+  height:88%;
+  margin:2% 0;
+}
+
+.promotion-header{
+  height:30%;
+  background:white;
+  background-size:50%;
+}
+.promotion-sample{
+  height:57%;
+  padding:8px;
+}
+.promotion-item{
+  height:100%;
+  width:50%;
+  float:left;
+}
+.promotion-item-box{
+  height:90%;
+}
+.promotion-item-image{
+  height:150px;
+}
+.promotion-item-detail{
+  white-space:nowrap;
+  overflow:hidden;
+  padding: 3% 2%;
+}
+.promotion-button{
+  height: 13%;
+  padding: 0px 11px 11px;
+}
+.promotion-more-button{
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  background:rgba(0,0,0,0.4);
+  display:table;
+  text-align: center;
+}
+.promotion-more-button>span{
+  display:table-cell;
+  vertical-align: middle;
+  color:white;
+}
+//promo in modal
+.promo-header{
+  height: 80%;
+  background-size: 100% 101%;
+  background-position: center;
+  border: none;
+}
+
+.promo-body{
+  height:100%;
+  padding:0
+}
+
+
+.promo-body>.body-divide{
+  padding:0 3px;
+}
 
 //footer
 .footer{
@@ -396,25 +667,26 @@ margin-top:17vh;
 
 .footer-button{
   height:100%;
-  width:25%;
+  width:20%;
   float:left;
   display: table;
-
+  color: rgba(0,0,0,0.5);
 }
 
 .footer-button>span{
   display: table-cell;
   vertical-align: middle;
-  font-size:2em;
-  color: #000;
-
+  font-size:1.35em;
 }
+.clicked{
+  color:#a7c9a9;
+}
+
 
 .shop{
   background-image: url("/assets/ICON/footer/shop.png");
 }
 .shop-clicked{
-  background-image: url("/assets/ICON/footer/shop-clicked.png");
   background-size:30%;
 }
 .likeshop{
@@ -445,176 +717,6 @@ margin-top:17vh;
 .etc-clicked{
   background-image: url("/assets/ICON/footer/etc-clicked.png");
 }
-
-//modal
-
-.close-modal{
-  position:fixed;
-  top:2%;
-  right:3%;
-  color:white;
-  font-size:2em;
-  font-weight:600;
-  z-index:1;
-}
-.close-modal>span{
-
-}
-
-//shop-product list modal
-.modal.fade:not(.in) .modal-dialog {
-  -webkit-transform: translate3d(25%, 0, 0);
-}
-.shop-product-popup .modal-dialog{
-  margin:0;
-  height:100%;
-}
-
-
-
-.modal-content{
-  padding:0;
-  height:100%;
-  border-radius:0px;
-  border:0;
-}
-  .modal-header{
-    padding:0;
-    height:8vh;
-    background-color:rgb(201,201,201);
-    color:white;
-    -webkit-transition: all 0.4s ease;
-    transition: all 0.4s ease;
- }
-    .modal-header .shrink{
-      min-height:10%;
-//나중에 기능 추가해보자 이거 하려면 탑바랑 컨텐츠가 같은 div 상에 존재해야 편할듯
-    }
-    .modal-header-left{
-      float:left;
-      width:20%;
-      height:100%;
-    }
-    .modal-header-right{
-      float: right;
-      width: 19%;
-      height: 100%;
-      text-align: center;
-      line-height: 3em;
-    }
-      .modal-header-right>span{
-        vertical-align: middle;
-        border: 1px solid white;
-        padding: 7.5%;
-        border-radius: 3px;
-      }
-      .modal-header-right>span:active{
-        background:white;
-        color:#c9c9c9;
-      }
-      .backbutton{
-        float:left;
-        height:100%;
-        width:100%;
-        display:table;
-        text-align:left;
-        padding:10%;
-      }
-        .backbutton>span{
-          display:table-cell;
-          vertical-align:middle;
-          font-size:1.5em;
-
-        }
-    .modal-header-center{
-      float:left;
-      width:60%;
-      height:100%;
-    }
-      .modal-shoptitle{
-        text-align:center;
-        height:100%;
-        width:100%;
-        display:table;
-      }
-        .modal-shoptitle > span{
-          display:table-cell;
-          vertical-align:middle;
-          font-size:1.5em;
-        }
-
-
-  .modal-body{
-    overflow-y:auto;
-    -webkit-overflow-scrolling:touch;
-    height:90%;
-    width:100%;
-    background:#e8e8e8;
-  }
-    .body-divide{
-      width:50%;
-      float:left;
-
-    }
-      .modal-product-item{
-        background: white;
-        box-shadow:1px 1px 3px grey;
-        width:96%;
-        margin:5% 1% 5% 1%;
-        min-height:30%;
-        position:relative;
-      }
-
-        .modal-product-img{
-          width:100%;
-        }
-
-        .likebutton-item{
-          position: absolute;
-          top: 1px;
-          right: 1px;
-          background-image: url(/assets/ICON/like.png);
-          height: 60px;
-          width: 60px;
-          background-size: 55%;
-          background-repeat: no-repeat;
-          background-position: right top;
-        }
-        .likebutton-item-modal{
-          width:15%;
-          height:100%;
-          float:right;
-          background-image: url(/assets/ICON/like.png);
-          background-size: 55% 58%;
-          background-repeat:no-repeat;
-          background-position: center;
-        }
-        .likebutton-item-clicked{
-          background-image:url("/assets/ICON/likeitem-touch.png");
-        }
-
-        .modal-product-detail{
-          color:#333333;
-          text-align:center;
-          padding:7% 2%;
-        }
-  .modal-footer{
-    position:fixed;
-    bottom:0;
-    width:100%;
-    height:10%;
-    display:table;
-    text-align:center;
-    background: rgba(128,128,128,0.5);
-    border:none;
-  }
-    .modal-footer > span{
-      display: table-cell;
-      vertical-align: middle;
-      color:white;
-      text-decoration: none;
-      font-size:1.2em;
-    }
 
 
 //필터 모달
@@ -914,11 +1016,11 @@ margin-top:17vh;
   box-shadow: 1px 1px 9px 0px grey;
 }
 .item-focus-header-fold{
-  height:8vh;
+  height:44px;
 }
 .item-focus-title{
   padding: 0;
-  height: 8vh;
+  height: 44px;
   color: rgba(0,0,0,0.6);
   -webkit-transition: all 0.4s ease;
   transition: all 0.4s ease;

@@ -123,8 +123,12 @@ before_action :mobile_check, only:[:index]
 			when "likeitem"
 				likelist(current_user)
 				render partial: "front/likelist/contents-item-frame"
-      when "home"
-				@head_tag = Promotion.all.pluck(:title)
+			when "home"
+				@render_hash = {}
+
+				Promotion.all.each do |record|
+					@render_hash[record] = record.products.last(4)
+				end
 				render partial: "front/home/contents-frame"
 		end
 	end
@@ -238,6 +242,14 @@ before_action :mobile_check, only:[:index]
 			tog = !tog
 		end
 		render partial:"front/modal/shop_product",layout:false
+	end
+
+	def promo_popup
+		@input_record = Promotion.find(params[:id].to_i)
+		productlist(@input_record.products)
+    userlikelist(current_user)
+
+    render partial:"front/modal/promotion",layout:false
 	end
 
 	def slide_tag

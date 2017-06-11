@@ -107,6 +107,13 @@
     function login_popup(){
         $(".login-modal").modal('show');
     }
+    function promo_popup(id){
+        var id = id;
+        window.history.pushState("","","");
+        $(".shop-product-popup").load("/promo_popup/"+id,function(id){
+            $(".shop-product-popup").modal('show');
+        });
+    }
 
     function userlike(click,type,id){
         $("div[name=like"+type+id+"]").toggleClass('likebutton-'+type+'-clicked');

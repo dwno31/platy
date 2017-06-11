@@ -1,3 +1,42 @@
+
+<script>
+    var browser = $(window);
+    var div_height = $(".promotion-block")[0].scrollHeight*1.015;
+    function scrollto(a) {
+        goto = a*div_height;
+        $('html, body').stop().animate( { scrollTop : goto } );
+
+    };
+    browser.scroll(function(){
+        var max_length = <%=@render_hash.length%>;
+        console.log("scrolling...");
+        for(i=0; i<max_length; i++){
+            console.log("lito");
+            var selectli = $("li").eq(i);
+            if(i*div_height-100<browser.scrollTop()&&browser.scrollTop()<(i+1)*div_height-100){
+                $("li").not(selectli).removeClass("scroll-active");
+                selectli.addClass("scroll-active");
+            }
+        };
+
+    });
+</script>
 <div class="tag-browser">
-  <%= render "front/home/tag_browser" %>
+  <nav class="navbar">
+    <ul class="nav navbar-nav promotion-nav">
+      <% @render_hash.each_with_index do |(k,v), index| %>
+      <% if index==0 %>
+        <li class="scroll-active" onclick="scrollto(<%=index%>);"><%=k.title%></li>
+      <% else %>
+        <li onclick="scrollto(<%=index%>);"><%=k.title%></li>
+      <% end %>
+      <% end %>
+    </ul>
+  </nav>
 </div>
+<div class="promotion-field" data-spy="scroll" data-target=".navbar" data-offset="50">
+  <%= render "front/home/promotion_block"%>
+</div>
+<script>
+  $("li").eq(0).addClass("scroll-acitve");
+</script>

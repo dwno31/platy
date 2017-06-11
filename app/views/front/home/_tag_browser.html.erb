@@ -1,8 +1,8 @@
 
 
-	<% @head_tag.each do |tag| %>
-	<div class=tag-button id="<%=tag%>"  onclick="tag_toggle(this);tag_sort();ga('send','event','shop-tag','click','<%=tag%>');">
-		<span class=tag-text ><%=tag%></span>
+	<% @render_hash.each do |tag, value| %>
+	<div class=tag-button id="<%=tag.title%>"  onclick="tag_toggle(this);">
+		<span class=tag-text ><%=tag.title%></span>
 	</div>
 	<% end %>
 

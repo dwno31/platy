@@ -1,17 +1,17 @@
-<div class="footer-button productlist">
-  <span class="iconimg product product-clicked" name=product onclick="section_transfer('product');ga('send','event','section','move','product');"></span>
+<div class="footer-button productlist clicked">
+  <span class="glyphicon glyphicon-cutlery" name=product onclick="section_transfer('product');ga('send','event','section','move','product');"></span>
 </div>
 <div class="footer-button likeitemlist">
-  <span class="iconimg likeitem" name=likeitem onclick="section_transfer('likeitem');ga('send','event','section','move','likeitem');"></span>
+  <span class="glyphicon glyphicon-heart" name=likeitem onclick="section_transfer('likeitem');ga('send','event','section','move','likeitem');"></span>
 </div>
-<!--<div class="footer-button etclist">-->
-  <!--<span class="iconimg etc" name="home" onclick="section_transfer('home');"></span>-->
-<!--</div>-->
+<div class="footer-button homelist">
+  <span class="glyphicon glyphicon-send" name="home" onclick="section_transfer('home');"></span>
+</div>
 <div class="footer-button shoplist" >
-  <span class="iconimg shop" name=shop onclick="section_transfer('shop');ga('send','event','section','move','shop');"></span>
+  <span class="glyphicon glyphicon-home" name=shop onclick="section_transfer('shop');ga('send','event','section','move','shop');"></span>
 </div>
 <div class="footer-button likeshoplist">
-  <span class="iconimg likeshop" name="likeshop" onclick="section_transfer('likeshop');ga('send','event','section','move','likeshop');"></span>
+  <span class="glyphicon glyphicon-star" name="likeshop" onclick="section_transfer('likeshop');ga('send','event','section','move','likeshop');"></span>
 </div>
 
 <script>
@@ -20,7 +20,8 @@
         window.stop();
         var menu = menu;
         $("span[class*=clicked]").each(function(i,e){e.className+=e.getAttribute('name')})
-        $("."+menu).toggleClass(menu+"-clicked");
+        $(".footer-button").removeClass("clicked");
+        $("."+menu+"list").addClass("clicked");
         $(".contents-frame").load("/section/"+menu,function(){});
         if(menu==="product"){
             $(".itemfilter-button").show();
