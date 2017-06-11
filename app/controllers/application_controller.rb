@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 #  protect_from_forgery with: :exception
   require 'base64'
   def cors_set_access_control_headers
-    headers['Access-Control-Allow-Origin'] = 'http://cdn.mariazu.co'
+    headers['Access-Control-Allow-Origin'] = 'http://mariazu.co'
     headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, PATCH, OPTIONS'
     headers['Access-Control-Request-Method'] = '*'
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
