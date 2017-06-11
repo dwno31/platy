@@ -5,6 +5,7 @@ require 'browser'
 before_action :mobile_check, only:[:index]
 
 	def index
+		@test = params[:test]
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
 		@purpose_list = ['한식','양식','면','혼밥','술','홈카페','디저트','홈파티','어린이','신혼','선물','조리']
 		@category_list = @category_list + @purpose_list

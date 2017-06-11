@@ -712,8 +712,28 @@ margin-top:90px;
 .clicked{
   color:#a7c9a9;
 }
-
-
+.footer-alarm{
+  position: fixed;
+  bottom: 44px;
+  height: 35px;
+  left: 42%;
+  width: 60px;
+}
+.footer-alarm>div:first-child{
+  height:60%;
+  background:#a7c9a9;
+  font-size:11px;
+  padding:3px 0;
+  color:white;
+  border-radius:3px;
+}
+.footer-alarm>div:last-child{
+  height: 39%;
+  margin: 0 37%;
+  border-left: 13px solid transparent;
+  border-right: 2px solid transparent;
+  border-top: 11px solid #a7c9a9;
+}
 .shop{
   background-image: url("/assets/ICON/footer/shop.png");
 }

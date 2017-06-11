@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <% if @test!='test'%>
+    <!-- Google Analytics Content Experiment code -->
+    <script>function utmx_section(){}function utmx(){}(function(){var
+        k='151747194-1',d=document,l=d.location,c=d.cookie;
+        if(l.search.indexOf('utm_expid='+k)>0)return;
+        function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+        indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+            length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+            '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+                '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+            '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+            valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+            '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+    </script><script>utmx('url','A/B');</script>
+    <!-- End of Google Analytics Content Experiment code -->
+    <% end %>
     <title>mariazu</title>
     <%= csrf_meta_tags %>
 
@@ -186,6 +202,19 @@ fbq('track', 'PageView');
             $('.modal').modal('hide');
         }
     });
+
+    <% if @test == "test" %>
+      section_transfer('home');
+      $(".footer-alarm").attr('style',"left:5px;");
+      $(".footer-alarm>div:first-child").text('추천확인하기');
+      $(".productlist").click(function(){
+          $(".footer-alarm").hide();
+      });
+    <% else %>
+      $(".homelist").click(function(){
+          $(".footer-alarm").hide();
+      });
+    <% end %>
 
 
 </script>
