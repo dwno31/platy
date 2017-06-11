@@ -11,7 +11,7 @@
     <% v.each do |pro_record| %>
         <% record = pro_record.product %>
         <div class="promotion-item">
-          <a href="<%=record.url%>" onclick="ga('send','event','shop-popup','outlink','<%=record.id%>');">
+          <a href="<%=record.url%>" onclick="ga('send','event','promotion-block','outlink','<%=record.id%>');">
             <div class="modal-product-item promotion-item-box">
               <img class="modal-product-img promotion-item-image" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
               <% if pro_record.discount!=0 %>
@@ -21,11 +21,11 @@
               <% end %>
           </a>
           <% if !@userlikeitems.include?(record.id)%>
-              <div class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>');ga('send','event','shop-popup','like','<%=record.id%>');"></div>
+              <div class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>');ga('send','event','promotion-block','like','<%=record.id%>');"></div>
           <% else %>
-              <div class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>');ga('send','event','shop-popup','like','<%=record.id%>');"></div>
+              <div class="likebutton-item likebutton-item-clicked" onclick="userlike(this,'item','<%= record.id%>');ga('send','event','promotion-block','like','<%=record.id%>');"></div>
           <% end %>
-          <a href="<%=record.url%>" onclick="ga('send','event','shop-popup','outlink','<%=record.id%>');">
+          <a href="<%=record.url%>" onclick="ga('send','event','promotion-block','outlink','<%=record.id%>');">
             <div class="modal-product-detail promotion-item-detail">
               <span><%=record.title%></span><br>
               <span class="product-price"><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</span>
@@ -37,7 +37,7 @@
   <% end %>
   </div>
   <div class="promotion-button">
-    <div class="promotion-more-button" onclick="promo_popup(<%=k.id%>);">
+    <div class="promotion-more-button" onclick="promo_popup(<%=k.id%>);ga('send','event','promotion-block','popup','<%= k.id%>')">
       <span>더 보기 <i class="glyphicon glyphicon-menu-right"></i></span>
     </div>
   </div>
