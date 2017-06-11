@@ -5,14 +5,20 @@
 
 <% @render_hash.each do |k,v| %>
 <div id="<%=k.title%>" class="promotion-block" style="background:<%=k.banner_background%> repeat top;background-size:50%;">
-  <div class="promotion-header" style="background:url('<%=k.banner_url%>') no-repeat top; background-size:100% 100%;">
+  <div class="promotion-header" style="background:url('<%=k.banner_url%>') no-repeat top; background-size:100% 101%;">
   </div>
   <div class="promotion-sample">
-    <% v.last(2).each do |record| %>
+    <% v.each do |pro_record| %>
+        <% record = pro_record.product %>
         <div class="promotion-item">
           <a href="<%=record.url%>" onclick="ga('send','event','shop-popup','outlink','<%=record.id%>');">
             <div class="modal-product-item promotion-item-box">
               <img class="modal-product-img promotion-item-image" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
+              <% if pro_record.discount!=0 %>
+              <div class="promo-item-tag">
+                <%=pro_record.discount%>%<br>OFF
+              </div>
+              <% end %>
           </a>
           <% if !@userlikeitems.include?(record.id)%>
               <div class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>');ga('send','event','shop-popup','like','<%=record.id%>');"></div>

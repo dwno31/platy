@@ -14,6 +14,13 @@
             <a href="<%=record.url%>" onclick="ga('send','event','shop-popup','outlink','<%=record.id%>');">
               <div class="modal-product-item">
                 <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
+                <% if !record.productswithpromotion.nil?%>
+                    <% if record.productswithpromotion.first.discount!=0 %>
+                        <div class="promo-item-tag">
+                          <%=record.productswithpromotion.first.discount%>%<br>OFF
+                        </div>
+                    <% end %>
+                <% end %>
             </a>
             <% if !@userlikeitems.include?(record.id)%>
                 <div class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>');ga('send','event','shop-popup','like','<%=record.id%>');"></div>
@@ -35,6 +42,13 @@
           <a href="<%=record.url%>" onclick="ga('send','event','shop-popup','outlink','<%=record.id%>');">
             <div class="modal-product-item">
               <img class="modal-product-img" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
+              <% if !record.productswithpromotion.nil?%>
+                  <% if record.productswithpromotion.first.discount!=0 %>
+                      <div class="promo-item-tag">
+                        <%=record.productswithpromotion.first.discount%>%<br>OFF
+                      </div>
+                  <% end %>
+              <% end %>
           </a>
           <% if !@userlikeitems.include?(record.id)%>
               <div class="likebutton-item" onclick="userlike(this,'item','<%= record.id%>');ga('send','event','shop-popup','like','<%=record.id%>');"></div>
