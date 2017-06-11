@@ -92,6 +92,9 @@
             $(".contents-frame").load('/contents/item/?id='+category+'&hashtag='+styletag,function(){
                 $("#nudge-message").html(styletag+" 스타일의 "+category+" 오브제를 찾았습니다<br>멋진 마리아주를 완성할<br>추천 리스트까지 확인해 보세요");
                 $(".login-modal").modal('show');
+                <% if @test =='test'%>
+                section_transfer('home');
+                <% end %>
             });
             $("#"+data).addClass("tag-button-clicked");
         }
