@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/home/_promotion_block.html.erb" afterPath="$PROJECT_DIR$/app/views/front/home/_promotion_block.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/front.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -25,11 +25,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.49504057">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="front.scss" pinned="false" current-in-tab="false">
+          <file leaf-file-name="front.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="103">
-                  <caret line="672" column="22" lean-forward="false" selection-start-line="672" selection-start-column="22" selection-end-line="672" selection-end-column="22" />
+                <state relative-caret-position="345">
+                  <caret line="613" column="11" lean-forward="false" selection-start-line="613" selection-start-column="11" selection-end-line="613" selection-end-column="11" />
                   <folding />
                 </state>
               </provider>
@@ -77,7 +77,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="_promotion_block.html.erb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="_promotion_block.html.erb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/views/front/home/_promotion_block.html.erb">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="90">
@@ -222,10 +222,10 @@
         <option value="$PROJECT_DIR$/app/views/front/items/_notibar.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/home/_contents-frame.html.erb" />
         <option value="$PROJECT_DIR$/app/views/front/frame/_footer.html.erb" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
         <option value="$PROJECT_DIR$/db/migrate/20170611054911_add.rb" />
         <option value="$PROJECT_DIR$/app/controllers/backend_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/front/home/_promotion_block.html.erb" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
       </list>
     </option>
   </component>
@@ -725,12 +725,12 @@
       <workItem from="1494497640723" duration="101939000" />
       <workItem from="1495512447225" duration="11029000" />
       <workItem from="1495567373299" duration="54972000" />
-      <workItem from="1496212319855" duration="75536000" />
+      <workItem from="1496212319855" duration="76110000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="603466000" />
+    <option name="totallyTimeSpent" value="604040000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1127,26 +1127,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="672" column="22" lean-forward="false" selection-start-line="672" selection-start-column="22" selection-end-line="672" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20170611054911_add.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="54" lean-forward="false" selection-start-line="2" selection-start-column="54" selection-end-line="2" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/front/modal/_product_rcmd.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1860">
-          <caret line="124" column="8" lean-forward="false" selection-start-line="124" selection-start-column="8" selection-end-line="124" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1184,6 +1168,22 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/front/modal/_product_rcmd.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="124" column="8" lean-forward="false" selection-start-line="124" selection-start-column="8" selection-end-line="124" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="613" column="11" lean-forward="false" selection-start-line="613" selection-start-column="11" selection-end-line="613" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
