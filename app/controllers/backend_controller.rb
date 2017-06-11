@@ -112,6 +112,8 @@ class BackendController < ApplicationController
               record.header_url = att
             when 3
               record.background = att
+            when 4
+              record.banner_background = att
           end
 
           i = i+1;
