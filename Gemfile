@@ -19,6 +19,7 @@ gem 'fog'
 gem 'azure'
 gem 'azure-storage'
 gem 'dalli'
+gem 'rack-cors'
 
 gem 'browser'
 gem 'bootstrap-sass', '~> 3.3.6'

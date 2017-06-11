@@ -30,6 +30,12 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   config.action_controller.asset_host = 'http://cdn.mariazu.co'
 
+  config.middleware.insert_before 0, "Rack::Cors" do
+    allow do
+      origins "http://cdn.mariazu.co"
+      resource '*', :headers => :any, :methods => [:get, :options]
+    end
+  end
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
