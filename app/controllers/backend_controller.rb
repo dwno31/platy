@@ -134,6 +134,7 @@ class BackendController < ApplicationController
               product_record.price = whole_att[4].gsub(/,/,'').to_i
               product_record.img_url = whole_att[6]
               product_record.url = whole_att[7]
+              product_record.rating = whole_att[8].to_i
               product_record.save
 
               record.product_id = product_record.id

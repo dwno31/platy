@@ -9,14 +9,14 @@
   </div>
   <div class="promotion-sample">
     <% v.each do |pro_record| %>
-        <% record = pro_record.product %>
+        <% record = pro_record %>
         <div class="promotion-item">
           <a href="<%=record.url%>" onclick="ga('send','event','promotion-block','outlink','<%=record.id%>');">
             <div class="modal-product-item promotion-item-box">
               <img class="modal-product-img promotion-item-image" src="<%=record.img_url%>" onerror="imgError(this,'product',<%= record.id%>)"/>
-              <% if pro_record.discount!=0 %>
+              <% if pro_record.productswithpromotion.first.discount!=0 %>
               <div class="promo-item-tag">
-                <%=pro_record.discount%>%<br>OFF
+                <%=pro_record.productswithpromotion.first.discount%>%<br>OFF
               </div>
               <% end %>
           </a>

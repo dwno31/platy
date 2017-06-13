@@ -128,7 +128,7 @@ before_action :mobile_check, only:[:index]
 				@render_hash = {}
 
 				Promotion.all.each do |record|
-					@render_hash[record] = record.productswithpromotions.last(2)
+					@render_hash[record] = record.products.order(rating: :asc).last(2)
 				end
 				render partial: "front/home/contents-frame"
 		end
