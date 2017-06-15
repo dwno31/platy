@@ -20,7 +20,10 @@
         window.scrollTo(0,1);
     }
 
-    function filter_toggle(a){
+    function filter_toggle(a,string){
+        if(string==="스타일"){
+            $(a).parent().find(".modal-filter-button").not(a).removeClass("tag-button-clicked");
+        }
 
         $(a).toggleClass("tag-button-clicked");
 
@@ -86,7 +89,7 @@
         </div>
         <div class="modal-filter-list" id="<%=k%>">
         <% v.each do |tag| %>
-          <div  id='<%=tag%>' class="modal-filter-button" onclick="filter_toggle(this);ga('send','event','filter','browse','<%=tag%>');">
+          <div  id='<%=tag%>' class="modal-filter-button" onclick="filter_toggle(this,'<%=k%>');ga('send','event','filter','browse','<%=tag%>');">
             <span><%=tag%></span>
           </div>
         <% end %>

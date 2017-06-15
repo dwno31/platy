@@ -42,27 +42,22 @@
     window.scrollTo(0,0);
 
     browser.scroll(function(){
-        var category = $("#카테고리>.tag-button-clicked").attr('id');
+        var category = $("#카테고리>.tag-button-clicked").map(function(){return this.id}).get().join(',');
         var style = $("#스타일>.tag-button-clicked").attr('id');
         var purpose = $("#용도>.tag-button-clicked").attr('id');
         var color = $("#색상>.color-button-clicked").map(function(){return this.id}).get().join(',');
-        var index = $(".tag-browser>.tag-button-clicked").attr('id');
         console.log("scrollevent");
-        if(index===undefined){
-            index = category;
-        };
-
-        if(index === undefined){
-            index = "index";
+        if(category.length===0){
+            category = "index";
         };
 
         if($('body')[0].scrollHeight-browser.scrollTop()<browser.outerHeight()+90)
         {   console.log("90");
             if(switcher&end_param) {
-                ga('send','event','product','scroll',index+','+style+','+purpose);
+                ga('send','event','product','scroll',category+','+style+','+purpose);
                 $(".body-divide>.contents-loading:last-child").show();
 
-                $("<div>").load("/slide_contents/item/" + index + "?page=" + page+"&hashtag="+style+','+purpose+"&color="+color, function (data) {
+                $("<div>").load("/slide_contents/item/" + category + "?page=" + page+"&hashtag="+style+','+purpose+"&color="+color, function (data) {
                     if(data==="nil"){
                         $(".contents-loading").hide();
                         end_param = false;
@@ -94,7 +89,7 @@
                 console.log("30-go")
                 $(".body-divide>.contents-loading:last-child").show();
 
-                $("<div>").load("/slide_contents/item/" + index + "?page=" + page+"&hashtag="+style+','+purpose, function (data) {
+                $("<div>").load("/slide_contents/item/" + category + "?page=" + page+"&hashtag="+style+','+purpose, function (data) {
                     if(data==="nil"){
                         $(".contents-loading").hide();
                         end_param = false;

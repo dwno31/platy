@@ -20,7 +20,6 @@ before_action :mobile_check, only:[:index]
     else
       index_product = prefer_scenario(current_user.prefer)
     end
-
 		productlist(index_product)
     userlikelist(current_user)
     logger.info @prefer_tags
@@ -40,7 +39,7 @@ before_action :mobile_check, only:[:index]
       if params[:toggle]=="1"
       render partial: "front/items/item_search"
       else
-      @prefer_tags = session[:prefer_tags]
+      @prefer_tags = session[:prefer_style]+session[:prefer_category]
       render partial: "front/items/notibar"
 			end
 		elsif type== 'shop'
@@ -117,8 +116,7 @@ before_action :mobile_check, only:[:index]
 					prefer_tag = current_user.prefer
 				end
 				call_products = prefer_scenario(prefer_tag)
-        @prefer_tags = session[:prefer_tags]
-				logger.info session[:prefer_tags]
+        @prefer_tags = session[:prefer_style]+session[:prefer_category]
 				productlist(call_products)
 				render partial: "front/items/contents-frame"
 			when "likeitem"
@@ -173,31 +171,36 @@ before_action :mobile_check, only:[:index]
 
 				render partial: "front/browse/contents", layout: false
       when "item"
+				@product = Product.where(:id=>nil)
+        session[:prefer_category] = params[:id].split(',')
+        session[:prefer_style] = params[:hashtag].gsub('undefined','').split(',')
+				hashtag = params[:hashtag].gsub('undefined','').split(',').reject{|c|c.empty?}[0]
+        logger.info session[:prefer_style]
         if params[:color].nil?
 					input_color = []
 				else
 					input_color = params[:color].split(',').map{|x|"%#{x}%"}
 				end
-				if params[:id].nil?
-					@product = Product.order(rating: :desc)
+				if params[:id].nil?||params[:hashtag].nil?
+          prefer_scenario(nil)
 				elsif params[:hashtag].nil?
 					input_tags = params[:id].split(',')
 					input_tags.shift #destroy first one
 					logger.info input_tags
-					@product = []
+					@product =[]
 					input_tags.each do |tag|
 						@product = @product + Product.where("category like ?","%#{tag}%").order(rating: :desc)
 					end
 					@product = @product.uniq
 				else
-					input_category = params[:id].split(',')
-					hashtag = params[:hashtag].gsub('undefined','').split(',').reject{|c|c.empty?}
-					if hashtag.length==2
-						@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{input_category}%","%#{input_style}%","%#{input_purpose}%").order(rating: :desc)
-					else
-						@product = Product.where("category like ? and (hashtag like ?)","%#{input_category}%","%#{hashtag[0]}%").order(rating: :desc)
+					input_category = params[:id].split(',').map{|x|"%"+x+"%"}
+					logger.info input_category
+
+					input_category.each do |category|
+						@product = @product.or(Product.where("hashtag like ? and category like ?","%#{hashtag}%",category))
 					end
 
+					@product =@product.order(rating: :desc)
 				end
 				product_with_color = []
 
@@ -212,8 +215,7 @@ before_action :mobile_check, only:[:index]
 				end
 
 				productlist(@product.uniq)
-				tags = [input_category,input_style,input_purpose]
-				session[:prefer_tags] = tags
+				tags = params[:id].split(',').push(hashtag)
 				@prefer_tags = tags
         logger.info @product.size
 
@@ -265,19 +267,20 @@ before_action :mobile_check, only:[:index]
 	def slide_contents
 		userlikelist(current_user)
 		slide_type = params[:slide]
-		index = params[:index]
-    hashtag = params[:hashtag].gsub('undefined','').split(',').reject{|c|c.empty?}
+		index = params[:index].gsub('index','').split(',')
+    hashtag = params[:hashtag].gsub('undefined','').split(',').reject{|c|c.empty?}[0]
 		input_color = params[:color].split(',').map{|x|"%#{x}%"}
 		page = params[:page].to_i
     product_with_color = []
     logger.info "slidecontents"
-		logger.info hashtag.empty?
+		logger.info hashtag
+		logger.info index
 
 		if slide_type =="shop"	#샵이 불리면 그냥 샵리스트를 불러주고 추가적인 처리는 contents reload메소드에서
 			render partial:"front/browse/contents", layout:false
 		elsif slide_type =="item"	#아이템이 불리면 인풋되는 인덱스/페이지에 따라서 아이템을 호출해서 렌더로 던져준다
 			start_number = page*24
-			if index=="index" && hashtag.empty?
+			if index.empty? && hashtag.nil?
 				if current_user.nil?||current_user.prefer.nil?
 					prefer_tag = nil
 				else
@@ -285,16 +288,16 @@ before_action :mobile_check, only:[:index]
 				end
 				@product = prefer_scenario(prefer_tag)
 				logger.info @product.size
+				logger.info "heeh"
 			else
-				index = index.gsub('index','')
+				@product = Product.where(:id=>0)
+				index = index.map{|x|x.gsub('index','')}
 				logger.info hashtag
-				if hashtag.length == 2
-					@product = Product.where("category like ? and (hashtag like ? or hashtag like ?)","%#{index}%","%#{hashtag[0]}%","%#{hashtag[1]}%").order(rating: :desc)
-				else
-					@product = Product.where("category like ? and hashtag like ?","%#{index}%","%#{hashtag[0]}%").order(rating: :desc) #추후 인덱스에 맞는것만 불러오게 수
+				index.each do |category|
+					@product = @product.or(Product.where("hashtag like ? and category like ?","%#{hashtag}%","%#{category}%"))
 				end
 				logger.info @product.size
-
+				@product = @product.uniq.order(rating: :desc)
 			end
 
 			product_with_color = []
@@ -473,32 +476,28 @@ private
 		@category_list = @category_list+@purpose_list
 		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','일본','북유럽','폴란드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
     @color_hash = {"white"=>"#ffffff", "black"=>"#000000", "gray"=>"#999999", "brown"=>"#662200", "purple"=>"#b30086", "orange"=>"#ff9900", "mint"=>"#99ffdd", "green"=>"#00cc44", "blue"=>"#0000ff", "skyblue"=>"#99ddff", "glass"=>"url('/assets/glass.png')", "metal"=>"#f2f2f2", "gold"=>"url('/assets/gold.png')", "copper"=>"#cc9900", "mix"=>"url('/assets/mix.png')", "flower"=>"url('/assets/flower.png')", "stripe"=>"url('/assets/stripe.png')", "ivory"=>"#ffffcc", "khaki"=>"#666633", "beige"=>"#fffae6", "red"=>"#ff3300", "pink"=>"#ffb3ff", "wine"=>"#990033", "wood"=>"url('/assets/wood.png')", "yellow"=>"#ffff00"}
+		@product = Product.where(:id=>0)
 		prefer_tags = []
 		prefer_product = []
-		if tags.nil?&&session[:prefer_tags].nil?
-			filter_tag = [@category_list.sample,@style_list.sample]
-			session[:prefer] = filter_tag
+		if session[:prefer_style].nil?&&session[:prefer_category].nil?
+			session[:prefer_style] = [@style_list.sample]
+			session[:prefer_category] = [@category_list.sample]
 			logger.info "2nil"
-			logger.info filter_tag
-    elsif tags.nil?
-      filter_tag = session[:prefer_tags]
-		elsif session[:prefer_tags].nil?
-			filter_tag = eval(tags)
-		end
-		@prefer_tags = filter_tag
-
-		Product.where("category like ? and hashtag like ?","%#{filter_tag[0]}%","%#{filter_tag[1]}%").each do |record|
-			prefer_product.push(record)
 		end
 
 
-		session[:prefer_tags] = @prefer_tags
-		logger.info session[:prefer_tags]
+    logger.info session[:prefer_category]
+		logger.info session[:prefer_style]
+		@prefer_tags = session[:prefer_category]+session[:prefer_style]
+
+
+		session[:prefer_category].each do |category|
+			@product = @product.or(Product.where("hashtag like ? and category like ?","%#{session[:prefer_style][0]}%","%#{category}%"))
+		end
+
+    prefer_product = @product
     logger.info prefer_product.size
 
-		if prefer_product.is_a?(Array)
-			prefer_product = Product.where(id: prefer_product.map(&:id)).order(rating: :desc)
-		end
 
 		return prefer_product.uniq
 	end
