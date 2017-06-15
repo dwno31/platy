@@ -2,11 +2,16 @@
 <html>
   <head>
     <% if @test!='test'%>
-    <!-- Google Analytics Content Experiment code -->
 
-    <!-- End of Google Analytics Content Experiment code -->
     <% end %>
-    <title>mariazu</title>
+    <title>Mariazu-마리아주</title>
+    <meta name="description" content="당신의 식탁을 완성할 테이블웨어를 찾아보세요">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mariazu-마리아주">
+    <meta property="og:description" content="당신의 식탁을 완성할 테이블웨어를 찾아보세요">
+    <meta property="og:image" content="http://mariazu.co/assets/intro/logos/mariazu.png">
+    <meta property="og:url" content="http://mariazu.co">
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>

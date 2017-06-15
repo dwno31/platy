@@ -313,6 +313,7 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
+    phonegap-rails (0.0.12)
     public_suffix (2.0.5)
     puma (3.8.2)
     rack (2.0.1)
@@ -431,6 +432,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-kakao!
   omniauth-naver
+  phonegap-rails
   puma (~> 3.0)
   rack-cors
   rails (~> 5.0.2)

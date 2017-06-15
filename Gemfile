@@ -11,6 +11,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-naver'
 gem 'omniauth-kakao', :git => 'git://github.com/dwno31/omniauth-kakao'
 gem 'rest-client'
+gem 'phonegap-rails'
 
 gem 'carrierwave'
 gem 'carrierwave-azure'
