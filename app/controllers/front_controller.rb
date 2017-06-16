@@ -282,6 +282,9 @@ before_action :mobile_check, only:[:index]
 		slide_type = params[:slide]
 		index = params[:index].gsub('index','').split(',')
     hashtag = params[:hashtag].gsub('undefined','').split(',').reject{|c|c.empty?}[0]
+    if session[:color].nil?
+			session[:color]=""
+		end
 		input_color = session[:color].split(',').map{|x|"%#{x}%"}
 		page = params[:page].to_i
     product_with_color = []
