@@ -351,28 +351,37 @@ box-shadow: 0px 0px 1px grey;
 .noti-button{
   width:28%;
   height:100%;
+  background-clip:padding-box;
   border:rgba(0,0,0,0.2) 1px solid;
   border-radius:6px;
-  background:white;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
   float:left;
   display: table;
   margin-right:1%;
   color: rgba(0,0,0,0.5);
 }
-.noti-button>span:active{
-  background:#c9c9c9;
-  color:white;
-}
+
 .noti-button>span{
+  background:white;
   display: table-cell;
   vertical-align: middle;
   text-align: center;
 }
+.noti-button>span:active{
+  background:#c9c9c9;
+  color:white;
+}
+.noti-button>span:first-child{
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;
+}
 .noti-button>span:last-child{
-  border-right:0;
+  border-top-right-radius:5px;
+  border-bottom-right-radius:5px;
 }
 .sort-active{
-  background: #a7c9a9;
+  background: #a7c9a9!important;
   color: white;
 }
 
