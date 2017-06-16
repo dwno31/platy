@@ -1,23 +1,37 @@
 
-<div class="noti-tag">
-  <% @prefer_tags.compact.reject{|x|x.empty?}.each do |tag| %>
-  <span>#<%=tag%></span>
-  <% end %>
+<div class="noti-button" style="width:60%;">
+  <span class="sortbutton sort-active" sort_type="rating" sort_value="desc" onclick="filter_sort(this,'rating','desc');">인기순</span>
+  <span class="sortbutton" sort_type="price" sort_value="desc" onclick="filter_sort(this,'price','desc');">고가순</span>
+  <span class="sortbutton" sort_type="price" sort_value="asc" onclick="filter_sort(this,'price','asc');">저가순</span>
 </div>
-<div class="noti-button" onclick="prefer_reset()">
+<!--<div class="noti-button" style="width:19%;">-->
+  <!--<span>가격필터</span>-->
+<!--</div>-->
+<div class="noti-button" onclick="prefer_reset();ga('send','event','filter','popup','notibar');" style="float:right;">
   <span>다시 설정하기</span>
+</div>
+<div class="noti-scroll" onclick="$('html, body').animate({ scrollTop: 0 }, 300);" style="display:none;">
+  <span class="glyphicon glyphicon-arrow-up"></span>
 </div>
 <script>
 
     //태그를 입력받는다 제이쿼리로 보낸다
     //제이슨으로 받아서 틀 하나 만들어두고 반복문으로 dom재생성한다
     //아니면 아래 부분만 새로운 데이터로 리로드한다
-    function prefer_reset(){
-        $(".filter-popup").modal('show');
-        ga('send','event','filter','popup','notibar');
-    }
     var page = 1;
     var end_param = true;
+    function prefer_reset(){
+        $(".filter-popup").modal('show');
+    }
+    function filter_sort(a,type,value){
+        $(".sortbutton").not(a).removeClass('sort-active');
+        $(a).addClass("sort-active");
+        $(".browser-contents").load('/product_sort?sort_type='+type+'&sort_value='+value,function(){});
+        switcher = true;
+        end_param = true;
+        page = 1;
+    }
+
     function tag_sort(){
         $(".filter-popup").find(".tag-button-clicked").removeClass('tag-button-clicked');
         var tags = $('.tag-button-clicked');
@@ -46,6 +60,9 @@
         var style = $("#스타일>.tag-button-clicked").attr('id');
         var purpose = $("#용도>.tag-button-clicked").attr('id');
         var color = $("#색상>.color-button-clicked").map(function(){return this.id}).get().join(',');
+        var sort_type = $(".sort-active").attr('sort_type');
+        var sort_value = $(".sort-active").attr('sort_value');
+
         console.log("scrollevent");
         if(category.length===0){
             category = "index";
@@ -57,11 +74,11 @@
                 ga('send','event','product','scroll',category+','+style+','+purpose);
                 $(".body-divide>.contents-loading:last-child").show();
 
-                $("<div>").load("/slide_contents/item/" + category + "?page=" + page+"&hashtag="+style+','+purpose+"&color="+color, function (data) {
+                $("<div>").load("/slide_contents/item/" + category + "?page=" + page+"&hashtag="+style+','+purpose+"&color="+color+"&sort_type="+sort_type+"&sort_value="+sort_value, function (data) {
                     if(data==="nil"){
                         $(".contents-loading").hide();
                         end_param = false;
-                        $(".contents-end>span").text("["+$('.noti-tag').text()+'] 상품리스트 추가 요청하기');
+                        $(".contents-end>span").text("상품리스트 추가 요청하기");
                         $(".contents-end").show();
                     }else {
                         append_str = $(this).find(".body-divide");
@@ -77,44 +94,27 @@
 
                 });
                 page = page + 1;
+                if(page===2){
+                    $(".footer-alarm").show();
+                }
                 switcher = false;
                 setTimeout(function(){switcher=true;},200);
             }
             else{
                 console.log("timeout-90");
             }
-        }else if ($('body')[0].scrollHeight-browser.scrollTop()===browser.outerHeight()){
-            console.log("30");
-            if(switcher&end_param) {
-                console.log("30-go")
-                $(".body-divide>.contents-loading:last-child").show();
+        }else if ($('body')[0].scrollHeight-browser.scrollTop()<10){
 
-                $("<div>").load("/slide_contents/item/" + category + "?page=" + page+"&hashtag="+style+','+purpose, function (data) {
-                    if(data==="nil"){
-                        $(".contents-loading").hide();
-                        end_param = false;
-                        $(".body-divide").attr('style','padding-bottom:15%;');
-                    }else {
-                        append_str = $(this).find(".body-divide");
-
-                        $(".browser-contents").find(".body-divide")[0].append(append_str[0]);
-                        $(".body-divide>.body-divide>div").unwrap();
-
-                        $(".browser-contents").find(".body-divide")[1].append(append_str[1]);
-                        $(".body-divide>.body-divide>div").unwrap();
-
-                        $(".contents-loading").hide();
-                    };
-
-                });
-                page = page + 1;
-                switcher = false;
-                setTimeout(function(){switcher=true;},200);
-            }
-            else{
-                console.log("timeout-30");
-            }
         };
+      if(browser.scrollTop()<10){
+          $(".notibar").attr('style','z-index:-1;')
+          $(".noti-scroll").hide();
+          $(".noti-button").show();
+      }else{
+          $(".notibar").attr('style','z-index:3;')
+          $(".noti-scroll").show();
+          $(".noti-button").hide();
+      }
 
 
     });

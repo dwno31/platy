@@ -25,6 +25,7 @@ Rails.application.routes.draw do
  get "search_shop", to:"front#search_shop"
  get "product_rcmd/(:id)", to:"front#product_rcmd"
  get "promo_popup/(:id)", to:"front#promo_popup"
+ get "product_sort",to:"front#product_sort"
 
  #poset forward backend
  post "feedback", to:"backend#feedback"

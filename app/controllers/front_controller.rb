@@ -20,7 +20,7 @@ before_action :mobile_check, only:[:index]
     else
       index_product = prefer_scenario(current_user.prefer)
     end
-		productlist(index_product)
+		productlist(index_product,nil,nil)
     userlikelist(current_user)
     logger.info @prefer_tags
 	end
@@ -117,7 +117,7 @@ before_action :mobile_check, only:[:index]
 				end
 				call_products = prefer_scenario(prefer_tag)
         @prefer_tags = session[:prefer_style]+session[:prefer_category]
-				productlist(call_products)
+				productlist(call_products,nil,nil)
 				render partial: "front/items/contents-frame"
 			when "likeitem"
 				likelist(current_user)
@@ -147,7 +147,7 @@ before_action :mobile_check, only:[:index]
 		end
 
 		userlikelist(current_user)
-		productlist(rcmd_product.uniq)
+		productlist(rcmd_product.uniq,nil,nil)
 		render partial: "front/modal/product_rcmd", layout: false
 	end
 
@@ -174,10 +174,13 @@ before_action :mobile_check, only:[:index]
 				@product = Product.where(:id=>nil)
         session[:prefer_category] = params[:id].split(',')
         session[:prefer_style] = params[:hashtag].gsub('undefined','').split(',')
+				session[:color] = params[:color]
 				hashtag = params[:hashtag].gsub('undefined','').split(',').reject{|c|c.empty?}[0]
         logger.info session[:prefer_style]
+				logger.info params[:id].empty?
+				logger.info "where"
         if params[:color].nil?
-					input_color = []
+					input_color = session[:color].split(',').map{|x|"%#{x}%"}
 				else
 					input_color = params[:color].split(',').map{|x|"%#{x}%"}
 				end
@@ -192,6 +195,9 @@ before_action :mobile_check, only:[:index]
 						@product = @product + Product.where("category like ?","%#{tag}%").order(rating: :desc)
 					end
 					@product = @product.uniq
+				elsif params[:id].empty?
+					logger.info "hello!~"
+					@product = Product.where("hashtag like ?","%#{hashtag}%").order(rating: :desc)
 				else
 					input_category = params[:id].split(',').map{|x|"%"+x+"%"}
 					logger.info input_category
@@ -214,7 +220,7 @@ before_action :mobile_check, only:[:index]
 					@product = product_with_color.inject{|sum,x|sum+x}
 				end
 
-				productlist(@product.uniq)
+				productlist(@product.uniq,params[:sort_type],params[:sort_value])
 				tags = params[:id].split(',').push(hashtag)
 				@prefer_tags = tags
         logger.info @product.size
@@ -223,6 +229,13 @@ before_action :mobile_check, only:[:index]
 				render partial: "front/items/contents-frame", layout: false
 		end
 
+	end
+
+	def product_sort
+		mother_list = prefer_scenario(nil)
+		userlikelist(current_user)
+		productlist(mother_list,params[:sort_type],params[:sort_value])
+		render partial: "front/items/contents", layout:false
 	end
 
 	def shop_product
@@ -247,7 +260,7 @@ before_action :mobile_check, only:[:index]
 
 	def promo_popup
 		@input_record = Promotion.find(params[:id].to_i)
-		productlist(@input_record.products)
+		productlist(@input_record.products,nil,nil)
     userlikelist(current_user)
 
     render partial:"front/modal/promotion",layout:false
@@ -269,7 +282,7 @@ before_action :mobile_check, only:[:index]
 		slide_type = params[:slide]
 		index = params[:index].gsub('index','').split(',')
     hashtag = params[:hashtag].gsub('undefined','').split(',').reject{|c|c.empty?}[0]
-		input_color = params[:color].split(',').map{|x|"%#{x}%"}
+		input_color = session[:color].split(',').map{|x|"%#{x}%"}
 		page = params[:page].to_i
     product_with_color = []
     logger.info "slidecontents"
@@ -294,7 +307,7 @@ before_action :mobile_check, only:[:index]
 				index = index.map{|x|x.gsub('index','')}
 				logger.info hashtag
 				index.each do |category|
-					@product = @product.or(Product.where("hashtag like ? and category like ?","%#{hashtag}%","%#{category}%"))
+					@product = @product.or(Product.where("category like ? and hashtag like ?","%#{category}%","%#{hashtag}%"))
 				end
 				logger.info @product.size
 				@product = @product.uniq.order(rating: :desc)
@@ -312,31 +325,26 @@ before_action :mobile_check, only:[:index]
 				@product = product_with_color.inject{|sum,x|sum+x}
 			end
 
-			@product = @product.uniq
-
-			@records = (start_number..start_number+23).to_a.map{|x|@product[x]}
-
-			@product1 = []
-			@product2 = []
-			tog = false
-
-			@records.each do |record|
-				case tog
-					when false
-						@product1.push(record) #홀수는 여기다 넣고
-					when true
-						@product2.push(record) #짝수는 여기다 넣어서 렌더링으로 넘겨준다
-				end
-				tog = !tog
-      end
-
-			@product1.compact!
-			@product2.compact!
-
-			if (@product1.empty?)&(@product2.empty?)
-				render plain: "nil"
-			else
+			logger.info params[:sort_type]
+      logger.info @product.size
+			case params[:sort_type]
+				when 'price'
+					@product = @product.uniq.order("#{params[:sort_type]}":"#{params[:sort_value]}")
+				when 'rating'
+					@product = @product.uniq.order("#{params[:sort_type]}":"#{params[:sort_value]}")
+				else
+					@product = @product.uniq.order(rating: :desc)
+			end
+			logger.info start_number
+			@records = (start_number..start_number+23).to_a.map{|x|@product[x]}.compact
+			logger.info @records.compact.size
+			logger.info @records.inspect
+      if @records.compact.size != 0
+				@records = Product.where(id: @records.map(&:id))
+    	  productlist(@records,params[:sort_type],params[:sort_value])
 				render partial:"front/items/contents", layout:false
+      else
+				render plain: "nil"
 			end
 		end
 
@@ -418,13 +426,28 @@ private
 		return @merchant
 	end
 
-	def productlist(record)
+	def productlist(record,sort_type,sort_value)
     @head_tag = ["우드트레이","볼","플레이트","커트러리","홈세트","머그","소품","매트"]
     if record.nil?
-      @product = Product.order(rating: :desc)
+      @product = Product.all
+		elsif record.is_a?(Array)
+			@product = Product.where(id: record.map(&:id))
 		else
 			@product = record
 		end
+
+		case sort_type
+			when "rating"
+				@product = @product.order("#{sort_type}":"#{sort_value}")
+			when 'price'
+				@product = @product.order("#{sort_type}":"#{sort_value}")
+			when 'range'
+				price_range = sort_value.split(',').map{|x|x.to_i}
+        @product = @product.where("price >=? and price<=?",price_range[0],price_range[1])
+      else
+        @product = @product.order(rating: :desc)
+		end
+
 		start_number = 0
 		prolong_number = 23
 		#record_pool = Product.where() 추후 인덱스에 맞는것만 불러오게 수정
@@ -492,10 +515,14 @@ private
 
 
 		session[:prefer_category].each do |category|
-			@product = @product.or(Product.where("hashtag like ? and category like ?","%#{session[:prefer_style][0]}%","%#{category}%"))
+			@product = @product.or(Product.where("hashtag like ? and category like ? and color like ?","%#{session[:prefer_style][0]}%","%#{category}%","%#{session[:color]}%"))
+		end
+		if session[:prefer_category].empty?
+			@product = Product.where("hashtag like ? and color like ?","%#{session[:prefer_style][0]}%","%#{session[:color]}%").order(rating: :desc)
 		end
 
-    prefer_product = @product
+
+		prefer_product = @product
     logger.info prefer_product.size
 
 
