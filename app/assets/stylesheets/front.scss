@@ -314,7 +314,7 @@ box-shadow: 0px 0px 1px grey;
       font-size: 1.5em;
       color: transparent;
       background: url('/assets/intro/logos/mariazu.png') no-repeat center;
-      background-size:25% 55%;
+      background-size:90px 55%;
 
     }
 
@@ -329,7 +329,7 @@ box-shadow: 0px 0px 1px grey;
   width: 100%;
   position: fixed;
   top: 44px;
-  z-index: -1;
+  z-index: 1;
   padding:1.7%;
   padding-bottom:0;
 
@@ -383,6 +383,62 @@ box-shadow: 0px 0px 1px grey;
 .sort-active{
   background: #a7c9a9!important;
   color: white;
+}
+
+.price-range{
+  padding:2%;
+  display:none;
+  position:fixed;
+  bottom:43px;
+  left:0;
+  width:100vw;
+  height:190px;
+  background:white;
+  z-index:4;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+
+  .price-range-header{
+    text-align:center;
+  }
+  .price-range-header>span:first-child{
+    font-size:1.5em;
+    font-weight:500;
+  }
+  .range-bar{
+    padding:15px;
+  }
+
+.price-range-button{
+  height:44px;
+  text-align:center;
+  color:grey;
+  padding:0 10%;
+}
+.price-range-button>div{
+  height:100%;
+  width:40%;
+  margin:0 5%;
+  border-radius:6px;
+  background:#a7c9a9;
+  color:white;
+  float:left;
+  line-height:45px;
+}
+.price-range-button>div:first-child{
+  background:rgba(0,0,0,0.1);
+  color:grey;
+}
+.price-range-button>div:active{
+
+}
+.slider-range{
+  text-align:center;
+  font-size:1.5em
+}
+
+.noUi-connect{
+  background:#a7c9a9!important;
 }
 
 .noti-scroll{
@@ -717,7 +773,7 @@ margin-top:90px;
 
 //footer
 .footer{
-  height:7vh;
+  height:43px;
   position:fixed;
   bottom:0;
   width:100%;

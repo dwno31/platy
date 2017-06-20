@@ -1,12 +1,30 @@
 
-<div class="noti-button" style="width:60%;">
+<div class="noti-button" style="width:45%;">
   <span class="sortbutton sort-active" sort_type="rating" sort_value="desc" onclick="filter_sort(this,'rating','desc');">인기순</span>
   <span class="sortbutton" sort_type="price" sort_value="desc" onclick="filter_sort(this,'price','desc');">고가순</span>
   <span class="sortbutton" sort_type="price" sort_value="asc" onclick="filter_sort(this,'price','asc');">저가순</span>
 </div>
-<!--<div class="noti-button" style="width:19%;">-->
-  <!--<span>가격필터</span>-->
-<!--</div>-->
+<div class="noti-button" style="width:19%;">
+  <span class="pricebutton" onclick="price_filter()">가격필터</span>
+</div>
+<div class="price-range" style="display:nonela">
+  <div class="price-range-header">
+    <span>원하는 가격대 설정<br></span>
+    <span>해당 범위 내의 상품들만 보여드립니다</span>
+  </div>
+  <div class="range-bar">
+    <div class="slider-range">
+      <span>
+        <span class="price-from">500</span>원 ~<span class="price-to">10000</span>원
+      </span>
+    </div>
+    <div id="slider-range"></div>
+  </div>
+  <div class="price-range-button">
+    <div class="price-reset">초기화</div>
+    <div class="price-apply">적용하기</div>
+  </div>
+</div>
 <div class="noti-button" onclick="prefer_reset();ga('send','event','filter','popup','notibar');" style="float:right;">
   <span>다시 설정하기</span>
 </div>
@@ -18,10 +36,24 @@
     //태그를 입력받는다 제이쿼리로 보낸다
     //제이슨으로 받아서 틀 하나 만들어두고 반복문으로 dom재생성한다
     //아니면 아래 부분만 새로운 데이터로 리로드한다
+    var slider = document.getElementById('slider-range');
+    noUiSlider.create(slider, {
+        start: [0, 100],
+        connect: true,
+        range: {
+            'min': 0,
+            'max': 100
+        }
+    });
     var page = 1;
     var end_param = true;
     function prefer_reset(){
         $(".filter-popup").modal('show');
+    }
+    function price_filter(){
+        $(".pricebutton").addClass("sort-active");
+        $(".price-range").show();
+
     }
     function filter_sort(a,type,value){
         $(".sortbutton").not(a).removeClass('sort-active');
@@ -51,6 +83,9 @@
 
 
     }
+
+
+
     var browser = $(window);
     var switcher = true;
     window.scrollTo(0,0);
@@ -107,7 +142,6 @@
 
         };
       if(browser.scrollTop()<10){
-          $(".notibar").attr('style','z-index:-1;')
           $(".noti-scroll").hide();
           $(".noti-button").show();
       }else{
