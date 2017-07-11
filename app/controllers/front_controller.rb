@@ -402,6 +402,7 @@ before_action :mobile_check, only:[:index]
 		check = params[:check]
 		output = ""
 		url_hash = {}
+		url_hash_array = []
 		toggle_odd = false
 		pair_url = ""
 		category_list.each do |url| #카테고리는 짝지어 들어온다
@@ -462,7 +463,8 @@ before_action :mobile_check, only:[:index]
 						end
 						item_price = item.css(product_price).text
 
-            url_hash[link] = [item_title,item_img,item_price]
+            url_hash = {category:page_url, title:item_title, price:item_price, url:link, img:item_img}
+						url_hash_array.push(url_hash)
 
             if check=="all"
 							check = "hello"
@@ -485,9 +487,15 @@ before_action :mobile_check, only:[:index]
 
 		end
 
-		logger.info url_hash.inspect
-
+		logger.info "result"
+		logger.info url_hash_array.inspect
+		@result = url_hash_array
+		if output == ""
+			render layout:false
+		else
 			render plain: output
+		end
+
 	end
 
 private

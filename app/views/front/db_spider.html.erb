@@ -7,7 +7,7 @@
     <p>
       <input id="shop_url" type="text" name="shop" placeholder="ex)http://hello.com" />
     </p>
-    <p> 인코딩을 선택해주세요 (대부분 그냥 두면 됨 칼럼 정보까지 다 깨질때만 바꿔보고 쭉 해볼것)</p>
+    <p> 인코딩을 선택해주세요 (대부분 그냥 두면 됨 세부 정보까지 다 깨질때만 바꿔서 해볼것)</p>
     <p>
       <select id="encoding">
         <option value="utf-8">UTF-8</option>
@@ -23,14 +23,14 @@
     </p>
     <p class="category_mom">
       <input type="text" class="album_category"  placeholder="?이전까지의 주소"><br>
-      <input type="text" class="album_category" placeholder="?이후의 주소(파라미터"><br><br>
+      <input type="text" class="album_category" placeholder="?이후의 주소(파라미터)"><br><br>
 
     </p>
     <p>
       <span style="font-size:1.2m; border:1px solid grey;"onclick="add_category()">카테고리 추가하기</span><br>
       <input id="album_css" type="text" name="album_css" placeholder="제품의 css 분류"><button onclick="check_go('album')" >확인하기</button>
     </p>
-    <p id=album_example style="color:grey; border:1px solid grey; width:50%; margin:auto;">이곳에 하나의 앨범박스의 예시가 표시됩니다</p>
+    <p id=album_example style="color:grey; border:1px solid grey; width:90%; margin:auto;">이곳에 하나의 앨범박스의 예시가 표시됩니다</p>
 
   </div>
 
@@ -45,11 +45,42 @@
       가격 : <input id="product_price" type="text" name="product_price" placeholder="가격"><br>
       <button onclick="check_go()">확인하기</button>
     </p>
-    <p id=full_example style="color:grey; border:1px solid grey; width:50%; margin:auto;">이곳에 하나의 세부 정보 예시가 표시됩니다</p><br>
+    <p id=full_example style="color:grey; border:1px solid grey; width:90%; margin:auto;">이곳에 하나의 세부 정보 예시가 표시됩니다</p><br>
   </div>
 
   <button style="height:100px; width:300px; border:solid 1px grey;" onclick="spider_go();">Go</button>
 
+  <div style="width:100% text-align:center;">
+    <div style="width:100%;">
+    <table id="input" style="width:100%;">
+      <tbody>
+      <tr>
+        <th>Shop url</th>
+        <th>Encoding</th>
+        <th>Category url</th>
+        <th>Album</th>
+        <th>A tag</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>IMG</th>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  <div style="width:100%;">
+  <table id="result" style="width:100%;">
+    <tbody>
+    <tr>
+      <th>카테고리 url</th>
+      <th>상품이름</th>
+      <th>가격</th>
+      <th>상품url</th>
+      <th>이미지</th>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
 </section>
 <script>
   function add_category(){
@@ -73,10 +104,28 @@
           url:"/db_spider_result",
           method:"POST",
           data:{encoding:encoding, mainpage:mainpage, product_url:product_url, category:category, album_css:album_css, product_title:product_title, product_img:product_img, product_price:product_price}
-      }).done(function(data){
-          if(data==="hello"){
-              console.log("hi!");
-          }
+      }).done(function(data) {
+          $("#input").append("<tr>" +
+              "<td>" + mainpage +
+              "</td>" +
+              "<td>" + encoding +
+              "</td>" +
+              "<td>" + category.join() +
+              "</td>" +
+              "<td>" +album_css +
+              "</td>" +
+              "<td>" +product_url +
+              "</td>" +
+              "<td>" + product_title +
+              "</td>" +
+              "<td>" + product_price +
+              "</td>" +
+              "<td>" + product_img +
+              "</td>" +
+              "</tr>");
+          $("#result").append(data);
+
+
 
       });
 
