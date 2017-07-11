@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/front_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/front_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/db_spider.html.erb" afterPath="$PROJECT_DIR$/app/views/front/db_spider.html.erb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -85,8 +84,8 @@
           <file leaf-file-name="db_spider.html.erb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/front/db_spider.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="318">
-                  <caret line="112" column="37" lean-forward="false" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
+                <state relative-caret-position="-119">
+                  <caret line="32" column="128" lean-forward="false" selection-start-line="32" selection-start-column="128" selection-end-line="32" selection-end-column="128" />
                   <folding>
                     <element signature="n#style#0;n#div#3;n#section#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#div#0;n#div#3;n#section#0;n#!!top" expanded="true" />
@@ -654,12 +653,12 @@
       <workItem from="1498367403441" duration="287000" />
       <workItem from="1498368663552" duration="97000" />
       <workItem from="1499612435426" duration="28138000" />
-      <workItem from="1499790578293" duration="1622000" />
+      <workItem from="1499790578293" duration="1877000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="722973000" />
+    <option name="totallyTimeSpent" value="723228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1080,8 +1079,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/front/db_spider.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="112" column="37" lean-forward="false" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
+        <state relative-caret-position="-119">
+          <caret line="32" column="128" lean-forward="false" selection-start-line="32" selection-start-column="128" selection-end-line="32" selection-end-column="128" />
           <folding>
             <element signature="n#style#0;n#div#3;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#3;n#section#0;n#!!top" expanded="true" />
