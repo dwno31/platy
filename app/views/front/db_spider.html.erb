@@ -1,4 +1,4 @@
-<section style="text-align:center;">
+<section style="text-align:center; color:darkgreen;">
   <div style="margin-top:10%;">
 
     <p>
@@ -6,6 +6,13 @@
     </p>
     <p>
       <input id="shop_url" type="text" name="shop" placeholder="ex)http://hello.com" />
+    </p>
+    <p> 인코딩을 선택해주세요 (대부분 그냥 두면 됨 칼럼 정보까지 다 깨질때만 바꿔보고 쭉 해볼것)</p>
+    <p>
+      <select id="encoding">
+        <option value="utf-8">UTF-8</option>
+        <option value="euc-kr">euc-kr</option>
+      </select>
     </p>
 
   </div>
@@ -20,9 +27,11 @@
 
     </p>
     <p>
-      <span style="font-size:1.3em;"onclick="add_category()">카테고리 추가하기</span><br>
-      <input id="album_css" type="text" name="album_css" placeholder="제품의 css 분류">
+      <span style="font-size:1.2m; border:1px solid grey;"onclick="add_category()">카테고리 추가하기</span><br>
+      <input id="album_css" type="text" name="album_css" placeholder="제품의 css 분류"><button onclick="check_go('album')" >확인하기</button>
     </p>
+    <p id=album_example style="color:grey; border:1px solid grey; width:50%; margin:auto;">이곳에 하나의 앨범박스의 예시가 표시됩니다</p>
+
   </div>
 
   <div>
@@ -30,11 +39,13 @@
       제품 상세페이지에서 필요한 column에 해당하는 정보가 있는 xpath를 복사해주세요
     </p>
     <p>
-      <input id="product_url" type="text" placeholder="url이 담겨있는 a태그"><br>
-      <input id="product_title" type="text" name="product_title" placeholder="제품명"><br>
-      <input id="product_img" type="text" name="product_img" placeholder="대표이미지"><br>
-      <input id="product_price" type="text" name="product_price" placeholder="가격"><br>
+      url이 담겨있는 a태그 : <input id="product_url" type="text" placeholder="url이 담겨있는 a태그"><br>
+      제품 이름 : <input id="product_title" type="text" name="product_title" placeholder="제품명"><br>
+      이미지 태그 : <input id="product_img" type="text" name="product_img" placeholder="대표이미지"><br>
+      가격 : <input id="product_price" type="text" name="product_price" placeholder="가격"><br>
+      <button onclick="check_go()">확인하기</button>
     </p>
+    <p id=full_example style="color:grey; border:1px solid grey; width:50%; margin:auto;">이곳에 하나의 세부 정보 예시가 표시됩니다</p><br>
   </div>
 
   <button style="height:100px; width:300px; border:solid 1px grey;" onclick="spider_go();">Go</button>
@@ -48,6 +59,8 @@
   }
 
   function spider_go(){
+
+
       var mainpage = $("#shop_url")[0].value;
       var category= $(".album_category").map(function(){return this.value}).get();
       var album_css = $("#album_css")[0].value;
@@ -55,16 +68,57 @@
       var product_title = $("#product_title")[0].value;
       var product_img = $("#product_img")[0].value;
       var product_price = $("#product_price")[0].value;
+      var encoding = $("#encoding option:selected").attr('value');
       $.ajax({
           url:"/db_spider_result",
           method:"POST",
-          data:{mainpage:mainpage, product_url:product_url, category:category, album_css:album_css, product_title:product_title, product_img:product_img, product_price:product_price}
+          data:{encoding:encoding, mainpage:mainpage, product_url:product_url, category:category, album_css:album_css, product_title:product_title, product_img:product_img, product_price:product_price}
       }).done(function(data){
           if(data==="hello"){
               console.log("hi!");
           }
 
       });
+
+
+  }
+  function check_go(data){
+      var mainpage = $("#shop_url")[0].value;
+      var category= $(".album_category").map(function(){return this.value}).get();
+      var album_css = $("#album_css")[0].value;
+      var product_url = $("#product_url")[0].value;
+      var product_title = $("#product_title")[0].value;
+      var product_img = $("#product_img")[0].value;
+      var product_price = $("#product_price")[0].value;
+      var encoding = $("#encoding option:selected").attr('value');
+
+      if(data==='album'){
+          $.ajax({
+              url:"/db_spider_result",
+              method:"POST",
+              data:{encoding:encoding, mainpage:mainpage, category:category, album_css:album_css, check:'album'},
+              error:function(data){alert("아예 크롤링이 안됐네요 셀렉터를 확인해주세요")}
+          }).done(function(data){
+
+              $("#album_example").text(data);
+
+
+          });
+      }else{
+          $.ajax({
+              url:"/db_spider_result",
+              method:"POST",
+              data:{encoding:encoding, check:'all', mainpage:mainpage, product_url:product_url, category:category, album_css:album_css, product_title:product_title, product_img:product_img, product_price:product_price},
+              error:function(data){alert("아예 크롤링이 안됐네요 셀렉터를 확인해주세요")}
+          }).done(function(data){
+              $("#full_example").html(data);
+
+          });
+      }
+
+
+
+
   }
 </script>
 

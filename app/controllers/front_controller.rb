@@ -398,7 +398,9 @@ before_action :mobile_check, only:[:index]
 		product_img = params[:product_img]
 		product_price = params[:product_price]
 		product_url = params[:product_url]
-
+		encoding = params[:encoding]
+		check = params[:check]
+		output = ""
 		url_hash = {}
 		toggle_odd = false
 		pair_url = ""
@@ -420,7 +422,11 @@ before_action :mobile_check, only:[:index]
 
 					page_url = pair_url + pms.join("&")+"&page="+page.to_s #기본 주소와 파라미터를 다시 조립한다
 
-					data = Nokogiri::HTML(open(page_url)) #노코기리로 해당 url 데이터를 얻는다
+					if encoding == "euc-kr"
+						data = Nokogiri::HTML(open(page_url),nil,'euc-kr') #노코기리로 해당 url 데이터를 얻는다
+					else
+						data = Nokogiri::HTML(open(page_url)) #노코기리로 해당 url 데이터를 얻는다
+					end
 
 					album_items = data.css(album_css) #입력된 css 위치에 존재하는 item들을 모두 가져온다
           logger.info album_items.size
@@ -428,6 +434,13 @@ before_action :mobile_check, only:[:index]
 
 					if album_items.empty? #item이 비어있다면 반복문을 종료한다
 						break;
+					end
+
+					if check=="album"
+						output = album_items[0]
+						break
+					elsif check=="hello"
+						break
 					end
 
 					album_items.each do |item| #해당 아이템들로부터 href attribute에 있는 link를 추출
@@ -444,13 +457,18 @@ before_action :mobile_check, only:[:index]
 
 						item_title = item.css(product_title).text.gsub("\n","")
 						item_img = item.css(product_img).attr('src').value
-						if item_img.include?"//"
+						if !item_img.include?'//'
 							item_img = mainpage+item_img
 						end
 						item_price = item.css(product_price).text
 
             url_hash[link] = [item_title,item_img,item_price]
 
+            if check=="all"
+							check = "hello"
+              output = "링크:#{link} <br> 이름:#{item_title} <br> 가격:#{item_price} <br> 이미지:#{item_img}"
+              break
+						end
 					end
 
 
@@ -464,10 +482,12 @@ before_action :mobile_check, only:[:index]
 
 				toggle_odd = true
 			end
+
 		end
 
 		logger.info url_hash.inspect
 
+			render plain: output
 	end
 
 private

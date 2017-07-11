@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/V8/V8b5tiuD2ocNHDx23Vl1xFgbc9wPE7RJnRL6-t3Fxlo.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/V8/V8b5tiuD2ocNHDx23Vl1xFgbc9wPE7RJnRL6-t3Fxlo.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/Vo/VoLgO6mpHe7w4IPOo8orCF6sEoy5cr_NGWFLFBSvflU.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/Vo/VoLgO6mpHe7w4IPOo8orCF6sEoy5cr_NGWFLFBSvflU.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/hu/huRVY7LVXZB6MYpdbbFqMmST6c_zVHKCoLcHfk2oi24.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/hu/huRVY7LVXZB6MYpdbbFqMmST6c_zVHKCoLcHfk2oi24.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/x7/x7PYh8DJvPykcEqpVab2vcY9-GFz-3cqtoMlRAu94Uc.cache" afterPath="$PROJECT_DIR$/tmp/cache/assets/sprockets/v3.0/x7/x7PYh8DJvPykcEqpVab2vcY9-GFz-3cqtoMlRAu94Uc.cache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/front_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/front_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/front/db_spider.html.erb" afterPath="$PROJECT_DIR$/app/views/front/db_spider.html.erb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -44,8 +38,8 @@
           <file leaf-file-name="front_controller.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/front_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="336">
-                  <caret line="445" column="52" lean-forward="false" selection-start-line="445" selection-start-column="52" selection-end-line="445" selection-end-column="52" />
+                <state relative-caret-position="298">
+                  <caret line="459" column="15" lean-forward="false" selection-start-line="459" selection-start-column="15" selection-end-line="459" selection-end-column="15" />
                   <folding />
                 </state>
               </provider>
@@ -101,11 +95,14 @@
           <file leaf-file-name="db_spider.html.erb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/front/db_spider.html.erb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="372">
-                  <caret line="60" column="60" lean-forward="false" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+                <state relative-caret-position="135">
+                  <caret line="9" column="42" lean-forward="false" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
                   <folding>
                     <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#span#0;n#p#2;n#div#1;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#3;n#div#1;n#section#0;n#!!top" expanded="true" />
+                    <element signature="n#style#0;n#p#2;n#div#2;n#section#0;n#!!top" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -658,12 +655,12 @@
       <workItem from="1497624285176" duration="26060000" />
       <workItem from="1498367403441" duration="287000" />
       <workItem from="1498368663552" duration="97000" />
-      <workItem from="1499612435426" duration="18588000" />
+      <workItem from="1499612435426" duration="26023000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="711801000" />
+    <option name="totallyTimeSpent" value="719236000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1075,19 +1072,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/front/db_spider.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="60" column="60" lean-forward="false" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+        <state relative-caret-position="135">
+          <caret line="9" column="42" lean-forward="false" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
           <folding>
             <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#2;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#3;n#div#1;n#section#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#2;n#div#2;n#section#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/front_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="445" column="52" lean-forward="false" selection-start-line="445" selection-start-column="52" selection-end-line="445" selection-end-column="52" />
+        <state relative-caret-position="298">
+          <caret line="459" column="15" lean-forward="false" selection-start-line="459" selection-start-column="15" selection-end-line="459" selection-end-column="15" />
           <folding />
         </state>
       </provider>
