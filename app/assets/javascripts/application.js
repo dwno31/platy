@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require nouislider.min.js
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .

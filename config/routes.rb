@@ -26,6 +26,7 @@ Rails.application.routes.draw do
  get "product_rcmd/(:id)", to:"front#product_rcmd"
  get "promo_popup/(:id)", to:"front#promo_popup"
  get "product_sort",to:"front#product_sort"
+ get "db_spider", to:"front#db_spider"
 
  #poset forward backend
  post "feedback", to:"backend#feedback"
@@ -38,5 +39,6 @@ Rails.application.routes.draw do
  post "img_reproduce", to:"backend#img_reproduce"
  post "product_destroy", to:"backend#db_product_destroy"
  post "userlike/(:type)/(:id)", to:"backend#userlike"
+ post "db_spider_result", to:"front#db_spider_result"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

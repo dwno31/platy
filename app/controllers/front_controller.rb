@@ -1,6 +1,8 @@
 class FrontController < ApplicationController
 
 require 'browser'
+require 'nokogiri'
+require 'open-uri'
 
 before_action :mobile_check, only:[:index]
 
@@ -379,6 +381,92 @@ before_action :mobile_check, only:[:index]
 	end
 
 	def db_input
+
+	end
+
+	def db_spider
+
+
+	end
+
+	def db_spider_result
+
+		mainpage = params[:mainpage]
+		category_list = params[:category]
+		album_css = params[:album_css]
+		product_title = params[:product_title]
+		product_img = params[:product_img]
+		product_price = params[:product_price]
+		product_url = params[:product_url]
+
+		url_hash = {}
+		toggle_odd = false
+		pair_url = ""
+		category_list.each do |url| #카테고리는 짝지어 들어온다
+			if toggle_odd #파라미터 / 주소 부분을 분리하기 위한 홀짝 토글
+
+
+				pms = url.split("&") #짝수 부분의 파라미터를 쪼개어 배열화
+				pms.each_with_index do |pm,i| #페이지 넘버가 들어가는 부분은 제거하여 동적으로 따로 구성한다
+					if pm.include?"page"
+						pms.delete_at(i)
+					end
+				end
+
+				page = 1 #페이지의 시작 번호, 1부터
+				links = []
+
+				while true #노코기리에서 긁어오는 결과값이 없어질때까지 루프를 돌린다
+
+					page_url = pair_url + pms.join("&")+"&page="+page.to_s #기본 주소와 파라미터를 다시 조립한다
+
+					data = Nokogiri::HTML(open(page_url)) #노코기리로 해당 url 데이터를 얻는다
+
+					album_items = data.css(album_css) #입력된 css 위치에 존재하는 item들을 모두 가져온다
+          logger.info album_items.size
+					logger.info 'mothjer'
+
+					if album_items.empty? #item이 비어있다면 반복문을 종료한다
+						break;
+					end
+
+					album_items.each do |item| #해당 아이템들로부터 href attribute에 있는 link를 추출
+
+						logger.info item
+						logger.info "item ds"
+						logger.info product_url
+						link = item.css(product_url).attr('href')
+						logger.info link
+
+						if !link.include?'//'
+							link = mainpage + link
+						end
+
+						item_title = item.css(product_title).text.gsub("\n","")
+						item_img = item.css(product_img).attr('src').value
+						if item_img.include?"//"
+							item_img = mainpage+item_img
+						end
+						item_price = item.css(product_price).text
+
+            url_hash[link] = [item_title,item_img,item_price]
+
+					end
+
+
+					page = page+1 #다음 페이지 탐색을 위해 페이지를 1 증가
+				end
+
+
+				toggle_odd = false
+			else
+				pair_url = url
+
+				toggle_odd = true
+			end
+		end
+
+		logger.info url_hash.inspect
 
 	end
 
