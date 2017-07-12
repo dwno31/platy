@@ -422,6 +422,8 @@ before_action :mobile_check, only:[:index]
 				while true #노코기리에서 긁어오는 결과값이 없어질때까지 루프를 돌린다
 
 					page_url = pair_url + pms.join("&")+"&page="+page.to_s #기본 주소와 파라미터를 다시 조립한다
+          logger.info page_url
+					logger.info "에서 긁어옵니다"
 
 					if encoding == "euc-kr"
 						data = Nokogiri::HTML(open(page_url),nil,'euc-kr') #노코기리로 해당 url 데이터를 얻는다
@@ -465,6 +467,11 @@ before_action :mobile_check, only:[:index]
 
             url_hash = {category:page_url, title:item_title, price:item_price, url:link, img:item_img}
 						url_hash_array.push(url_hash)
+
+						if url_hash_array.pluck(:url).size != url_hash_array.pluck(:url).uniq.size
+              logger.info "uniq out!"
+							check = "hello"
+						end
 
             if check=="all"
 							check = "hello"
