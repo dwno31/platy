@@ -402,6 +402,8 @@ before_action :mobile_check, only:[:index]
 		check = params[:check]
 		output = ""
 		url_hash = {}
+    page_array = []
+		page_array_before = []
 		url_hash_array = []
 		toggle_odd = false
 		pair_url = ""
@@ -444,8 +446,10 @@ before_action :mobile_check, only:[:index]
 						break
 					elsif check=="hello"
 						break
-					end
+          end
 
+					page_array_before = page_array #과거 값을 저장하고 초기화
+					page_array = []
 					album_items.each do |item| #해당 아이템들로부터 href attribute에 있는 link를 추출
 
 						logger.info item
@@ -466,12 +470,9 @@ before_action :mobile_check, only:[:index]
 						item_price = item.css(product_price).text
 
             url_hash = {category:page_url, title:item_title, price:item_price, url:link, img:item_img}
-						url_hash_array.push(url_hash)
 
-						if url_hash_array.pluck(:url).size != url_hash_array.pluck(:url).uniq.size
-              logger.info "uniq out!"
-							check = "hello"
-						end
+						page_array.push(url_hash)	#새로운 값을 저장
+						url_hash_array.push(url_hash)
 
             if check=="all"
 							check = "hello"
@@ -480,7 +481,9 @@ before_action :mobile_check, only:[:index]
 						end
 					end
 
-
+					if page_array.pluck(:url) == page_array_before.pluck(:url)
+						check = "hello"
+					end
 					page = page+1 #다음 페이지 탐색을 위해 페이지를 1 증가
 				end
 
