@@ -41,8 +41,8 @@
     <p>
       url이 담겨있는 a태그 : <input id="product_url" type="text" placeholder="url이 담겨있는 a태그"><br>
       제품 이름 : <input id="product_title" type="text" name="product_title" placeholder="제품명"><br>
-      이미지 태그 : <input id="product_img" type="text" name="product_img" placeholder="대표이미지"><br>
       가격 : <input id="product_price" type="text" name="product_price" placeholder="가격"><br>
+      <span style="color:red;">이미지 태그에서 제외할 것</span><input id="img_dummy" type="text" placeholder="기본값은 dummy입니다">
       <button onclick="check_go()">확인하기</button>
     </p>
     <p id=full_example style="color:grey; border:1px solid grey; width:90%; margin:auto;">이곳에 하나의 세부 정보 예시가 표시됩니다</p><br>
@@ -65,7 +65,7 @@
         <th>A tag</th>
         <th>Title</th>
         <th>Price</th>
-        <th>IMG</th>
+        <th>IMG에서 제외할 텍스트</th>
       </tr>
       </tbody>
     </table>
@@ -102,13 +102,13 @@
       var album_css = $("#album_css")[0].value;
       var product_url = $("#product_url")[0].value;
       var product_title = $("#product_title")[0].value;
-      var product_img = $("#product_img")[0].value;
+      var dummy = $("#img_dummy")[0].value;
       var product_price = $("#product_price")[0].value;
       var encoding = $("#encoding option:selected").attr('value');
       $.ajax({
           url:"/db_spider_result",
           method:"POST",
-          data:{encoding:encoding, mainpage:mainpage, product_url:product_url, category:category, album_css:album_css, product_title:product_title, product_img:product_img, product_price:product_price}
+          data:{encoding:encoding, mainpage:mainpage, product_url:product_url, category:category, album_css:album_css, product_title:product_title, product_price:product_price, dummy:dummy}
       }).done(function(data) {
           $("#input").append("<tr>" +
               "<td>" + mainpage +
@@ -125,7 +125,7 @@
               "</td>" +
               "<td>" + product_price +
               "</td>" +
-              "<td>" + product_img +
+              "<td>" + dummy +
               "</td>" +
               "</tr>");
           $("#result").append(data);
@@ -142,8 +142,8 @@
       var album_css = $("#album_css")[0].value;
       var product_url = $("#product_url")[0].value;
       var product_title = $("#product_title")[0].value;
-      var product_img = $("#product_img")[0].value;
       var product_price = $("#product_price")[0].value;
+      var dummy = $("#img_dummy")[0].value;
       var encoding = $("#encoding option:selected").attr('value');
 
       if(data==='album'){
@@ -162,7 +162,7 @@
           $.ajax({
               url:"/db_spider_result",
               method:"POST",
-              data:{encoding:encoding, check:'all', mainpage:mainpage, product_url:product_url, category:category, album_css:album_css, product_title:product_title, product_img:product_img, product_price:product_price},
+              data:{encoding:encoding, dummy:dummy, check:'all', mainpage:mainpage, product_url:product_url, category:category, album_css:album_css, product_title:product_title, product_price:product_price},
               error:function(data){alert("아예 크롤링이 안됐네요 셀렉터를 확인해주세요")}
           }).done(function(data){
               $("#full_example").html(data);

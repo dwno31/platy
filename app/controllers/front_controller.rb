@@ -400,6 +400,10 @@ before_action :mobile_check, only:[:index]
 		product_url = params[:product_url]
 		encoding = params[:encoding]
 		check = params[:check]
+		dummy = params[:dummy]
+		if dummy.nil?
+			dummy = "dummy"
+		end
 		output = ""
 		url_hash = {}
     page_array = []
@@ -456,14 +460,14 @@ before_action :mobile_check, only:[:index]
 						logger.info "item ds"
 						logger.info product_url
 						link = item.css(product_url).attr('href')
-						logger.info link
+						logger.info link.value
 
-						if !link.include?'//'
-							link = mainpage + link
-						end
+            http_check = mainpage.split('/') + link.value.split('/')
+						link =http_check.uniq.join('/')
 
 						item_title = item.css(product_title).text.gsub("\n","")
-						item_img = item.css(product_img).attr('src').value
+						item_new_whole = item.to_s.split("\"")
+						item_img = item_new_whole[item_new_whole.index{|x|x.include?("jpg")||x.include?("png")&&!x.include?("#{dummy}")}]
 						if !item_img.include?'//'
 							item_img = mainpage+item_img
 						end
