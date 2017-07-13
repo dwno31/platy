@@ -469,7 +469,7 @@ before_action :mobile_check, only:[:index]
 						end
 						item_price = item.css(product_price).text
 
-            url_hash = {category:page_url, title:item_title, price:item_price, url:link, img:item_img}
+            url_hash = {title:item_title, price:item_price, url:link, img:item_img}
 
 						page_array.push(url_hash)	#새로운 값을 저장
 						url_hash_array.push(url_hash)
@@ -499,7 +499,7 @@ before_action :mobile_check, only:[:index]
 
 		logger.info "result"
 		logger.info url_hash_array.inspect
-		@result = url_hash_array
+		@result = url_hash_array.uniq
 		if output == ""
 			render layout:false
 		else
