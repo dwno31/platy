@@ -401,7 +401,7 @@ before_action :mobile_check, only:[:index]
 		encoding = params[:encoding]
 		check = params[:check]
 		dummy = params[:dummy]
-		if dummy.empty?
+		if dummy.nil?||dummy.empty?
 			dummy = "dummy"
 		end
 		output = ""
