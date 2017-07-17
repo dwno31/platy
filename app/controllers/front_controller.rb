@@ -401,7 +401,7 @@ before_action :mobile_check, only:[:index]
 		encoding = params[:encoding]
 		check = params[:check]
 		dummy = params[:dummy]
-		if dummy.nil?
+		if dummy.empty?
 			dummy = "dummy"
 		end
 		output = ""
@@ -467,7 +467,10 @@ before_action :mobile_check, only:[:index]
 
 						item_title = item.css(product_title).text.gsub("\n","")
 						item_new_whole = item.to_s.split("\"")
-						item_img = item_new_whole[item_new_whole.index{|x|x.include?("jpg")||x.include?("png")&&!x.include?("#{dummy}")}]
+            logger.info item_new_whole
+						item_img = item_new_whole[item_new_whole.index{|x|(x.include?("jpg")||x.include?("png"))&&!x.include?("#{dummy}")}]
+						# item_img = item_new_whole.select{|x|x.include?"png"}.reject{|x|x.include?dummy}
+						logger.info item_img
 						if !item_img.include?'//'
 							item_img = mainpage+item_img
 						end
