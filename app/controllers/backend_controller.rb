@@ -157,7 +157,7 @@ class BackendController < ApplicationController
 						when 1
 							record.title = att
 						when 2
-							record.price = att.to_i
+							record.price = att.gsub(/,/,'').to_i
 						when 3
 							record.img_url = att
 						when 4
