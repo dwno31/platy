@@ -5,6 +5,7 @@ class BackendController < ApplicationController
   require 'socket'
   require 'open-uri'
 
+
   def userimage
     azure_blob_service = Azure::Blob::BlobService.new
 
@@ -15,9 +16,78 @@ class BackendController < ApplicationController
     redirect_to :back
   end
 
+
+  def device_login
+    input_id = params[:id]
+    input_device = params[:device]
+    status = ""
+    login_user = ""
+
+    login_identity = Identity.where(:uid=>input_id)
+
+    if login_identity.empty?
+      #유저 새로 만들어서 유저에 집어넣기
+      new_identity = Identity.new
+      new_identity.uid = input_id
+      new_identity.provider = input_device
+
+      new_user = User.new
+      new_user.name = input_device
+      new_user.email = input_id+"@device.login"
+      new_user.password = Devise.friendly_token[0,20]
+      new_user.save
+
+      new_identity.user_id = new_user.id
+      new_identity.save
+
+      login_user= new_user
+    else
+      login_user = login_identity.take.user
+    end
+
+    sign_in(login_user, scope: :user)
+
+    logger.info current_user.id
+    render json: status
+  end
+
+  def device_likestatus
+    uid = Identity.where(:uid=>params[:uid]).take.user.id
+    pid = params[:productId].to_i
+    type = params[:type]
+    status = true
+
+    check_status = current_user.userlikeitems.where("product_id=?",pid).first_or_create
+    logger.info check_status.inspect
+    logger.info check_status.active.to_s
+    if check_status.active.nil? #nil일떄
+      status = false
+    elsif check_status.active == false #false일 떄
+      logger.info "status falsㄷ래"
+      status = false
+    end
+
+    if type == "toggle"
+      status = !status
+      logger.info "tolggle이래"
+      check_status.active = status
+      check_status.save
+    end
+    logger.info status
+
+    if status
+      status = 1
+    else
+      status = 0
+    end
+
+    render plain: status
+  end
+
   def userlike
     type = params[:type]
     id = params[:id].to_i
+
 
     if type == "item"
       record = Userlikeitem.where("user_id=? and product_id=?",current_user.id,id).first_or_create

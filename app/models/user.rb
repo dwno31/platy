@@ -28,7 +28,7 @@ class User < ApplicationRecord
           user = User.new(
               name: auth.info.name,
               email: auth.info.email,
-              password: Devise.friendly_token[0,20],
+              password: Devise.friendly_token[0,20]
           )
           user.save!
         end

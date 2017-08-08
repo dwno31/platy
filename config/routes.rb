@@ -28,7 +28,10 @@ Rails.application.routes.draw do
  get "product_sort",to:"front#product_sort"
  get "db_spider", to:"front#db_spider"
 
- #poset forward backend
+ #rest api for application
+ get "like_status", to:"front#like_status"
+
+ #post forward backend
  post "feedback", to:"backend#feedback"
  post "userimage", to:"backend#userimage"
  post "userprefer", to:"backend#userprefer"
@@ -40,5 +43,9 @@ Rails.application.routes.draw do
  post "product_destroy", to:"backend#db_product_destroy"
  post "userlike/(:type)/(:id)", to:"backend#userlike"
  post "db_spider_result", to:"front#db_spider_result"
+
+ #post for application
+ post "device_login", to:"backend#device_login"
+ post "device_likestatus", to:"backend#device_likestatus"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

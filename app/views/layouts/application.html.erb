@@ -75,12 +75,20 @@
         });
     }
 
-    function product_rcmd_popup(id){
+    function product_rcmd_popup(id, shop, link){
         var id = id;
-        window.history.pushState("","","");
+        var link = link;
+        var shop = shop;
+       <% if @isApp==1 %>
+          window.location = "gomariazuapp://product/*/"+id+"/*/"+shop+"/*/"+link ;
+        <% else %>
+         window.history.pushState("","","");
         $(".shop-product-popup").load("/product_rcmd/"+id,function(id){
             $(".shop-product-popup").modal('show');
         });
+
+        <% end %>
+
     }
 
     function item_filter_popup(){

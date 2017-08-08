@@ -21,6 +21,7 @@ gem 'azure'
 gem 'azure-storage'
 gem 'dalli'
 gem 'rack-cors'
+gem 'websocket-rails'
 
 gem 'browser'
 gem 'bootstrap-sass', '~> 3.3.6'

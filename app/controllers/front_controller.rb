@@ -8,6 +8,12 @@ before_action :mobile_check, only:[:index]
 
 	def index
 		@test = params[:test]
+		@isApp = params[:isApp].to_i
+		@uuid = params[:uuid]
+		if !@uuid.nil?
+			sign_in(Identity.where(:uid=>@uuid).take.user, scope: :user)
+		end
+		logger.info @isApp
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']
 		@purpose_list = ['한식','양식','면','혼밥','술','홈카페','디저트','홈파티','어린이','신혼','선물','조리']
 		@category_list = @category_list + @purpose_list
@@ -33,6 +39,44 @@ before_action :mobile_check, only:[:index]
 
 	def pcindex
 
+	end
+
+	def like_status
+    # parameter
+		# request_type  : inquiry / modify
+		# id user_id : int
+		# type : product / shop
+
+		id = params[:id].to_i
+		request_type = params[:request_type]
+		type = params[:type]
+		user_id = params[:user_id].to_i
+		output = {}
+
+		#타입에 따라 id로 input을 호출하고 user_id와 함께 status를 확인, record를 선택하거나 생성한다
+		if type == "product"
+			input = Product.find(id)
+			status_record = Userlikeitem.where("user_id=? and product_id=?",user_id,id).first_or_create
+		elsif type=="shop"
+			input = Merchant.find(id)
+			status_record = Userlikeshop.where("user_id=? and product_id=?",user_id,id).first_or_create
+		end
+
+    #nil이라면 false로 바꿔서 업데이트
+    if status_record.active == nil
+			status_record.update(:active=>false)
+		end
+
+		#status를 변경하는 request라면 status 에다 not 한 값을 추가하고 save
+		if request_type == "modify"
+			status_record.update(:active=>!status_record.active) #nil이나 false 라면 true로 바뀐다
+		end
+
+		status = status_record.active
+
+		output = {:type=>type, :status=>status}
+
+		render json: output
 	end
 
 	def search_toggle
