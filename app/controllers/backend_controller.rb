@@ -72,6 +72,7 @@ class BackendController < ApplicationController
       logger.info "tolggle이래"
       check_status.active = status
       check_status.save
+      ActionCable.server.broadcast("push_#{uid}", { pid: pid});
     end
     logger.info status
 
@@ -80,6 +81,7 @@ class BackendController < ApplicationController
     else
       status = 0
     end
+
 
     render plain: status
   end

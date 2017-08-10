@@ -6,12 +6,21 @@ require 'open-uri'
 
 before_action :mobile_check, only:[:index]
 
+def device_test
+	input = params[:id]
+	ActionCable.server.broadcast("push_11", { pid: input});
+  render plain: ""
+end
+
 	def index
 		@test = params[:test]
 		@isApp = params[:isApp].to_i
 		@uuid = params[:uuid]
 		if !@uuid.nil?
 			sign_in(Identity.where(:uid=>@uuid).take.user, scope: :user)
+    end
+		if @isApp==1&&!current_user.nil?
+			@c_uuid = current_user.id
 		end
 		logger.info @isApp
 		@category_list = ["우드트레이","볼","플레이트","커트러리",'컵','티팟','유리','티세트','커피','홈세트','트레이','매트','키친웨어','패브릭','소품']

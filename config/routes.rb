@@ -27,6 +27,7 @@ Rails.application.routes.draw do
  get "promo_popup/(:id)", to:"front#promo_popup"
  get "product_sort",to:"front#product_sort"
  get "db_spider", to:"front#db_spider"
+  get "device_test", to: "front#device_test"
 
  #rest api for application
  get "like_status", to:"front#like_status"
@@ -48,4 +49,7 @@ Rails.application.routes.draw do
  post "device_login", to:"backend#device_login"
  post "device_likestatus", to:"backend#device_likestatus"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+  mount ActionCable.server, at: '/cable'
 end

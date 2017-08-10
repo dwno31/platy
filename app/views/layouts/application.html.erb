@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% if @test!='test'%>
-
+    <% if @isApp==1%>
+      <script>
+        var c_uuid = '<%= @c_uuid%>';
+      </script>
     <% end %>
     <title>Mariazu-마리아주</title>
     <meta name="description" content="당신의 식탁을 완성할 테이블웨어를 찾아보세요">
