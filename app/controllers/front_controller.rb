@@ -6,12 +6,6 @@ require 'open-uri'
 
 before_action :mobile_check, only:[:index]
 
-def device_test
-	input = params[:id]
-	ActionCable.server.broadcast("push_11", { pid: input});
-  render plain: ""
-end
-
 	def index
 		@test = params[:test]
 		@isApp = params[:isApp].to_i
