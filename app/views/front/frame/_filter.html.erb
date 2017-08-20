@@ -1,0 +1,131 @@
+<script>
+
+    function filter_slide(){
+        if(landing){
+            landing_animation();
+
+            setTimeout(function() {
+                $('.filter-body').slideToggle();
+                $('.filter-browser').slideToggle('slow');
+                $(".contents-frame").toggleClass('overflow-y-hidden');
+                $('.search-input>input').prop('disabled', function (i, v) {
+                    return !v;
+                });
+              },500);
+            }else {
+                $('.filter-body').slideToggle();
+                $('.filter-browser').slideToggle('slow');
+                $(".contents-frame").toggleClass('overflow-y-hidden');
+                $('.search-input>input').prop('disabled', function (i, v) {
+                    return !v;
+                });
+        };
+    }
+
+
+
+    function filter_apply(){
+        filter_slide();
+        on_active = "filter";
+        $("#loading").toggle();
+
+        category = $("#category>.tag-button-clicked").map(function(){return this.id}).get().join(',');
+        style = $("#style>.tag-button-clicked").map(function(){return this.id}).get().join(',');
+        color = $("#color>.color-button-clicked").map(function(){return this.id}).get().join(',');
+        hashtag = style;
+        //카테고리 스타일 용도를 층별로 모
+        $(".search-input>input").first().attr("placeholder","스타일 필터가 적용되고 있습니다");
+        end_param = true;
+        ga('send','event','filter','move',category+','+hashtag);
+        page = 1;
+        window.setTimeout(function(){
+
+        $(".contents-frame").load('/contents/item/?id='+category+'&hashtag='+hashtag+'&color='+color,function(){
+            window.setTimeout(function(){
+                $("#loading").toggle();
+            },400);
+        });
+
+        },600);
+
+        window.scrollTo(0,1);
+    }
+
+    function filter_toggle(a,string){
+        console.log('dd');
+        if(string==="style"){
+            $(a).parent().find(".modal-filter-button").not(a).removeClass("tag-button-clicked");
+        }
+
+        $(a).toggleClass("tag-button-clicked");
+
+    }
+
+    function color_toggle(a){
+        $(a).toggleClass("color-button-clicked");
+        inner = $(a).children().text()
+
+        if(inner===""){
+            inner = $(a)[0].id;
+            $(a).children().text(inner);
+
+        }else{
+            inner = "";
+            $(a).children().text('')
+        }
+        $(a).children().toggleClass("glyphicon glyphicon-ok");
+
+    }
+    function reset_filter(){
+        $(".modal-filter-button").removeClass("tag-button-clicked");
+        color_toggle($(".color-button-clicked"));
+    }
+
+</script>
+
+<div class="filter-toggle">
+  <div class="filter-cancel" onclick="filter_slide()">
+    <span>cancel</span>
+  </div>
+  <div class="filter-header">
+    <span class="glyphicon glyphicon-filter"></span>
+  </div>
+  <div class="filter-reset" onclick="reset_filter()">
+    <span>reset</span>
+  </div>
+</div>
+<div class="filter-body" style="display: none;">
+  <div class="filter-body-horizon">
+    <div class="filter-body-header">
+      <span>color</span>
+    </div>
+    <div class="filter-color">
+      <div class="modal-filter-list" id="color" style="z-index:3;">
+        <% @color_hash.each do |color,code| %>
+            <div  id='<%=color%>' class="color-button" style="background:<%=code%>; background-size:contain;" onclick="color_toggle(this);ga('send','event','filter','browse','<%=color%>');">
+              <span><%=color%></span>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% @render_hash.each do |k,v| %>
+  <div class="filter-body-vertical"  id="<%=k%>-mother">
+    <div class="filter-body-header">
+      <span><%=k%></span>
+    </div>
+    <div class="filter-index" id="<%=k%>" style="z-index:3;">
+      <% v.each do |tag| %>
+        <div  id='<%=tag%>' class="modal-filter-button" onclick="filter_toggle(this,'<%=k%>');ga('send','event','filter','browse','<%=tag%>');">
+          <span><%=tag%></span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+  <div class="border-overlay"></div>
+</div>
+<div class="filter-apply" onclick="filter_apply()">
+  <span>Apply</span>
+</div>
+

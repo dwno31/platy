@@ -58,6 +58,7 @@ class BackendController < ApplicationController
     status = true
 
     check_status = current_user.userlikeitems.where("product_id=?",pid).first_or_create
+    check_status.product_id = pid
     logger.info check_status.inspect
     logger.info check_status.active.to_s
     if check_status.active.nil? #nil일떄

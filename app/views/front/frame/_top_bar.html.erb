@@ -3,9 +3,128 @@
     <!--<span class="glyphicon glyphicon-heart" name=likeitem onclick="section_transfer('likeitem');ga('send','event','section','move','likeitem');"></span>-->
   <!--</div>-->
 	<!--<span class=service-title onclick="$('html, body').animate({ scrollTop: 0 }, 600);">사랑</span>-->
-  <div class="search-input">
-    <input type="text" placeholder="검색어를 입력해주세요">
-    <i style="top:6px; left:0;font-size:1.2em;color:#a7c9a9;" class="glyphicon glyphicon-search form-control-feedback"></i>
+  <div class="landing-filter" onclick="filter_slide();">
+    <i class="glyphicon glyphicon-filter"></i>
+  </div>
+  <div class="search-input landing-search">
+    <input type="text" placeholder="제목으로 검색하기">
+    <i class="glyphicon glyphicon-search form-control-feedback"></i>
+  </div>
+  <div class="mypage landing-mypage">
+    <span id="topmenu" class="glyphicon glyphicon-heart" name=likeitem onclick="section_transfer('likeitem');ga('send','event','section','move','likeitem');"></span>
   </div>
 
+  <div class="landing-text">
+      당신의 다이닝을 더 아름답게 해줄 오브제를 만나보세요
+  </div>
+
+  <script>
+      function section_transfer(menu){
+
+          window.stop();
+          var menu = menu;
+          $("span[class*=clicked]").each(function(i,e){e.className+=e.getAttribute('name')})
+          $("#topmenu").toggleClass("glyphicon-home");
+          $("#topmenu").toggleClass("glyphicon-heart");
+          if(menu==="likeitem"){
+              $(".contents-frame").load("/section/"+menu,function(){});
+              if(landing){
+                  landing_animation()
+                  setTimeout(function(){
+                      $("#topmenu").attr("onclick","section_transfer('product')");
+                      input_cache = $(".search-input>input").attr('placeholder');
+                      $('.search-input>input').attr('placeholder','내 그릇장❤️').prop('disabled', function (i, v) {
+                          return !v;
+                      });
+                  },500)
+              }else{
+                  $("#topmenu").attr("onclick","section_transfer('product')");
+                  input_cache = $(".search-input>input").attr('placeholder');
+                  $('.search-input>input').attr('placeholder','내 그릇장❤️').prop('disabled', function (i, v) {
+                      return !v;
+                  });
+              }
+
+          }else{
+              $(".contents-frame").load("/section/"+menu,function(){
+                  $(".body-divide").html('');
+                  contents_load();
+              });
+              $("#topmenu").attr("onclick","section_transfer('likeitem')");
+              $(".search-input>input").attr('placeholder',input_cache);
+              $('.search-input>input').prop('disabled', function (i, v) {
+                  return !v;
+              });
+          }
+
+          window.scrollTo(0,0);
+
+      }
+      function alarm_close(a){
+          $(a).hide();
+      }
+
+      $(".search-input>input").first().keypress(function (e) {
+          var key = e.which;
+          if(key == 13)  // the enter key code
+          {
+              if(landing){
+                  landing_animation()
+                  setTimeout(function(){
+                      page = 0;
+                      on_active="search";
+                      keyword = $(".search-input>input").first().val();
+                      $(".search-input>input").first().attr("placeholder",$(".search-input>input").first().val()+"의 검색 결과입니다");
+                      $(".search-input>input").first().val('');
+                      window.scrollTo(0,0);
+                      $("#loading").toggle();
+                      $(".body-divide").html("");
+                      contents_load();
+                      window.setTimeout(function(){
+                          $("#loading").toggle();
+                      },400);
+
+                      return false;
+                  },500);
+              }else{
+
+                  page = 0;
+                  on_active="search";
+                  keyword = $(".search-input>input").first().val();
+                  $(".search-input>input").first().attr("placeholder",$(".search-input>input").first().val()+"의 검색 결과입니다");
+                  $(".search-input>input").first().val('');
+                  window.scrollTo(0,0);
+                  $("#loading").toggle();
+                  $(".body-divide").html("");
+                  contents_load();
+                  window.setTimeout(function(){
+                      $("#loading").toggle();
+                  },400);
+
+                  return false;
+              }
+
+          };
+      });
+
+
+      function landing_animation(){
+          $(".landing-text").slideToggle();
+          if(landing) {
+              $(".top-bar").toggleClass('landing-topbar');
+              setTimeout(function () {
+                  $(".landing-filter").attr('style', 'width:0%;font-size:0;');
+                  $(".landing-filter>i").hide();
+                  $(".landing-mypage").toggleClass("landing-mypage");
+                  $(".landing-search").toggleClass("landing-search");
+                  setTimeout(function () {
+                      $(".contents-frame").show();
+                  }, 250);
+              }, 450);
+              landing = false;
+          };
+
+      }
+
+  </script>
 

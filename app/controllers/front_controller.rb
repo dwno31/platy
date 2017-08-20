@@ -6,6 +6,96 @@ require 'open-uri'
 
 before_action :mobile_check, only:[:index]
 
+
+  def contents_load
+    #parameter list
+    #request_type
+    #page
+    #keyword
+    #category id로 들어온다ㅓㅓ
+    #style
+    #color
+    #sort_type
+    #sort_value
+    data = []
+    product_whole = Product.where(:id=>0)
+    whole_record = ""
+
+
+    request_type = params[:request_type]
+    page = params[:page].to_i
+    sort_type = params[:sort_type]
+    sort_value = params[:sort_value]
+
+    keyword = params[:keyword]
+
+    style = (params[:style].to_s+"").gsub('undefined','')
+    color = (params[:color].to_s+"").gsub('undefined','')
+    category = (params[:id].to_s+"").gsub('undefined','').split(',')
+    userlikelist(current_user)
+
+    if request_type =="filter"
+
+      #해당 필터의 스타일 컬러 카테고리로 레코드를 찾는다
+      category.each do |one|
+        product_whole = product_whole.or(Product.where("color like ? and hashtag like ? and category like ?","%#{color}%","%#{style}%","%#{one}%"))
+      end
+
+      if category.empty?
+        product_whole = product_whole.or(Product.where("color like ? and hashtag like ?","%#{color}%","%#{style}%"))
+      end
+
+
+
+    elsif request_type == "search"
+
+      #해당 키워드로 레코드를 검색해서 모은다
+      @records = Product.where("title like ? or category like ? or hashtag like ? or id=?","%#{keyword}%","%#{keyword}%","%#{keyword}%",keyword.to_i)
+      @merchant_record = Product.where(merchant_id: Merchant.where("title like ?","%#{keyword}%").pluck(:id))
+      logger.info @records.inspect
+      logger.info @merchant_record.inspect
+
+      product_whole = @records.or(@merchant_record)
+    end
+
+
+    #소팅 방식에 맞게 정렬
+    product_whole = product_whole.distinct.order("#{sort_type}":"#{sort_value}")
+
+    #페이지 넘버에 맞게 통 데이터를 짜른다
+    start_number = page*24
+    whole_record = (start_number..start_number+23).to_a.map{|x|product_whole[x]}.compact
+
+
+    #제이슨 포맷에 맞게 가공한다 [{id title price_dd url img_url likestatus mctitle}{} ]
+
+    whole_record.each do |record|
+
+      if @userlikeitems.include?(record.id)
+        status = " likebutton-item-clicked"
+      else
+        status = ""
+      end
+
+      json_data = {:id=>record.id,
+                   :title=>record.title,
+                   :price=>record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!+'원',
+                   :url=>record.url,
+                   :img_url=>record.img_url,
+                   :like_status=>status,
+                   :merchant_title=>record.merchant.title
+                  }
+      data.push(json_data)
+    end
+
+
+    if data.empty?
+      render plain: "nil"
+    else
+      render json: data
+    end
+  end
+
 	def index
 		@test = params[:test]
 		@isApp = params[:isApp].to_i
@@ -21,7 +111,7 @@ before_action :mobile_check, only:[:index]
 		@purpose_list = ['한식','양식','면','혼밥','술','홈카페','디저트','홈파티','어린이','신혼','선물','조리']
 		@category_list = @category_list + @purpose_list
 		@style_list = ['럭셔리','로맨틱','클래식','유니크','엔틱','핸드메이드','일본','북유럽','폴란드','심플','모던','일러스트','귀여운','컬러풀','내츄럴']
-		@render_hash = {:스타일=>@style_list,:카테고리=>@category_list}
+		@render_hash = {:style=>@style_list,:category=>@category_list}
 		filter_tag = []
 		index_product = []
 		#유저가 그냥 넘어갔을때 보여주는 상품리스트, 프로덕트 레코드 어레이를 리턴해서 인덱스 프로덕트에 저장
@@ -107,7 +197,8 @@ before_action :mobile_check, only:[:index]
 
 
 		render partial: "front/browse/contents"
-	end
+  end
+
   def search_item
 		userlikelist(current_user)
 		keyword = params[:keyword]
@@ -228,7 +319,7 @@ before_action :mobile_check, only:[:index]
         logger.info session[:prefer_style]
 				logger.info params[:id].empty?
 				logger.info "where"
-        if params[:color].nil?
+        if params[:color].nil? #오잉 이건뭐냐
 					input_color = session[:color].split(',').map{|x|"%#{x}%"}
 				else
 					input_color = params[:color].split(',').map{|x|"%#{x}%"}
@@ -328,9 +419,9 @@ before_action :mobile_check, only:[:index]
 
 	def slide_contents
 		userlikelist(current_user)
+		request_type = params[:request_type]
 		slide_type = params[:slide]
-		index = params[:index].gsub('index','').split(',')
-    hashtag = params[:hashtag].gsub('undefined','').split(',').reject{|c|c.empty?}[0]
+    hashtag = params[:hashtag].to_s.gsub('undefined','').split(',').reject{|c|c.empty?}[0]
     if session[:color].nil?
 			session[:color]=""
 		end

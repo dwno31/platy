@@ -1,12 +1,16 @@
 <div class="modal intro">
   <%= render "front/modal/intro/intro"%>
 </div>
-<div class=top-bar>
+<div class="top-bar landing-topbar" >
   <%= render partial: "front/frame/top_bar" %>
 </div>
-<div class="contents-frame">
+<div class="filter-browser" style="display:none;">
+  <%= render "front/frame/filter" %>
+</div>
+<div class="contents-frame" style="display:none;">
   <%= render "front/frame/contents-frame" %>
 </div>
+<div id="loading"></div>
 <div class="modal fade shop-product-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 </div>
 <div class="modal fade filter-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

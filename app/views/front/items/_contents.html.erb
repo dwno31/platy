@@ -1,5 +1,4 @@
 <script>
-  $("#loading").show();
   $(".browser-contents").attr('style','margin-top:77px;');
   window.location.hash = "";
 </script>
@@ -23,7 +22,6 @@
         </a>
       </div>
   <% end %>
-  <div class="contents-loading" style="display:none;"></div>
 </div>
 <div class="body-divide">
   <% @product2.each do |record| %>
@@ -40,12 +38,12 @@
             <div class="modal-product-detail">
                <span><%=record.title%></span><br>
                <span class="product-price"><%=record.price.to_s.reverse.scan(/(?:\d*\.)?\d{1,3}-?/).join(',').reverse!%>원</spanc>
-               </div>
+             </div>
         </a>
       </div>
   <% end %>
-  <div class="contents-loading" style="display:none;"></div>
 </div>
+<div class="contents-loading" style="display:none;"></div>
 <div class="contents-end" onclick="addtagplz(this);" style="display: none;">
-  <span>상품 리스트 추가 요청하기</span>
+  <span>오브제 리스트 추가 요청하기</span>
 </div>

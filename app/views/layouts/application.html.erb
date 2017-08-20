@@ -24,22 +24,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes" />
     <script>
-        function getCookie(cname) {
-            var name = cname + "=";
-            var decodedCookie = decodeURIComponent(document.cookie);
-            var ca = decodedCookie.split(';');
-            for(var i = 0; i <ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) == ' ') {
-                    c = c.substring(1);
-                }
-                if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
-                }
-            }
-            return "";
-        }
-      //에러이미지 서버 호출-인코딩
+        document.addEventListener("touchstart", function() {},false);
+        var on_active = "";
+        var keyword = "";
+        var input_cache = "";
+        var landing = true;
+
+
       function imgError(image,type,id) {
           image.onerror = "";
           $.ajax({

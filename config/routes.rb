@@ -28,6 +28,7 @@ Rails.application.routes.draw do
  get "product_sort",to:"front#product_sort"
  get "db_spider", to:"front#db_spider"
   get "device_test", to: "front#device_test"
+  get "contents_load", to:"front#contents_load"
 
  #rest api for application
  get "like_status", to:"front#like_status"

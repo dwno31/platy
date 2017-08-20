@@ -17,32 +17,3 @@
   <!--<div>특가할인정보</div>-->
   <!--<div></div>-->
 <!--</div>-->
-
-<script>
-    function section_transfer(menu){
-
-        window.stop();
-        var menu = menu;
-        $("span[class*=clicked]").each(function(i,e){e.className+=e.getAttribute('name')})
-        $(".footer-button").removeClass("clicked");
-        $("."+menu+"list").addClass("clicked");
-        $(".contents-frame").load("/section/"+menu,function(){});
-        if(menu==="product"){
-            $(".itemfilter-button").show();
-            $(".itemsearch-button").attr('onclick','item_search_toggle(true)').show();
-        }else if(menu==="shop"){
-            $(".itemfilter-button").hide();
-            $(".itemsearch-button").attr('onclick','shop_search_toggle(true)').show();
-        }
-        else{
-            $(".itemfilter-button").hide();
-            $(".itemsearch-button").hide();
-        }
-        window.scrollTo(0,0);
-
-    }
-    function alarm_close(a){
-        $(a).hide();
-    }
-
-</script>

@@ -7,24 +7,3 @@
   <div>취소</div>
 </div>
 
-<script>
-    switcher = false;
-    end_param = false;
- $(".search-input>input").first().keypress(function (e) {
-     var key = e.which;
-     if(key == 13)  // the enter key code
-     {
-         keyword = $(".search-input>input").first().val();
-         $(".search-input>input").first().attr("placeholder","검색 : " +$(".search-input>input").first().val());
-         $(".search-input>input").first().val('');
-         window.scrollTo(0,0);
-
-         $(".browser-contents").load("/search_item?keyword="+keyword,function(){
-             $(".body-divide").attr('style','padding-bottom:15%;')
-
-         });
-         return false;
-     }
- });
-
-</script>

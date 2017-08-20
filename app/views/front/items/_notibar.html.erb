@@ -4,64 +4,41 @@
   <span class="sortbutton" sort_type="price" sort_value="desc" onclick="filter_sort(this,'price','desc');">고가순</span>
   <span class="sortbutton" sort_type="price" sort_value="asc" onclick="filter_sort(this,'price','asc');">저가순</span>
 </div>
-<!--<div class="noti-button" style="width:19%; display:none;">-->
-  <!--<span class="pricebutton" onclick="price_filter()">가격필터</span>-->
-<!--</div>-->
-<!--<div class="price-range" style="display:none">-->
-  <!--<div class="price-range-header">-->
-    <!--<span>원하는 가격대 설정<br></span>-->
-    <!--<span>해당 범위 내의 상품들만 보여드립니다</span>-->
-  <!--</div>-->
-  <!--<div class="range-bar">-->
-    <!--<div class="slider-range">-->
-      <!--<span>-->
-        <!--<span class="price-from">500</span>원 ~<span class="price-to">10000</span>원-->
-      <!--</span>-->
-    <!--</div>-->
-    <!--<div id="slider-range"></div>-->
-  <!--</div>-->
-  <!--<div class="price-range-button">-->
-    <!--<div class="price-reset">초기화</div>-->
-    <!--<div class="price-apply">적용하기</div>-->
-  <!--</div>-->
-<!--</div>-->
-<div class="noti-button" onclick="prefer_reset();ga('send','event','filter','popup','notibar');" style="float:right;">
-  <span>다시 설정하기</span>
+
+<div class="noti-button" onclick="filter_slide();ga('send','event','filter','popup','notibar');" style="float:right;">
+  <i style="line-height:1.8;font-size:1.2em;color:#a7c9a9;" class="glyphicon glyphicon-filter"></i>
 </div>
 <div class="noti-scroll" onclick="$('html, body').animate({ scrollTop: 0 }, 300);" style="display:none;">
   <span class="glyphicon glyphicon-arrow-up"></span>
 </div>
 <script>
 
-    //태그를 입력받는다 제이쿼리로 보낸다
-    //제이슨으로 받아서 틀 하나 만들어두고 반복문으로 dom재생성한다
 //    //아니면 아래 부분만 새로운 데이터로 리로드한다
-//    var slider = document.getElementById('slider-range');
-//    noUiSlider.create(slider, {
-//        start: [0, 100],
-//        connect: true,
-//        range: {
-//            'min': 0,
-//            'max': 100
-//        }
-//    });
-    var page = 1;
+    var page = 0;
     var end_param = true;
-    function prefer_reset(){
-        $(".filter-popup").modal('show');
-    }
+
     function price_filter(){
         $(".pricebutton").addClass("sort-active");
         $(".price-range").show();
 
     }
     function filter_sort(a,type,value){
+        page = 0; //리로드 - 로딩이 덮이는 곳엔 무조건 0부터 시작한다
+        //sort 버튼이 작동한 후 값을 읽어온다
         $(".sortbutton").not(a).removeClass('sort-active');
         $(a).addClass("sort-active");
-        $(".browser-contents").load('/product_sort?sort_type='+type+'&sort_value='+value,function(){});
+        sort_type = $(".sort-active").attr('sort_type');
+        sort_value = $(".sort-active").attr('sort_value');
+        //로딩으로 덮고 기존 데이터를 청소한다
+        $("#loading").toggle();
+        $(".body-divide").html("");
+        window.setTimeout(function(){
+            $("#loading").toggle();
+        },400);
+        //현재 상태 - 검색 등등 을 기준으로 컨텐츠를 가져와서 붙인다
+        contents_load();
         switcher = true;
         end_param = true;
-        page = 1;
     }
 
     function tag_sort(){
@@ -79,9 +56,6 @@
         // 반복문 만들어서 string으로 붙인 다음에 파라미터로 넘긴다
         // index창에서는 파라미터 값에 따라 표시되는 record를 바꾸고
         // 뷰페이지에서는 해당 레코드배열을 표시해주게 된다
-
-
-
     }
 
 
@@ -89,49 +63,30 @@
     var browser = $(window);
     var switcher = true;
     window.scrollTo(0,0);
+    var category = $("#category>.tag-button-clicked").map(function(){return this.id}).get().join(',');
+    var style = $("#style>.tag-button-clicked").attr('id');
+    var color = $("#color>.color-button-clicked").map(function(){return this.id}).get().join(',');
+    var sort_type = $(".sort-active").attr('sort_type');
+    var sort_value = $(".sort-active").attr('sort_value');
 
     browser.scroll(function(){
-        var category = $("#카테고리>.tag-button-clicked").map(function(){return this.id}).get().join(',');
-        var style = $("#스타일>.tag-button-clicked").attr('id');
-        var purpose = $("#용도>.tag-button-clicked").attr('id');
-        var color = $("#색상>.color-button-clicked").map(function(){return this.id}).get().join(',');
-        var sort_type = $(".sort-active").attr('sort_type');
-        var sort_value = $(".sort-active").attr('sort_value');
+        category = $("#category>.tag-button-clicked").map(function(){return this.id}).get().join(',');
+        style = $("#style>.tag-button-clicked").attr('id');
+        color = $("#color>.color-button-clicked").map(function(){return this.id}).get().join(',');
+        sort_type = $(".sort-active").attr('sort_type');
+        sort_value = $(".sort-active").attr('sort_value');
 
         console.log("scrollevent");
-        if(category.length===0){
-            category = "index";
-        };
 
-        if($('body')[0].scrollHeight-browser.scrollTop()<browser.outerHeight()+90)
+        if($('body')[0].scrollHeight-browser.scrollTop()<browser.outerHeight()+190)
         {   console.log("90");
             if(switcher&end_param) {
-                ga('send','event','product','scroll',category+','+style+','+purpose);
-                $(".body-divide>.contents-loading:last-child").show();
+                ga('send','event','product','scroll',category+','+style);
+                $(".contents-loading").show();
 
-                $("<div>").load("/slide_contents/item/" + category + "?page=" + page+"&hashtag="+style+','+purpose+"&color="+color+"&sort_type="+sort_type+"&sort_value="+sort_value, function (data) {
-                    if(data==="nil"){
-                        $(".contents-loading").hide();
-                        end_param = false;
-                        $(".contents-end>span").text("상품리스트 추가 요청하기");
-                        $(".contents-end").show();
-                    }else {
-                        append_str = $(this).find(".body-divide");
-
-                        $(".browser-contents").find(".body-divide")[0].append(append_str[0]);
-                        $(".body-divide>.body-divide>div").unwrap();
-
-                        $(".browser-contents").find(".body-divide")[1].append(append_str[1]);
-                        $(".body-divide>.body-divide>div").unwrap();
-
-                        $(".contents-loading").hide();
-                    };
-
-                });
                 page = page + 1;
-                if(page===2){
-                    $(".footer-alarm").show();
-                }
+                contents_load();
+                setTimeout(function(){$(".contents-loading").hide();},200);
                 switcher = false;
                 setTimeout(function(){switcher=true;},200);
             }
@@ -152,5 +107,59 @@
 
 
     });
+
+
+    function contents_load(){
+        $.ajax({
+          url:"/contents_load",
+          method:"GET",
+          data:{request_type:on_active,keyword:keyword,id:category,page:page,style:style,color:color,sort_type:sort_type,sort_value:sort_value},
+
+        }).done(function(data){
+            if(data==="nil"){
+                $(".contents-loading").hide();
+                end_param = false;
+                $(".contents-end>span").text("상품리스트 추가 요청하기");
+                $(".contents-end").show();
+            }
+            else{
+                bool = true;
+
+                $.each(data, function(index, record){
+                raw_data = "<div class=\"modal-product-item\" style='' wow=hello>\n" +
+                    "      <a id=\"item"+record.id+"\" onclick=\"ga('send','event','recommend','popup','"+record.id+"');product_rcmd_popup('"+record.id+"','"+record.merchant_title+"','"+record.url+"')\">\n" +
+                    "        <img width='100%'class=\"modal-product-img\" src='"+ record.img_url +"' onerror=\"imgError(this,'product',"+record.id+")\">\n" +
+                    "      </a>\n" +
+                    "          <div name=\"likeitem"+record.id+"\" class='likebutton-item "+record.like_status+"' onclick=\"userlike(this,'item','"+record.id+"');ga('send','event','product','like','"+record.id+"');\"></div>\n" +
+                    "        <a onclick=\"ga('send','event','recommend','popup','"+record.id+"');product_rcmd_popup('"+record.id+"','"+record.merchant_title+"','"+record.url+"')\">\n" +
+                    "            <div class=\"modal-product-detail\">\n" +
+                    "              <span>"+record.title+"</span><br>\n" +
+                    "              <span class=\"product-price\">"+record.price+"</span>\n" +
+                    "              <span></span>\n" +
+                    "            </div>\n" +
+                    "        </a>\n" +
+                    "      </div>";
+
+                append_data = $($.parseHTML(raw_data));
+                if(bool) {
+                    $(".browser-contents").find(".body-divide").eq(0).append(append_data);
+                }else {
+                    $(".browser-contents").find(".body-divide").eq(1).append(append_data);
+                }
+                bool = !bool;
+                });
+            }
+
+        });
+
+        height1 = $(".browser-contents").find(".body-divide").eq(0).height();
+        height2 = $(".browser-contents").find(".body-divide").eq(1).height();
+        if(height1>height2){
+            $(".browser-contents").find(".body-divide>div").eq(0).last().appendTo( $(".browser-contents").find(".body-divide>div").eq(1));
+        }else{
+            $(".browser-contents").find(".body-divide>div").eq(1).last().appendTo( $(".browser-contents").find(".body-divide>div").eq(0));
+        };
+
+    };
 
 </script>
