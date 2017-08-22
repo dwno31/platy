@@ -158,17 +158,18 @@ a:active {color:inherit;}
 }
 .modal-product-item{
   background: white;
-  box-shadow:1px 1px 1px 1px rgba(0,0,0,0.2);
   border-radius:3px;
-  width:96%;
-  margin:5% 1% 5% 1%;
+  width:92%;
+  margin:7% 3%;
   min-height:30%;
   position:relative;
 }
 
 .modal-product-img{
   width:100%;
-  border-radius:3px 3px 0 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 
 .likebutton-item{
@@ -516,8 +517,8 @@ transition: all 0.4s linear;
   appearance: none;
   width: 100%;
   height: 100%;
-  border: 1px solid rgba(0,0,0,0.2);
-  border-radius:3px;
+  border:none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
   text-align: center;
 }
 .search-input>i{
