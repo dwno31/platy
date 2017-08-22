@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8f24aa89-c564-4f7a-baa8-ca7ea3947a77" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/front.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/front.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -37,8 +36,8 @@
           <file leaf-file-name="front.scss" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="1431" column="35" lean-forward="false" selection-start-line="1431" selection-start-column="35" selection-end-line="1431" selection-end-column="35" />
+                <state relative-caret-position="255">
+                  <caret line="1442" column="0" lean-forward="false" selection-start-line="1442" selection-start-column="0" selection-end-line="1442" selection-end-column="0" />
                   <folding>
                     <marker date="1503404450000" expanded="true" signature="4992:5148" ph="{...}" />
                     <marker date="1503404450000" expanded="true" signature="14528:14681" ph="{...}" />
@@ -641,7 +640,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="907691000" />
+    <option name="totallyTimeSpent" value="907786000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -1117,8 +1116,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/front.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="1431" column="35" lean-forward="false" selection-start-line="1431" selection-start-column="35" selection-end-line="1431" selection-end-column="35" />
+        <state relative-caret-position="255">
+          <caret line="1442" column="0" lean-forward="false" selection-start-line="1442" selection-start-column="0" selection-end-line="1442" selection-end-column="0" />
           <folding>
             <marker date="1503404450000" expanded="true" signature="4992:5148" ph="{...}" />
             <marker date="1503404450000" expanded="true" signature="14528:14681" ph="{...}" />
