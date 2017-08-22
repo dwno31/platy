@@ -335,7 +335,6 @@ class BackendController < ApplicationController
 
   def kakao
     # data = {'grant_type'=>'refresh_token','client_id'=>"{#{ENV['kakao_key']}}",'refresh_token'=>"#{params[:refresh]}"}
-    logger.info params[:token]
     session['omniauth.state'] =  SecureRandom.hex(24)
 
 

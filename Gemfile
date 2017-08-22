@@ -22,6 +22,10 @@ gem 'azure-storage'
 gem 'dalli'
 gem 'rack-cors'
 gem 'websocket-rails'
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
 
 gem 'browser'
 gem 'bootstrap-sass', '~> 3.3.6'

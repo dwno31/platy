@@ -52,8 +52,6 @@ before_action :mobile_check, only:[:index]
       #해당 키워드로 레코드를 검색해서 모은다
       @records = Product.where("title like ? or category like ? or hashtag like ? or id=?","%#{keyword}%","%#{keyword}%","%#{keyword}%",keyword.to_i)
       @merchant_record = Product.where(merchant_id: Merchant.where("title like ?","%#{keyword}%").pluck(:id))
-      logger.info @records.inspect
-      logger.info @merchant_record.inspect
 
       product_whole = @records.or(@merchant_record)
     end
@@ -481,7 +479,6 @@ before_action :mobile_check, only:[:index]
 			logger.info start_number
 			@records = (start_number..start_number+23).to_a.map{|x|@product[x]}.compact
 			logger.info @records.compact.size
-			logger.info @records.inspect
       if @records.compact.size != 0
 				@records = Product.where(id: @records.map(&:id))
     	  productlist(@records,params[:sort_type],params[:sort_value])
@@ -643,7 +640,6 @@ before_action :mobile_check, only:[:index]
 		end
 
 		logger.info "result"
-		logger.info url_hash_array.inspect
 		@result = url_hash_array.uniq
 		if output == ""
 			render layout:false
