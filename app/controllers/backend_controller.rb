@@ -232,19 +232,17 @@ class BackendController < ApplicationController
 						when 2
 							record.price = att.gsub(/,/,'').to_i
 						when 3
-							record.img_url = att
+              record.url = att
 						when 4
-							record.url = att
+              record.img_url = att
             when 5
-              record.category = att.gsub(/ /,'')
-            when 6
-              record.category = record.category+','+att.gsub(/ /,'')
-            when 7
-              record.hashtag = att.gsub(/ /,'')
-            when 8
-              record.rating = att.to_i
-            when 9
               record.color = att.gsub(/ /,'')
+            when 6
+              record.hashtag = att.gsub(/ /,'')
+            when 7
+              record.category = att.gsub(/ /,'')
+            when 8
+
 					end
 
 					i = i+1;
