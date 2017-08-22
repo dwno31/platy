@@ -21,7 +21,7 @@ gem 'azure'
 gem 'azure-storage'
 gem 'dalli'
 gem 'rack-cors'
-gem 'websocket-rails'
+# gem 'websocket-rails'
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
