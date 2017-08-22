@@ -1,6 +1,6 @@
 class PushChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "push_#{params[:room]}"
+    # stream_from "push_#{params[:room]}"
     # stream_from "push"
   end
 

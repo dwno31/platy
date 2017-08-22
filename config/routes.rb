@@ -50,7 +50,4 @@ Rails.application.routes.draw do
  post "device_login", to:"backend#device_login"
  post "device_likestatus", to:"backend#device_likestatus"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-
-  mount ActionCable.server, at: '/cable'
 end
