@@ -155,9 +155,9 @@
         height1 = $(".browser-contents").find(".body-divide").eq(0).height();
         height2 = $(".browser-contents").find(".body-divide").eq(1).height();
         if(height1>height2){
-            $(".browser-contents").find(".body-divide>div").eq(0).last().appendTo( $(".browser-contents").find(".body-divide").eq(1));
+            $(".browser-contents").find(".body-divide").eq(0).find(".modal-product-item").last().appendTo( $(".browser-contents").find(".body-divide").eq(1));
         }else{
-            $(".browser-contents").find(".body-divide>div").eq(1).last().appendTo( $(".browser-contents").find(".body-divide").eq(0));
+            $(".browser-contents").find(".body-divide").eq(1).find(".modal-product-item").last().appendTo( $(".browser-contents").find(".body-divide").eq(0));
         };
 
     };

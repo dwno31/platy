@@ -33,7 +33,7 @@ class BackendController < ApplicationController
 
       new_user = User.new
       new_user.name = input_device
-      new_user.email = input_id+"@device.login"
+      new_user.email = input_id.to_s+"@device.login"
       new_user.password = Devise.friendly_token[0,20]
       new_user.save
 
